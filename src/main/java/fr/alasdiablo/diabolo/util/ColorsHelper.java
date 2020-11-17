@@ -1,4 +1,4 @@
-package fr.alasdiablo.diabolo.helper;
+package fr.alasdiablo.diabolo.util;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;

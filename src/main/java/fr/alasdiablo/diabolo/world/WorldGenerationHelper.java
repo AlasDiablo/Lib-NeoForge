@@ -1,9 +1,8 @@
-package fr.alasdiablo.diabolo.helper;
+package fr.alasdiablo.diabolo.world;
 
 import com.google.common.collect.Lists;
 import fr.alasdiablo.diabolo.DiaboloLib;
 import net.minecraft.block.BlockState;
-import net.minecraft.client.renderer.color.BlockColors;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.WorldGenRegistries;
@@ -25,7 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Supplier;
 
-public class WorldGenHelper {
+public class WorldGenerationHelper {
 
     /**
      * Function use for adding OreFeature to a biome
