@@ -1,7 +1,6 @@
 modLoader="javafml"
 loaderVersion="[34,)"
 license="All rights reserved"
-issueTrackerURL="http://my.issue.tracker/"
 [[mods]]
 modId="diabolo"
 version="${file.jarVersion}"
@@ -11,15 +10,15 @@ authors="AlasDiablo, lIotaMiu & Safyrus"
 description='''
 Libray Mod for Janoeo Project and more !
 '''
-[[dependencies.examplemod]]
+[[dependencies.diabolo]]
     modId="forge"
     mandatory=true
     versionRange="[34,)"
     ordering="NONE"
     side="BOTH"
-[[dependencies.examplemod]]
+[[dependencies.diabolo]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.16.3]"
+    versionRange="[1.16.3,)"
     ordering="NONE"
     side="BOTH"

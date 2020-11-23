@@ -78,7 +78,7 @@ public class WorldGenerationHelper {
                             )
                     ).square().func_242731_b/* repeat */(count)
             );
-            DiaboloLib.logger.debug(new FormattedMessage("OreFeature with the name '%s' was added to the Registry", name.toString()));
+            DiaboloLib.logger.debug(new FormattedMessage("OreFeature with the name '%s' was added to the Registry.", name.toString()));
         }
 
         /**
@@ -109,7 +109,7 @@ public class WorldGenerationHelper {
                             )
                     ).square().func_242731_b/* repeat */(count)
             );
-            DiaboloLib.logger.debug(new FormattedMessage("ReplaceBlockFeature with the name '%s' was added to the Registry", name.toString()));
+            DiaboloLib.logger.debug(new FormattedMessage("ReplaceBlockFeature with the name '%s' was added to the Registry.", name.toString()));
         }
     }
 }
