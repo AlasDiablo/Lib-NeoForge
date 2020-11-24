@@ -12,14 +12,14 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-def build_number = 1
+def build_number = 3
 def isExperimental = false
 version = "1.0.${build_number}"
 if (isExperimental) {
     version += '-experimental'
 }
 group = 'fr.alasdiablo.diolib'
-archivesBaseName = 'Diabolo Lib'
+archivesBaseName = 'DiaboloLib'
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
 minecraft {
     mappings channel: 'snapshot', version: '20201028-1.16.3'
