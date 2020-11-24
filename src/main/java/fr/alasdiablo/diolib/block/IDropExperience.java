@@ -1,4 +1,4 @@
-package fr.alasdiablo.diabolo.block;
+package fr.alasdiablo.diolib.block;
 
 import net.minecraft.util.math.MathHelper;
 
@@ -12,7 +12,7 @@ public interface IDropExperience {
      * Getter use by <i>getExperience</i> for get the <i>ExperienceRarity</i>
      *
      * @return Return the <i>ExperienceRarity</i> set by the block
-     * @see fr.alasdiablo.diabolo.block.ExperienceRarity
+     * @see fr.alasdiablo.diolib.block.ExperienceRarity
      */
     ExperienceRarity getExperienceRarity();
 

@@ -1,8 +1,8 @@
-package fr.alasdiablo.diabolo.event;
+package fr.alasdiablo.diolib.event;
 
 import com.google.common.collect.Lists;
-import fr.alasdiablo.diabolo.DiaboloLib;
-import fr.alasdiablo.diabolo.config.ModConfig;
+import fr.alasdiablo.diolib.DiaboloLib;
+import fr.alasdiablo.diolib.config.ModConfig;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.FireworkRocketEntity;
 import net.minecraft.item.ItemStack;

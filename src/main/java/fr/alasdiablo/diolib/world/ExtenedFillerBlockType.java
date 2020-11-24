@@ -1,4 +1,4 @@
-package fr.alasdiablo.diabolo.world;
+package fr.alasdiablo.diolib.world;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;

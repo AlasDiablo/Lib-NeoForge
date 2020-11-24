@@ -1,11 +1,11 @@
-package fr.alasdiablo.diabolo.data;
+package fr.alasdiablo.diolib.data;
 
 import com.google.common.collect.Maps;
 import com.google.common.collect.Multimap;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.mojang.datafixers.util.Pair;
-import fr.alasdiablo.diabolo.DiaboloLib;
+import fr.alasdiablo.diolib.DiaboloLib;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DirectoryCache;
 import net.minecraft.data.IDataProvider;

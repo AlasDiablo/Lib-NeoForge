@@ -1,4 +1,4 @@
-package fr.alasdiablo.diabolo.world;
+package fr.alasdiablo.diolib.world;
 
 import net.minecraft.world.biome.Biome;
 

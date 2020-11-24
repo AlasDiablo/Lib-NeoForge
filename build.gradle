@@ -18,7 +18,7 @@ version = "1.0.${build_number}"
 if (isExperimental) {
     version += '-experimental'
 }
-group = 'fr.alasdiablo.diabolo'
+group = 'fr.alasdiablo.diolib'
 archivesBaseName = 'Diabolo Lib'
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
 minecraft {
@@ -30,7 +30,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             mods {
-                diabolo {
+                diolib {
                     source sourceSets.main
                 }
             }
@@ -41,7 +41,7 @@ minecraft {
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
             property 'forge.logging.console.level', 'debug'
             mods {
-                diabolo {
+                diolib {
                     source sourceSets.main
                 }
             }
@@ -51,9 +51,9 @@ minecraft {
             workingDirectory project.file('run')
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
             property 'forge.logging.console.level', 'debug'
-            args '--mod', 'diabolo', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+            args '--mod', 'diolib', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
             mods {
-                diabolo {
+                diolib {
                     source sourceSets.main
                 }
             }

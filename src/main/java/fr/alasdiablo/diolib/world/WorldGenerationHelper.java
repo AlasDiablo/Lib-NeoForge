@@ -1,7 +1,7 @@
-package fr.alasdiablo.diabolo.world;
+package fr.alasdiablo.diolib.world;
 
 import com.google.common.collect.Lists;
-import fr.alasdiablo.diabolo.DiaboloLib;
+import fr.alasdiablo.diolib.DiaboloLib;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;

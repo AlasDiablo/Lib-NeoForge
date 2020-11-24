@@ -1,17 +1,13 @@
-package fr.alasdiablo.diabolo.config;
+package fr.alasdiablo.diolib.config;
 
-import fr.alasdiablo.diabolo.DiaboloLib;
-import net.minecraft.fluid.WaterFluid;
-import net.minecraft.item.BucketItem;
+import fr.alasdiablo.diolib.DiaboloLib;
 import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.fluids.FluidAttributes;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.loading.FMLPaths;
 
 import java.io.IOException;
 import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 
 /**

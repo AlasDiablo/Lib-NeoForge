@@ -2,7 +2,7 @@ modLoader="javafml"
 loaderVersion="[34,)"
 license="All rights reserved"
 [[mods]]
-modId="diabolo"
+modId="diolib"
 version="${file.jarVersion}"
 displayName="Diabolo Lib"
 logoFile="diabolo-lib.png"

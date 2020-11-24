@@ -1,6 +1,6 @@
-package fr.alasdiablo.diabolo.block;
+package fr.alasdiablo.diolib.block;
 
-import fr.alasdiablo.diabolo.config.ModConfig;
+import fr.alasdiablo.diolib.config.ModConfig;
 import net.minecraft.entity.monster.ZombifiedPiglinEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.AxisAlignedBB;
