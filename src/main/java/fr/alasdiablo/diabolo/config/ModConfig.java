@@ -1,7 +1,10 @@
 package fr.alasdiablo.diabolo.config;
 
 import fr.alasdiablo.diabolo.DiaboloLib;
+import net.minecraft.fluid.WaterFluid;
+import net.minecraft.item.BucketItem;
 import net.minecraftforge.common.ForgeConfigSpec;
+import net.minecraftforge.fluids.FluidAttributes;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.loading.FMLPaths;
 
@@ -62,16 +65,14 @@ public class ModConfig {
      * Function called by DiaboloLib during mod construction
      */
     public static void setup() {
-        Path configPath = FMLPaths.CONFIGDIR.get();
-        Path bopConfigPath = Paths.get(configPath.toAbsolutePath().toString(), "diabololib");
         try {
-            Files.createDirectory(bopConfigPath);
-        } catch (FileAlreadyExistsException ignored) {} catch (IOException e) {
+            Files.createDirectory(Paths.get(FMLPaths.CONFIGDIR.get().toAbsolutePath().toString(), "diabololib"));
+        } catch (FileAlreadyExistsException ignored) {
+        } catch (IOException e) {
             DiaboloLib.logger.error("Failed to create DiaboloLib config directory.", e);
         }
         ModLoadingContext.get().registerConfig(net.minecraftforge.fml.config.ModConfig.Type.COMMON, MobAngerConfig.SPEC, "diabololib/mobs.toml");
         ModLoadingContext.get().registerConfig(net.minecraftforge.fml.config.ModConfig.Type.COMMON, DefaultConfig.SPEC, "diabololib/default.toml");
     }
-
 
 }
