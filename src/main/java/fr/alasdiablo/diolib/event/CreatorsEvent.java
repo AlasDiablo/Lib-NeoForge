@@ -44,7 +44,7 @@ public class CreatorsEvent {
                     star.putBoolean("Flicker", true);
                     star.putBoolean("Trail", true);
                     star.putInt("Type", 1);
-                    generateFirework(player, world, star);
+                    generateFirework(player, world, star, "Author");
                     break;
                 }
                 case "Safyrus": {
@@ -54,7 +54,7 @@ public class CreatorsEvent {
                     star.putBoolean("Flicker", true);
                     star.putBoolean("Trail", true);
                     star.putInt("Type", 2);
-                    generateFirework(player, world, star);
+                    generateFirework(player, world, star, "Author");
                     break;
                 }
             }
@@ -68,14 +68,14 @@ public class CreatorsEvent {
      * @param world  Current world
      * @param star   The firework star element
      */
-    private static void generateFirework(PlayerEntity player, World world, CompoundNBT star) {
+    static void generateFirework(PlayerEntity player, World world, CompoundNBT star, String playerType) {
         final ItemStack firework = new ItemStack(Items.FIREWORK_ROCKET);
         final CompoundNBT rocket = new CompoundNBT();
         final CompoundNBT fireworkCompound = firework.getOrCreateTag();
         rocket.putInt("Flight", 3);
         rocket.put("Explosions", Arrays.stream(new CompoundNBT[]{star}).collect(Collectors.toCollection(ListNBT::new)));
         fireworkCompound.put("Fireworks", rocket);
-        DiaboloLib.logger.debug(new FormattedMessage("Spawning Author[%s] Firework.", player.getName().getString()));
+        DiaboloLib.logger.debug(new FormattedMessage("Spawning %s[%s] Firework.", playerType, player.getName().getString()));
         world.addEntity(new FireworkRocketEntity(world, player.prevPosX, player.prevPosY, player.prevPosZ, firework));
     }
 }

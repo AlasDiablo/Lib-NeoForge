@@ -3,16 +3,14 @@ package fr.alasdiablo.diolib.world;
 import com.google.common.collect.Lists;
 import fr.alasdiablo.diolib.DiaboloLib;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.trees.OakTree;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.WorldGenRegistries;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeGenerationSettings;
 import net.minecraft.world.gen.GenerationStage;
-import net.minecraft.world.gen.feature.ConfiguredFeature;
-import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.OreFeatureConfig;
-import net.minecraft.world.gen.feature.ReplaceBlockConfig;
+import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.template.RuleTest;
 import net.minecraft.world.gen.placement.Placement;
 import net.minecraft.world.gen.placement.TopSolidRangeConfig;
@@ -33,7 +31,7 @@ public class WorldGenerationHelper {
      * @param configuredFeature ConfiguredFeature containing the OreFeature
      * @param decoration        The GenerationStage of the ConfiguredFeature
      */
-    public static void addFeature(Biome biome, @Nullable ConfiguredFeature<?, ?> configuredFeature, GenerationStage.Decoration decoration) {
+    public static <FC extends IFeatureConfig> void addFeature(Biome biome, @Nullable ConfiguredFeature<FC, ?> configuredFeature, GenerationStage.Decoration decoration) {
         if (configuredFeature == null) throw new NullPointerException("configuredFeature is null");
 
         List<List<Supplier<ConfiguredFeature<?, ?>>>> biomeFeatures = new ArrayList<>(biome.getGenerationSettings().getFeatures());
@@ -48,6 +46,19 @@ public class WorldGenerationHelper {
     }
 
     public static class ConfiguredFeatureHelper {
+
+        /**
+         * Default function use to register an ConfiguredFeature
+         *
+         * @param name              RegistryName of the ConfiguredFeature
+         * @param configuredFeature ConfiguredFeature need to be registered
+         * @param <FC>              The configuredFeature need to have an IFeatureConfig in the first element
+         */
+        public static <FC extends IFeatureConfig> void register(ResourceLocation name, ConfiguredFeature<FC, ?> configuredFeature) {
+            Registry.register(WorldGenRegistries.CONFIGURED_FEATURE, name, configuredFeature);
+            DiaboloLib.logger.debug(new FormattedMessage("ConfiguredFeature with the name '%s' was added to the Registry.", name.toString()));
+        }
+
         /**
          * Function use for create a ConfiguredFeature (Ore vine)
          *
@@ -60,8 +71,7 @@ public class WorldGenerationHelper {
          * @param top       The maximum height
          */
         public static void registerOreFeature(ResourceLocation name, RuleTest blockType, BlockState oreBlock, int size, int count, int bottom, int top) {
-            Registry.register(
-                    WorldGenRegistries.CONFIGURED_FEATURE,
+            ConfiguredFeatureHelper.register(
                     name,
                     Feature.ORE.withConfiguration(
                             new OreFeatureConfig(
@@ -92,8 +102,7 @@ public class WorldGenerationHelper {
          * @param top              The maximum height
          */
         public static void registerReplaceBlockFeature(ResourceLocation name, BlockState replacementBlock, BlockState oreBlock, int count, int bottom, int top) {
-            Registry.register(
-                    WorldGenRegistries.CONFIGURED_FEATURE,
+            ConfiguredFeatureHelper.register(
                     name,
                     Feature.EMERALD_ORE.withConfiguration(
                             new ReplaceBlockConfig(

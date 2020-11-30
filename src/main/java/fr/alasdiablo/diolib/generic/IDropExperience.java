@@ -1,30 +1,30 @@
-package fr.alasdiablo.diolib.block;
+package fr.alasdiablo.diolib.generic;
 
 import net.minecraft.util.math.MathHelper;
 
 import java.util.Random;
 
 /**
- * Interface use by block who drop xp
+ * Interface use by an Entity, Block or Other Element who drop xp
  */
 public interface IDropExperience {
     /**
      * Getter use by <i>getExperience</i> for get the <i>ExperienceRarity</i>
      *
-     * @return Return the <i>ExperienceRarity</i> set by the block
-     * @see fr.alasdiablo.diolib.block.ExperienceRarity
+     * @return Return the <i>ExperienceRarity</i> set by an Entity, Block or Other Element
+     * @see ExperienceRarity
      */
     ExperienceRarity getExperienceRarity();
 
     /**
      * Default implantation of the xp range droped by a block
      *
-     * @param random Math function use for generate random number
-     * @param block  block who implement <i>IDropExperience</i>
-     * @return Return the a random quantity of xp corresponding to <i>block</i>
+     * @param random         Math function use for generate random number
+     * @param dropExperience An Entity, Block or Other Element who implement <i>IDropExperience</i>
+     * @return Return the a random quantity of xp corresponding to <i>an Entity, Block or Other Element</i>
      */
-    default int getExperience(Random random, IDropExperience block) {
-        switch (block.getExperienceRarity()) {
+    default int getExperience(Random random, IDropExperience dropExperience) {
+        switch (dropExperience.getExperienceRarity()) {
             case COMMON:
                 return MathHelper.nextInt(random, 0, 2);
             case UNCOMMON:
