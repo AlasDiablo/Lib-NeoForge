@@ -1,3 +1,7 @@
+### 1.0.5
++ Add more possibility to ColorHelper
++ Update forge to 35.1.4
+
 ### 1.0.4
 + Add more possibility to ConfiguredFeatureHelper
 + Import contributor event from janoeo
