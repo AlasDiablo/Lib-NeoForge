@@ -3,7 +3,6 @@ package fr.alasdiablo.diolib.world;
 import com.google.common.collect.Lists;
 import fr.alasdiablo.diolib.DiaboloLib;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.trees.OakTree;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.WorldGenRegistries;
