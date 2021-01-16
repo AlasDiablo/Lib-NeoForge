@@ -1,19 +1,21 @@
 package fr.alasdiablo.diolib.gui;
 
 import fr.alasdiablo.diolib.DiaboloLib;
+import fr.alasdiablo.diolib.util.DateRange;
 import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
 
 import java.awt.Color;
 
-public class GroundItemGroup extends ItemGroup {
+public abstract class GroundItemGroup extends ItemGroup {
 
-    private final ItemStack icon;
-
-    public GroundItemGroup(String label, ItemStack icon) {
+    public GroundItemGroup(String label) {
         super(label);
-        this.icon = icon;
-        super.setBackgroundImageName("ground.png");
+        if (DateRange.IS_WINTER) {
+            super.setBackgroundImageName("ground_winter.png");
+        } else {
+            super.setBackgroundImageName("ground.png");
+        }
+        if (DateRange.IS_APRIL_FIRST) super.setBackgroundImageName("ground_april.png");
     }
 
     @Deprecated
@@ -21,11 +23,6 @@ public class GroundItemGroup extends ItemGroup {
     public ItemGroup setBackgroundImageName(String texture) {
         DiaboloLib.logger.debug("setBackgroundImageName in OreItemGroup do nothing, please don't user it.");
         return this;
-    }
-
-    @Override
-    public ItemStack createIcon() {
-        return this.icon;
     }
 
     @Override

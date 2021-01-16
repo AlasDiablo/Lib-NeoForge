@@ -1,3 +1,8 @@
+### 1.0.6
++ Add block template
++ Add creative tab with custom texture
++ Add BlockHelper for easy access on some function
+
 ### 1.0.5
 + Add more possibility to ColorHelper
 + Update forge to 35.1.4

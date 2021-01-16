@@ -12,7 +12,7 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-def build_number = 5
+def build_number = 6
 def isExperimental = false
 version = "1.0.${build_number}"
 if (isExperimental) {
@@ -23,6 +23,7 @@ archivesBaseName = 'DiaboloLib'
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
 minecraft {
     mappings channel: 'snapshot', version: '20201028-1.16.3'
+    accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
     runs {
         client {
             workingDirectory project.file('run')
