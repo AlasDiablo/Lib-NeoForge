@@ -1,3 +1,6 @@
+### 1.0.7
++ Add more possibility to ExtenedFillerBlockType
+
 ### 1.0.6
 + Add block template
 + Add creative tab with custom texture
