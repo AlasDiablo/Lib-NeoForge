@@ -46,7 +46,16 @@ public abstract class JsonConfig {
         }
     }
 
+    /**
+     * Processes this json file
+     * @param json Json file need to be processes
+     */
     protected abstract void read(JsonObject json);
+
+    /**
+     * Create the json object need to be write in the config directory
+     * @return JsonObject need to be written
+     */
     protected abstract JsonObject write();
 
     protected abstract String getName();

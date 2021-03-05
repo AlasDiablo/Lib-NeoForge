@@ -1,3 +1,16 @@
+### 2.0.8
+
+### Added
++ Json config system
+
+#### Fixed
++ Contributor Event
++ Bad ander type
+
+#### Removed
++ Block class use by janoeo
+
+
 ### 1.0.7
 + Add more possibility to ExtenedFillerBlockType
 
