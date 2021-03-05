@@ -8,6 +8,7 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 import org.apache.logging.log4j.message.FormattedMessage;
 
 import java.io.BufferedReader;
@@ -20,6 +21,7 @@ import java.util.Collections;
 /**
  * Event Handler use of spawn a firework when an contributor(Bug Hunter and Code Writer) of Janoeo Project join a world
  */
+@Mod.EventBusSubscriber(modid = DiaboloLib.MOD_ID)
 public class ContributorEvent {
 
     /**
@@ -29,7 +31,7 @@ public class ContributorEvent {
      */
     @SubscribeEvent
     public static void onJoin(PlayerEvent.PlayerLoggedInEvent event) {
-        if (ModConfig.DefaultConfig.AUTHOR_LOGGING_EVENT.get()) {
+        if (ModConfig.CONTRIBUTOR_FIREWORK.canContributorFirework()) {
             final PlayerEntity player = event.getPlayer();
             final World world = player.world;
             try {

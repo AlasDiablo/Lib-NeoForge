@@ -33,7 +33,7 @@ public class CreatorsEvent {
      */
     @SubscribeEvent
     public static void onJoin(PlayerEvent.PlayerLoggedInEvent event) {
-        if (ModConfig.DefaultConfig.AUTHOR_LOGGING_EVENT.get()) {
+        if (ModConfig.CONTRIBUTOR_FIREWORK.canContributorFirework()) {
             final PlayerEntity player = event.getPlayer();
             final World world = player.world;
             switch (player.getName().getString()) {

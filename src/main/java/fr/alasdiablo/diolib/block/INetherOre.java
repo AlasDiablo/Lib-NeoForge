@@ -26,8 +26,8 @@ public interface INetherOre {
      * @param isAggro    if null use value set by MobAngerConfig, enable or disable mob aggro
      */
     default void angerZombifiedPiglin(PlayerEntity player, World world, BlockPos pos, @Nullable Integer aggroRange, @Nullable Boolean isAggro) {
-        isAggro = (isAggro == null) ? ModConfig.MobAngerConfig.ZOMBIFIED_PIGLIN_ANGER.get() : isAggro;
-        aggroRange = (aggroRange == null) ? ModConfig.MobAngerConfig.ZOMBIFIED_PIGLIN_ANGER_RANGE.get() : aggroRange;
+        isAggro = (isAggro == null) ? ModConfig.ZOMBIFIED_PIGLIN_ANGER.canAnger() : isAggro;
+        aggroRange = (aggroRange == null) ? ModConfig.ZOMBIFIED_PIGLIN_ANGER.getAngerRange() : aggroRange;
         if (isAggro) {
             final int x = pos.getX(), y = pos.getY(), z = pos.getZ();
             List<ZombifiedPiglinEntity> list = world.getEntitiesWithinAABB(ZombifiedPiglinEntity.class,
