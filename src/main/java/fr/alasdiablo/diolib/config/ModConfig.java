@@ -13,7 +13,12 @@ public class ModConfig {
 
     public static void setup() {
         try {
-            JsonConfigBuilder.createJsonConfig("diabololib", ENDERMAN_ANGER, ZOMBIFIED_PIGLIN_ANGER, CONTRIBUTOR_FIREWORK);
+            final JsonConfigBuilder configBuilder = new JsonConfigBuilder("diabololib");
+
+            configBuilder.add(ENDERMAN_ANGER)
+                    .add(ZOMBIFIED_PIGLIN_ANGER)
+                    .add(CONTRIBUTOR_FIREWORK)
+                    .build();
         } catch (IOException e) {
             DiaboloLib.logger.error("Diabolo Config have failed to setup, this can cause issues if not resolve !");
             DiaboloLib.logger.debug(e);

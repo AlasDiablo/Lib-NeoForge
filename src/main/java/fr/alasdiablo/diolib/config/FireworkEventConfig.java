@@ -1,6 +1,7 @@
 package fr.alasdiablo.diolib.config;
 
 import com.google.gson.JsonObject;
+import fr.alasdiablo.diolib.DiaboloLib;
 import fr.alasdiablo.diolib.config.json.JsonConfig;
 
 public class FireworkEventConfig extends JsonConfig {
@@ -18,6 +19,7 @@ public class FireworkEventConfig extends JsonConfig {
     @Override
     protected void read(JsonObject json) {
         this.firework = json.get("contributor_firework").getAsBoolean();
+        DiaboloLib.logger.debug("Data change for contributor firework : " + this.firework);
     }
 
     @Override
