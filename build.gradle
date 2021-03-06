@@ -13,7 +13,7 @@ apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
 def build_number = 8
-def isExperimental = false
+def isExperimental = true
 version = "2.0.${build_number}"
 if (isExperimental) {
     version += '-experimental'
