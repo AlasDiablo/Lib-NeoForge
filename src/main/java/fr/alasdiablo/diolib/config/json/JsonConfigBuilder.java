@@ -21,13 +21,25 @@ public class JsonConfigBuilder {
     private final Path configDir;
 
     public JsonConfigBuilder(String modID) throws DuplicatedJsonConfigException {
-        if (modIDList.contains(modID)) {
-            throw new DuplicatedJsonConfigException(modID);
+        this.modID = modID;
+
+        if (modIDList.contains(this.modID)) {
+            throw new DuplicatedJsonConfigException(this.modID);
         }
 
         this.jsonConfigs = new HashMap<>();
         this.configDir = Paths.get(FMLPaths.CONFIGDIR.get().toAbsolutePath().toString(), modID);
-        this.modID = modID;
+    }
+
+    public JsonConfigBuilder(String modID, String configDir) throws DuplicatedJsonConfigException {
+        this.modID = modID + "/" + configDir;
+
+        if (modIDList.contains(this.modID)) {
+            throw new DuplicatedJsonConfigException(this.modID);
+        }
+
+        this.jsonConfigs = new HashMap<>();
+        this.configDir = Paths.get(FMLPaths.CONFIGDIR.get().toAbsolutePath().toString(), modID, configDir);
     }
 
 
