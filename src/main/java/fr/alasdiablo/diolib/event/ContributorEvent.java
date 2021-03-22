@@ -51,9 +51,8 @@ public class ContributorEvent {
 
     private static String[] getContributor() throws IOException {
         if (listOfContributor != null) return listOfContributor;
-        URL oracle = new URL("https://raw.githubusercontent.com/AlasDiablo/JANOEO-Doc/gh-pages/contributor.json");
-        BufferedReader in = new BufferedReader(
-                new InputStreamReader(oracle.openStream()));
+        final URL json = new URL("https://raw.githubusercontent.com/AlasDiablo/JANOEO-Doc/gh-pages/contributor.json");
+        BufferedReader in = new BufferedReader(new InputStreamReader(json.openStream()));
         StringBuilder jsonStr = new StringBuilder();
         String inputLine;
         while ((inputLine = in.readLine()) != null) jsonStr.append(inputLine);
