@@ -31,15 +31,15 @@ public class JsonConfigBuilder {
         this.configDir = Paths.get(FMLPaths.CONFIGDIR.get().toAbsolutePath().toString(), modID);
     }
 
-    public JsonConfigBuilder(String modID, String configDir) throws DuplicatedJsonConfigException {
-        this.modID = modID + "/" + configDir;
+    public JsonConfigBuilder(String modID, String configSubDir) throws DuplicatedJsonConfigException {
+        this.modID = modID + "/" + configSubDir;
 
         if (modIDList.contains(this.modID)) {
             throw new DuplicatedJsonConfigException(this.modID);
         }
 
         this.jsonConfigs = new HashMap<>();
-        this.configDir = Paths.get(FMLPaths.CONFIGDIR.get().toAbsolutePath().toString(), modID, configDir);
+        this.configDir = Paths.get(FMLPaths.CONFIGDIR.get().toAbsolutePath().toString(), modID, configSubDir);
     }
 
 
