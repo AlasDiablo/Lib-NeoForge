@@ -1,3 +1,14 @@
+### 2.0.9
+
+#### Added
++ Interface for Event
+
+#### Refactored
++ Firework Event
+
+### Change
++ Mod logo
+
 ### 2.0.8
 
 ### Added
@@ -5,7 +16,7 @@
 
 #### Fixed
 + Contributor Event
-+ Bad ander type
++ Bad anger type
 
 #### Removed
 + Block class use by janoeo

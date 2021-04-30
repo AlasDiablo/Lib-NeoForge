@@ -12,7 +12,7 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-def build_number = 8
+def build_number = 9
 def isExperimental = true
 version = "2.0.${build_number}"
 if (isExperimental) {
@@ -76,11 +76,12 @@ jar {
             "Specification-Vendor": "AlasDiablo, lIotaMiu, Safyrus",
             "Specification-Version": "1",
             "Implementation-Title": project.name,
-            "Implementation-Version": "${version}",
+            "Implementation-Version": "${archiveVersion.get()}",
             "Implementation-Vendor" :"AlasDiablo, lIotaMiu, Safyrus",
             "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
+    destinationDirectory.set(file(rootProject.getRootDir().getPath() + '/output'))
 }
 
 jar.finalizedBy('reobfJar')
@@ -92,12 +93,14 @@ task sourcesJar(type: Jar) {
     }
     def archiveName = 'sources-' + deobfSourceClassifier
     archiveClassifier.set(archiveName)
+    destinationDirectory.set(file(rootProject.getRootDir().getPath() + '/output'))
 }
 
 task deobfJar(type: Jar) {
     from sourceSets.main.output
     def archiveName = 'deobf-' + deobfSourceClassifier
     archiveClassifier.set(archiveName)
+    destinationDirectory.set(file(rootProject.getRootDir().getPath() + '/output'))
 }
 
 artifacts {

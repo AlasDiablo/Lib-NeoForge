@@ -2,6 +2,9 @@ package fr.alasdiablo.diolib.config;
 
 import fr.alasdiablo.diolib.DiaboloLib;
 import fr.alasdiablo.diolib.config.json.JsonConfigBuilder;
+import fr.alasdiablo.diolib.event.FireworkEvent;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 
 import java.io.IOException;
 
@@ -12,6 +15,7 @@ public class ModConfig {
     public static FireworkEventConfig CONTRIBUTOR_FIREWORK = new FireworkEventConfig();
 
     public static void setup() {
+        MinecraftForge.EVENT_BUS.<PlayerEvent.PlayerLoggedInEvent>addListener(e -> new FireworkEvent().init(e));
         try {
             final JsonConfigBuilder configBuilder = new JsonConfigBuilder("diabololib");
 
