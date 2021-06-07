@@ -1,9 +1,14 @@
 package fr.alasdiablo.diolib.config.json;
 
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
 import com.google.gson.JsonParser;
+import fr.alasdiablo.diolib.DiaboloLib;
 
-import java.io.*;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.nio.file.Path;
 
 public abstract class JsonConfig {
@@ -14,7 +19,7 @@ public abstract class JsonConfig {
         this.filePath = null;
     }
 
-    void preRead() throws IOException, IllegalStateException {
+    void initOrLoad() throws IOException, IllegalStateException {
         if (filePath == null) {
             throw new IllegalStateException("File path of " + this.getName() + " is null !");
         } else {
@@ -24,8 +29,14 @@ public abstract class JsonConfig {
                 JsonObject json = jsonParser.parse(fileReader).getAsJsonObject();
                 this.read(json);
                 fileReader.close();
+                DiaboloLib.logger.debug(String.format("Config %s have been loaded", this.getName()));
             } catch (FileNotFoundException e) {
                 this.preWrite();
+                DiaboloLib.logger.debug(String.format("Config %s have been write and loaded", this.getName()));
+            } catch (JsonParseException | IllegalArgumentException e) {
+                DiaboloLib.logger.warn(String.format("Error during config initialization on %s cause by: %s", this.getName(), e.getLocalizedMessage()));
+                this.preWrite();
+                DiaboloLib.logger.debug(String.format("Config %s have been rewrite and loaded", this.getName()));
             }
         }
     }

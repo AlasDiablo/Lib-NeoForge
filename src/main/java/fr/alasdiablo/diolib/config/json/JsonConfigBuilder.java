@@ -61,7 +61,7 @@ public class JsonConfigBuilder {
         this.jsonConfigs.values().forEach(e -> e.filePath(Paths.get(configDir.toString(), e.getName() + ".json")));
 
         for (JsonConfig e: this.jsonConfigs.values()) {
-            e.preRead();
+            e.initOrLoad();
         }
     }
 }
