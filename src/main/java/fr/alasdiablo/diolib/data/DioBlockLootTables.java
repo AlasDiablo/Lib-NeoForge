@@ -8,10 +8,13 @@ import net.minecraft.loot.LootTable;
 import net.minecraft.loot.LootTables;
 import net.minecraft.util.ResourceLocation;
 
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.Map;
 import java.util.Set;
 import java.util.function.BiConsumer;
 
+@SuppressWarnings("unused")
+@ParametersAreNonnullByDefault
 public abstract class DioBlockLootTables extends BlockLootTables {
     private final Map<ResourceLocation, LootTable.Builder> lootTables = Maps.newHashMap();
 
@@ -39,7 +42,7 @@ public abstract class DioBlockLootTables extends BlockLootTables {
     }
 
     @Override
-    protected void registerLootTable(Block blockIn, LootTable.Builder table) {
+    protected void add(Block blockIn, LootTable.Builder table) {
         this.lootTables.put(blockIn.getLootTable(), table);
     }
 }

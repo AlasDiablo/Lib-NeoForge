@@ -6,6 +6,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.mojang.datafixers.util.Pair;
 import fr.alasdiablo.diolib.DiaboloLib;
+import mcp.MethodsReturnNonnullByDefault;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DirectoryCache;
 import net.minecraft.data.IDataProvider;
@@ -13,6 +14,7 @@ import net.minecraft.data.LootTableProvider;
 import net.minecraft.loot.*;
 import net.minecraft.util.ResourceLocation;
 
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.List;
@@ -21,6 +23,9 @@ import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
+@SuppressWarnings("unused")
+@MethodsReturnNonnullByDefault
+@ParametersAreNonnullByDefault
 public class DioLootTableProvider extends LootTableProvider {
     private final DataGenerator dataGenerator;
     private static final Gson GSON = (new GsonBuilder()).setPrettyPrinting().disableHtmlEscaping().create();
@@ -38,12 +43,12 @@ public class DioLootTableProvider extends LootTableProvider {
     }
 
     @Override
-    public void act(DirectoryCache cache) {
+    public void run(DirectoryCache cache) {
         final Path path = this.dataGenerator.getOutputFolder();
         final Map<ResourceLocation, LootTable> map = Maps.newHashMap();
 
         this.getTables().forEach((lootParameterSetPair) -> lootParameterSetPair.getFirst().get().accept((resourceLocation, builder) -> {
-            if (map.put(resourceLocation, builder.setParameterSet(lootParameterSetPair.getSecond()).build()) != null) {
+            if (map.put(resourceLocation, builder.setParamSet(lootParameterSetPair.getSecond()).build()) != null) {
                 throw new IllegalStateException("Duplicate loot table " + resourceLocation);
             }
         }));
@@ -60,7 +65,7 @@ public class DioLootTableProvider extends LootTableProvider {
                 Path path1 = getPath(path, resourceLocation);
 
                 try {
-                    IDataProvider.save(GSON, cache, LootTableManager.toJson(lootTable), path1);
+                    IDataProvider.save(GSON, cache, LootTableManager.serialize(lootTable), path1);
                 } catch (IOException ioexception) {
                     DiaboloLib.logger.error("Couldn't save loot table {}", path1, ioexception);
                 }
@@ -71,7 +76,7 @@ public class DioLootTableProvider extends LootTableProvider {
 
     @Override
     protected void validate(Map<ResourceLocation, LootTable> map, ValidationTracker validationtracker) {
-        map.forEach((resourceLocation, lootTable) -> LootTableManager.validateLootTable(validationtracker, resourceLocation, lootTable));
+        map.forEach((resourceLocation, lootTable) -> LootTableManager.validate(validationtracker, resourceLocation, lootTable));
     }
 
     @Override

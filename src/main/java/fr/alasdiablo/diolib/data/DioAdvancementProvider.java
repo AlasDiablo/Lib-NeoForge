@@ -7,10 +7,10 @@ import net.minecraft.data.DataGenerator;
 import java.util.List;
 import java.util.function.Consumer;
 
+@SuppressWarnings("unused")
 public class DioAdvancementProvider extends AdvancementProvider {
-
     public DioAdvancementProvider(DataGenerator generatorIn, List<Consumer<Consumer<Advancement>>> advancements) {
         super(generatorIn);
-        this.advancements = advancements;
+        this.tabs = advancements;
     }
 }

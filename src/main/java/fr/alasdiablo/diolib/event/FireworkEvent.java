@@ -43,7 +43,7 @@ public class FireworkEvent implements IEvent {
         rocket.put("Explosions", Arrays.stream(new CompoundNBT[]{star}).collect(Collectors.toCollection(ListNBT::new)));
         fireworkCompound.put("Fireworks", rocket);
         DiaboloLib.logger.debug(new FormattedMessage("Spawning %s[%s] Firework.", playerType, player.getName().getString()));
-        world.addEntity(new FireworkRocketEntity(world, player.prevPosX, player.prevPosY, player.prevPosZ, firework));
+        world.addFreshEntity(new FireworkRocketEntity(world, player.xOld, player.yOld, player.zOld, firework));
     }
 
     private String[] listOfContributor = null;
@@ -72,7 +72,7 @@ public class FireworkEvent implements IEvent {
         PlayerEvent.PlayerLoggedInEvent playerLoggedInEvent = (PlayerEvent.PlayerLoggedInEvent) event;
         if (ModConfig.CONTRIBUTOR_FIREWORK.canContributorFirework()) {
             final PlayerEntity player = playerLoggedInEvent.getPlayer();
-            final World world = player.world;
+            final World world = player.level;
             switch (player.getName().getString()) {
                 case "AlasDiablo": {
                     final CompoundNBT star = new CompoundNBT();
@@ -99,7 +99,7 @@ public class FireworkEvent implements IEvent {
 
         if (ModConfig.CONTRIBUTOR_FIREWORK.canContributorFirework()) {
             final PlayerEntity player = playerLoggedInEvent.getPlayer();
-            final World world = player.world;
+            final World world = player.level;
             try {
                 if (Arrays.asList(this.getContributor()).contains(player.getName().getString())) {
                     final CompoundNBT star = new CompoundNBT();

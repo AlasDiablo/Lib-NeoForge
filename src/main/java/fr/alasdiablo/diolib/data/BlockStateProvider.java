@@ -1,16 +1,13 @@
 package fr.alasdiablo.diolib.data;
 
-import com.google.common.base.Preconditions;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import fr.alasdiablo.diolib.DiaboloLib;
 import mcp.MethodsReturnNonnullByDefault;
-import net.minecraft.block.Block;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DirectoryCache;
 import net.minecraft.data.IDataProvider;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.generators.IGeneratedBlockstate;
 
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -19,6 +16,7 @@ import java.nio.file.Path;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+@SuppressWarnings("unused")
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
 public abstract class BlockStateProvider implements IDataProvider {
@@ -41,7 +39,7 @@ public abstract class BlockStateProvider implements IDataProvider {
     }
 
     @Override
-    public void act(DirectoryCache cache) {
+    public void run(DirectoryCache cache) {
         this.registeredBlocks.clear();
         this.registerStates();
         for (Map.Entry<String, IGeneratedBlockstate> entry : registeredBlocks.entrySet()) {

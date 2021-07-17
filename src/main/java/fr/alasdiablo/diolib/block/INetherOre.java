@@ -14,6 +14,7 @@ import java.util.List;
 /**
  * Interface use by all Nether Ore Block
  */
+@SuppressWarnings("unused")
 public interface INetherOre {
 
     /**
@@ -30,8 +31,8 @@ public interface INetherOre {
         aggroRange = (aggroRange == null) ? ModConfig.ZOMBIFIED_PIGLIN_ANGER.getAngerRange() : aggroRange;
         if (isAggro) {
             final int x = pos.getX(), y = pos.getY(), z = pos.getZ();
-            List<ZombifiedPiglinEntity> list = world.getEntitiesWithinAABB(ZombifiedPiglinEntity.class,
-                    AxisAlignedBB.toImmutable(MutableBoundingBox.createProper(
+            List<ZombifiedPiglinEntity> list = world.getEntitiesOfClass(ZombifiedPiglinEntity.class,
+                    AxisAlignedBB.of(MutableBoundingBox.createProper(
                             x - aggroRange,
                             y - aggroRange,
                             z - aggroRange,
@@ -39,7 +40,7 @@ public interface INetherOre {
                             y + aggroRange + 1,
                             z + aggroRange + 1))
             );
-            list.forEach(e -> e.setAttackTarget(player));
+            list.forEach(e -> e.setTarget(player));
         }
     }
 }

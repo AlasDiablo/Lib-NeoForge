@@ -19,6 +19,7 @@ import java.awt.Color;
 /**
  * Helper use for register block and item color quickly
  */
+@SuppressWarnings("unused")
 @OnlyIn(Dist.CLIENT)
 public class ColorsHelper {
 
@@ -60,7 +61,7 @@ public class ColorsHelper {
         );
         registerItemColor(
                 (stack, tintIndex) -> {
-                    BlockState blockState = ((BlockItem) stack.getItem()).getBlock().getDefaultState();
+                    BlockState blockState = ((BlockItem) stack.getItem()).getBlock().defaultBlockState();
                     return BLOCK_COLORS.getColor(blockState, null, null, tintIndex);
                 },
                 block
@@ -75,15 +76,15 @@ public class ColorsHelper {
         registerBlockColor(
                 (state, world, pos, tintIndex) -> {
                     if (world != null && pos != null)
-                        return BiomeColors.getFoliageColor(world, pos);
+                        return BiomeColors.getAverageFoliageColor(world, pos);
                     else
-                        return FoliageColors.getDefault();
+                        return FoliageColors.getDefaultColor();
                 },
                 block
         );
         registerItemColor(
                 (stack, tintIndex) -> {
-                    BlockState blockState = ((BlockItem) stack.getItem()).getBlock().getDefaultState();
+                    BlockState blockState = ((BlockItem) stack.getItem()).getBlock().defaultBlockState();
                     return BLOCK_COLORS.getColor(blockState, null, null, tintIndex);
                 },
                 block

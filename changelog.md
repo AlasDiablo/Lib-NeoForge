@@ -1,3 +1,8 @@
+### 2.0.10
+
+#### Refactored
++ Use Mojang mapping
+
 ### 2.0.9
 
 #### Added

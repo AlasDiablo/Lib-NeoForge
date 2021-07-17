@@ -10,6 +10,7 @@ import net.minecraftforge.registries.IForgeRegistryEntry;
 import javax.annotation.Nullable;
 import java.util.Objects;
 
+@SuppressWarnings("unused")
 public class RegistryHelper {
 
     /**

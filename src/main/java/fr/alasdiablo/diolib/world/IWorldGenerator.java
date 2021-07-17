@@ -5,6 +5,7 @@ import net.minecraft.world.biome.Biome;
 /**
  * Default interface of a World Generator
  */
+@SuppressWarnings("unused")
 public interface IWorldGenerator {
     /**
      * Function use to add all ConfiguredFeature to a biome

@@ -7,6 +7,7 @@ import java.util.Random;
 /**
  * Interface use by an Entity, Block or Other Element who drop xp
  */
+@SuppressWarnings("unused")
 public interface IDropExperience {
     /**
      * Getter use by <i>getExperience</i> for get the <i>ExperienceRarity</i>

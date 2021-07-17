@@ -14,6 +14,7 @@ import java.util.List;
 /**
  * Interface use by all The End Ore Block
  */
+@SuppressWarnings("unused")
 public interface IEndOre {
 
     /**
@@ -30,8 +31,8 @@ public interface IEndOre {
         aggroRange = (aggroRange == null) ? ModConfig.ENDERMAN_ANGER.getAngerRange() : aggroRange;
         if (isAggro) {
             final int x = pos.getX(), y = pos.getY(), z = pos.getZ();
-            List<EndermanEntity> list = world.getEntitiesWithinAABB(EndermanEntity.class,
-                    AxisAlignedBB.toImmutable(MutableBoundingBox.createProper(
+            List<EndermanEntity> list = world.getEntitiesOfClass(EndermanEntity.class,
+                    AxisAlignedBB.of(MutableBoundingBox.createProper(
                             x - aggroRange,
                             y - aggroRange,
                             z - aggroRange,
@@ -39,7 +40,7 @@ public interface IEndOre {
                             y + aggroRange + 1,
                             z + aggroRange + 1))
             );
-            list.forEach(e -> e.setAttackTarget(player));
+            list.forEach(e -> e.setTarget(player));
         }
     }
 }

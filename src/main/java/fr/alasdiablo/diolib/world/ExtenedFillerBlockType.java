@@ -9,6 +9,7 @@ import net.minecraft.world.gen.feature.template.RuleTest;
 import java.util.HashMap;
 import java.util.Map;
 
+@SuppressWarnings("unused")
 public enum ExtenedFillerBlockType {
     GRAVEL(Blocks.GRAVEL),
     BASALT(Blocks.BASALT),

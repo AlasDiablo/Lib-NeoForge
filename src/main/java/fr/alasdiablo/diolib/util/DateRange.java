@@ -1,9 +1,8 @@
 package fr.alasdiablo.diolib.util;
 
-import fr.alasdiablo.diolib.DiaboloLib;
-
 import java.util.Calendar;
 
+@SuppressWarnings("unused")
 public class DateRange {
     // Season
     //   - Winter: 11, 12, 1, 2

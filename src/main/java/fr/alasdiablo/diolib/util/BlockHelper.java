@@ -6,6 +6,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.block.FireBlock;
 import net.minecraft.item.AxeItem;
 
+@SuppressWarnings("unused")
 public class BlockHelper {
 
     private static final FireBlock fireBlock = (FireBlock) Blocks.FIRE;
@@ -34,12 +35,12 @@ public class BlockHelper {
     public static final int CARPET_FLAMMABILITY = 20;
 
     public static Block setFlammability(Block block, int encouragement, int flammability) {
-        fireBlock.setFireInfo(block, encouragement, flammability);
+        fireBlock.setFlammable(block, encouragement, flammability);
         return block;
     }
 
-    public static void createStrippableBlock(Block source, Block target) {
-        AxeItem.BLOCK_STRIPPING_MAP = Maps.newHashMap(AxeItem.BLOCK_STRIPPING_MAP);
-        AxeItem.BLOCK_STRIPPING_MAP.put(source, target);
+    public static void createStripablesBlock(Block source, Block target) {
+        AxeItem.STRIPABLES = Maps.newHashMap(AxeItem.STRIPABLES);
+        AxeItem.STRIPABLES.put(source, target);
     }
 }

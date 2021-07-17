@@ -2,11 +2,16 @@ package fr.alasdiablo.diolib.gui;
 
 import fr.alasdiablo.diolib.DiaboloLib;
 import fr.alasdiablo.diolib.util.DateRange;
+import mcp.MethodsReturnNonnullByDefault;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.util.ResourceLocation;
 
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.awt.Color;
 
+@SuppressWarnings("unused")
+@MethodsReturnNonnullByDefault
+@ParametersAreNonnullByDefault
 public abstract class GroundItemGroup extends ItemGroup {
 
     public GroundItemGroup(String label) {
@@ -18,13 +23,6 @@ public abstract class GroundItemGroup extends ItemGroup {
         }
         if (DateRange.IS_APRIL_FIRST)
             super.setBackgroundImage(new ResourceLocation(DiaboloLib.MOD_ID, "textures/gui/container/creative_inventory/ground_april.png"));
-    }
-
-    @Deprecated
-    @Override
-    public ItemGroup setBackgroundImageName(String texture) {
-        DiaboloLib.logger.warn("setBackgroundImageName in OreItemGroup do nothing, please don't user it.");
-        return this;
     }
 
     @Override

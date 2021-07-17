@@ -18,6 +18,7 @@ import org.apache.logging.log4j.message.FormattedMessage;
 import javax.annotation.Nullable;
 import java.util.ArrayList;
 
+@SuppressWarnings("unused")
 public class WorldGenerationHelper {
 
     /**
@@ -74,20 +75,20 @@ public class WorldGenerationHelper {
         public static ConfiguredFeature<?, ?> registerOreFeature(ResourceLocation name, RuleTest blockType, BlockState oreBlock, int size, int count, int bottom, int top) {
             ConfiguredFeature<?, ?> feature = ConfiguredFeatureHelper.register(
                     name,
-                    Feature.ORE.withConfiguration(
+                    Feature.ORE.configured(
                             new OreFeatureConfig(
                                     blockType,
                                     oreBlock,
                                     size
                             )
-                    ).withPlacement(
-                            Placement.RANGE.configure(
+                    ).decorated(
+                            Placement.RANGE.configured(
                                     new TopSolidRangeConfig(
                                             bottom,
                                             0,
                                             top)
                             )
-                    ).square().count(count)
+                    ).squared().count(count)
             );
             DiaboloLib.logger.debug(new FormattedMessage("OreFeature with the name '%s' was added to the Registry.", name.toString()));
             return feature;
@@ -106,19 +107,19 @@ public class WorldGenerationHelper {
         public static ConfiguredFeature<?, ?> registerReplaceBlockFeature(ResourceLocation name, BlockState replacementBlock, BlockState oreBlock, int count, int bottom, int top) {
             ConfiguredFeature<?, ?> feature = ConfiguredFeatureHelper.register(
                     name,
-                    Feature.EMERALD_ORE.withConfiguration(
+                    Feature.EMERALD_ORE.configured(
                             new ReplaceBlockConfig(
                                     replacementBlock,
                                     oreBlock
                             )
-                    ).withPlacement(
-                            Placement.RANGE.configure(
+                    ).decorated(
+                            Placement.RANGE.configured(
                                     new TopSolidRangeConfig(
                                             bottom,
                                             0,
                                             top)
                             )
-                    ).square().count(count)
+                    ).squared().count(count)
             );
             DiaboloLib.logger.debug(new FormattedMessage("ReplaceBlockFeature with the name '%s' was added to the Registry.", name.toString()));
             return feature;

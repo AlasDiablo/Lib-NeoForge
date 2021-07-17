@@ -8,6 +8,7 @@ import net.minecraftforge.client.model.generators.IGeneratedBlockstate;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("unused")
 public class BlockStateBuilder implements IGeneratedBlockstate {
 
     private final List<ImmutablePair<String, JsonObject>> variants;
@@ -33,9 +34,7 @@ public class BlockStateBuilder implements IGeneratedBlockstate {
     @Override
     public JsonObject toJson() {
         final JsonObject variantsObj = new JsonObject();
-        this.variants.forEach(variant -> {
-            variantsObj.add(variant.getKey(), variant.getValue());
-        });
+        this.variants.forEach(variant -> variantsObj.add(variant.getKey(), variant.getValue()));
         final JsonObject blockState = new JsonObject();
         blockState.add("variants", variantsObj);
         return blockState;
