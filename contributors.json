@@ -1,22 +1,27 @@
 [
   {
+    "name_when_add": "Cflip_",
     "uuid": "b3eac403-1e64-412e-a740-fdb7e9297298",
-    "name_when_add": "Cflip_"
+    "type": "code"
   },
   {
+    "name_when_add": "jusipat",
     "uuid": "62fc977d-a031-4007-baab-e1fa1c959311",
-    "name_when_add": "jusipat"
+    "type": "bug"
   },
   {
+    "name_when_add": "88wildwolf88",
     "uuid": "cd77b5ac-2e2d-4a1c-8264-85b6545a7d80",
-    "name_when_add": "88wildwolf88"
+    "type": "test"
   },
   {
+    "name_when_add": "Smartzi",
     "uuid": "bc4ee8d8-88a7-4e95-b1e8-d9932b80d1e8",
-    "name_when_add": "Smartzi"
+    "type": "test"
   },
   {
+    "name_when_add": "Yekiz1",
     "uuid": "7a0e3cbd-b71c-4db2-b8c6-275c627a0b5b",
-    "name_when_add": "Yekiz1"
+    "type": "test"
   }
 ]

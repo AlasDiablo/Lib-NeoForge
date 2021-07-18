@@ -1,4 +1,9 @@
-### 2.0.10
+### 2.0.12
+
+#### Change
++ Add type in firework event
+
+### 2.0.11
 
 #### Refactored
 + Use UUID instead of name in firework event
