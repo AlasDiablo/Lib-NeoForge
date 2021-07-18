@@ -67,7 +67,7 @@ public class FireworkEvent implements IEvent {
             JsonObject contributorObject = contributor.getAsJsonObject();
             String UUID = contributorObject.get("uuid").getAsString();
             String name = contributorObject.get("name_when_add").getAsString();
-            String type = contributorObject.get("contribution_type").getAsString();
+            String type = contributorObject.get("type").getAsString();
             listOfContributor.put(UUID, new ImmutablePair<>(name, type));
             DiaboloLib.logger.debug(new FormattedMessage("Contributor found: %s/%s/%s", UUID, name, type));
         });
