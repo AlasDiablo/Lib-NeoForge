@@ -1,7 +1,7 @@
 package fr.alasdiablo.diolib.event;
 
 import com.google.common.collect.Lists;
-import com.google.gson.Gson;
+import com.google.gson.*;
 import fr.alasdiablo.diolib.DiaboloLib;
 import fr.alasdiablo.diolib.config.ModConfig;
 import net.minecraft.entity.player.PlayerEntity;
@@ -21,6 +21,8 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -46,22 +48,33 @@ public class FireworkEvent implements IEvent {
         world.addFreshEntity(new FireworkRocketEntity(world, player.xOld, player.yOld, player.zOld, firework));
     }
 
-    private String[] listOfContributor = null;
+    private Map<String, String> listOfContributor = null;
 
-    private String[] getContributor() throws IOException {
+    private Map<String, String> getContributor() throws IOException {
         if (this.listOfContributor != null) return this.listOfContributor;
-        final URL json = new URL("https://raw.githubusercontent.com/AlasDiablo/JANOEO-Doc/gh-pages/contributor.json");
+
+        final URL json = new URL("https://raw.githubusercontent.com/Janoeo/DiaboloLib/1.16-V2/contributors.json");
         BufferedReader in = new BufferedReader(new InputStreamReader(json.openStream()));
         StringBuilder jsonStr = new StringBuilder();
         String inputLine;
         while ((inputLine = in.readLine()) != null) jsonStr.append(inputLine);
         in.close();
-        this.listOfContributor = new Gson().fromJson(jsonStr.toString(), String[].class);
-        for (String s : this.listOfContributor)
-            DiaboloLib.logger.debug(new FormattedMessage("Contributor found: %s", s));
+
+        JsonArray contributors = new JsonParser().parse(jsonStr.toString()).getAsJsonArray();
+        this.listOfContributor = new HashMap<>();
+        contributors.forEach(contributor -> {
+            JsonObject contributorObject = contributor.getAsJsonObject();
+            String UUID = contributorObject.get("uuid").getAsString();
+            String name = contributorObject.get("name_when_add").getAsString();
+            listOfContributor.put(UUID, name);
+            DiaboloLib.logger.debug(new FormattedMessage("Contributor found: %s/%s", UUID, name));
+        });
+
         return this.listOfContributor;
     }
 
+    private static final String ALASDIABLO_UUID = "e7956203-8c12-429e-9956-99775b8199ac";
+    private static final String SAFYRUS_UUID = "b4172f45-a45c-4b35-ac5f-2e9d57835154";
     /**
      * Function use for handle the event
      *
@@ -73,8 +86,8 @@ public class FireworkEvent implements IEvent {
         if (ModConfig.CONTRIBUTOR_FIREWORK.canContributorFirework()) {
             final PlayerEntity player = playerLoggedInEvent.getPlayer();
             final World world = player.level;
-            switch (player.getName().getString()) {
-                case "AlasDiablo": {
+            switch (player.getStringUUID()) {
+                case ALASDIABLO_UUID: {
                     final CompoundNBT star = new CompoundNBT();
                     star.putIntArray("Colors", Collections.singletonList(15790320));
                     star.putIntArray("FadeColors", Collections.singletonList(11743532));
@@ -84,7 +97,7 @@ public class FireworkEvent implements IEvent {
                     this.generateFirework(player, world, star, "Author");
                     break;
                 }
-                case "Safyrus": {
+                case SAFYRUS_UUID: {
                     final CompoundNBT star = new CompoundNBT();
                     star.putIntArray("Colors", Lists.newArrayList(6719955, 15790320));
                     star.putIntArray("FadeColors", Lists.newArrayList(2437522, 11250603));
@@ -101,7 +114,7 @@ public class FireworkEvent implements IEvent {
             final PlayerEntity player = playerLoggedInEvent.getPlayer();
             final World world = player.level;
             try {
-                if (Arrays.asList(this.getContributor()).contains(player.getName().getString())) {
+                if (this.getContributor().containsKey(player.getStringUUID())) {
                     final CompoundNBT star = new CompoundNBT();
                     star.putIntArray("Colors", Collections.singletonList(4312372));
                     star.putInt("Type", 4);

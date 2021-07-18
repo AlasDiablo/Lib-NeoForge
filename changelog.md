@@ -1,6 +1,11 @@
 ### 2.0.10
 
 #### Refactored
++ Use UUID instead of name in firework event
+
+### 2.0.10
+
+#### Refactored
 + Use Mojang mapping
 
 ### 2.0.9
