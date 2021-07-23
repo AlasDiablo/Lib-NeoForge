@@ -3,16 +3,19 @@ package fr.alasdiablo.diolib.world;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import fr.alasdiablo.diolib.DiaboloLib;
-import net.minecraft.block.BlockState;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.registry.Registry;
-import net.minecraft.util.registry.WorldGenRegistries;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.gen.GenerationStage;
-import net.minecraft.world.gen.feature.*;
-import net.minecraft.world.gen.feature.template.RuleTest;
-import net.minecraft.world.gen.placement.Placement;
-import net.minecraft.world.gen.placement.TopSolidRangeConfig;
+import net.minecraft.core.Registry;
+import net.minecraft.data.BuiltinRegistries;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.GenerationStep;
+import net.minecraft.world.level.levelgen.VerticalAnchor;
+import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.ReplaceBlockConfiguration;
+import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
 import org.apache.logging.log4j.message.FormattedMessage;
 
 import javax.annotation.Nullable;
@@ -28,7 +31,7 @@ public class WorldGenerationHelper {
      * @param configuredFeature ConfiguredFeature containing the OreFeature
      * @param decoration        The GenerationStage of the ConfiguredFeature
      */
-    public static <FC extends IFeatureConfig> void addFeature(Biome biome, @Nullable ConfiguredFeature<FC, ?> configuredFeature, GenerationStage.Decoration decoration) {
+    public static <FC extends FeatureConfiguration> void addFeature(Biome biome, @Nullable ConfiguredFeature<FC, ?> configuredFeature, GenerationStep.Decoration decoration) {
         if (configuredFeature == null) throw new NullPointerException("configuredFeature is null");
 
         if (biome.getGenerationSettings().features instanceof ImmutableList) {
@@ -55,8 +58,8 @@ public class WorldGenerationHelper {
          * @param name              RegistryName of the ConfiguredFeature
          * @param configuredFeature ConfiguredFeature need to be registered
          */
-        public static <FC extends IFeatureConfig> ConfiguredFeature<FC, ?> register(ResourceLocation name, ConfiguredFeature<FC, ?> configuredFeature) {
-            ConfiguredFeature<FC, ?> registeredFeature = Registry.register(WorldGenRegistries.CONFIGURED_FEATURE, name, configuredFeature);
+        public static <FC extends FeatureConfiguration> ConfiguredFeature<FC, ?> register(ResourceLocation name, ConfiguredFeature<FC, ?> configuredFeature) {
+            ConfiguredFeature<FC, ?> registeredFeature = Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, name, configuredFeature);
             DiaboloLib.logger.debug(new FormattedMessage("ConfiguredFeature with the name '%s' was added to the Registry.", name.toString()));
             return registeredFeature;
         }
@@ -76,18 +79,14 @@ public class WorldGenerationHelper {
             ConfiguredFeature<?, ?> feature = ConfiguredFeatureHelper.register(
                     name,
                     Feature.ORE.configured(
-                            new OreFeatureConfig(
+                            new OreConfiguration(
                                     blockType,
                                     oreBlock,
                                     size
                             )
-                    ).decorated(
-                            Placement.RANGE.configured(
-                                    new TopSolidRangeConfig(
-                                            bottom,
-                                            0,
-                                            top)
-                            )
+                    ).rangeUniform(
+                            VerticalAnchor.absolute(bottom),
+                            VerticalAnchor.absolute(top)
                     ).squared().count(count)
             );
             DiaboloLib.logger.debug(new FormattedMessage("OreFeature with the name '%s' was added to the Registry.", name.toString()));
@@ -107,18 +106,14 @@ public class WorldGenerationHelper {
         public static ConfiguredFeature<?, ?> registerReplaceBlockFeature(ResourceLocation name, BlockState replacementBlock, BlockState oreBlock, int count, int bottom, int top) {
             ConfiguredFeature<?, ?> feature = ConfiguredFeatureHelper.register(
                     name,
-                    Feature.EMERALD_ORE.configured(
-                            new ReplaceBlockConfig(
+                    Feature.REPLACE_SINGLE_BLOCK.configured(
+                            new ReplaceBlockConfiguration(
                                     replacementBlock,
                                     oreBlock
                             )
-                    ).decorated(
-                            Placement.RANGE.configured(
-                                    new TopSolidRangeConfig(
-                                            bottom,
-                                            0,
-                                            top)
-                            )
+                    ).rangeUniform(
+                            VerticalAnchor.absolute(bottom),
+                            VerticalAnchor.absolute(top)
                     ).squared().count(count)
             );
             DiaboloLib.logger.debug(new FormattedMessage("ReplaceBlockFeature with the name '%s' was added to the Registry.", name.toString()));

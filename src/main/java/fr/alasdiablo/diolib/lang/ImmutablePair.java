@@ -2,15 +2,7 @@ package fr.alasdiablo.diolib.lang;
 
 import java.util.Objects;
 
-public class ImmutablePair<K, V> {
-
-    private final K key;
-    private final V value;
-
-    public ImmutablePair(K key, V value) {
-        this.key = key;
-        this.value = value;
-    }
+public record ImmutablePair<K, V>(K key, V value) {
 
     public K getKey() {
         return key;
@@ -23,8 +15,7 @@ public class ImmutablePair<K, V> {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof ImmutablePair)) return false;
-        ImmutablePair<?, ?> that = (ImmutablePair<?, ?>) o;
+        if (!(o instanceof ImmutablePair<?, ?> that)) return false;
         return getKey().equals(that.getKey()) && getValue().equals(that.getValue());
     }
 

@@ -1,8 +1,8 @@
 package fr.alasdiablo.diolib.data;
 
 import net.minecraft.advancements.Advancement;
-import net.minecraft.data.AdvancementProvider;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.data.advancements.AdvancementProvider;
 
 import java.util.List;
 import java.util.function.Consumer;

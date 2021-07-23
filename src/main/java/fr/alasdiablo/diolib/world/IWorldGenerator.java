@@ -1,6 +1,6 @@
 package fr.alasdiablo.diolib.world;
 
-import net.minecraft.world.biome.Biome;
+import net.minecraft.world.level.biome.Biome;
 
 /**
  * Default interface of a World Generator

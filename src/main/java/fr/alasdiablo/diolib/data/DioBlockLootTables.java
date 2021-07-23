@@ -2,11 +2,11 @@ package fr.alasdiablo.diolib.data;
 
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
-import net.minecraft.block.Block;
-import net.minecraft.data.loot.BlockLootTables;
-import net.minecraft.loot.LootTable;
-import net.minecraft.loot.LootTables;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.data.loot.BlockLoot;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.storage.loot.BuiltInLootTables;
+import net.minecraft.world.level.storage.loot.LootTable;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.Map;
@@ -15,7 +15,7 @@ import java.util.function.BiConsumer;
 
 @SuppressWarnings("unused")
 @ParametersAreNonnullByDefault
-public abstract class DioBlockLootTables extends BlockLootTables {
+public abstract class DioBlockLootTables extends BlockLoot {
     private final Map<ResourceLocation, LootTable.Builder> lootTables = Maps.newHashMap();
 
     @Override
@@ -28,7 +28,7 @@ public abstract class DioBlockLootTables extends BlockLootTables {
 
         for (Block block : getKnownBlocks()) {
             ResourceLocation resourcelocation = block.getLootTable();
-            if (resourcelocation != LootTables.EMPTY && set.add(resourcelocation)) {
+            if (resourcelocation != BuiltInLootTables.EMPTY && set.add(resourcelocation)) {
                 LootTable.Builder lootTableBuilder = this.lootTables.remove(resourcelocation);
                 if (lootTableBuilder != null) {
                     lootTable.accept(resourcelocation, lootTableBuilder);

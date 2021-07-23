@@ -2,7 +2,7 @@ package fr.alasdiablo.diolib.data;
 
 import com.google.gson.JsonObject;
 import fr.alasdiablo.diolib.lang.ImmutablePair;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.client.model.generators.IGeneratedBlockstate;
 
 import java.util.ArrayList;

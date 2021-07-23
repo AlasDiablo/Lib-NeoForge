@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion="[36,)"
+loaderVersion="[37,)"
 license="All rights reserved"
 [[mods]]
 modId="diolib"
@@ -13,12 +13,12 @@ Libray Mod for Janoeo Project and more !
 [[dependencies.diolib]]
     modId="forge"
     mandatory=true
-    versionRange="[36,)"
+    versionRange="[37,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.diolib]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.16.5,)"
+    versionRange="[1.17.1,1.18)"
     ordering="NONE"
     side="BOTH"

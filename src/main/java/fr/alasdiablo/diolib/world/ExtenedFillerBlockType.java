@@ -1,10 +1,10 @@
 package fr.alasdiablo.diolib.world;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.gen.feature.template.BlockMatchRuleTest;
-import net.minecraft.world.gen.feature.template.RuleTest;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
+import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -37,7 +37,7 @@ public enum ExtenedFillerBlockType {
         if (RULE_TEST_MAP.containsKey(registryName))
             return RULE_TEST_MAP.get(registryName);
         else {
-            RuleTest rule = new BlockMatchRuleTest(block);
+            RuleTest rule = new BlockMatchTest(block);
             RULE_TEST_MAP.put(registryName, rule);
             return rule;
         }

@@ -10,9 +10,9 @@ import java.io.IOException;
 
 public class ModConfig {
 
-    public static AngerConfig ENDERMAN_ANGER = new AngerConfig("enderman_anger");
-    public static AngerConfig ZOMBIFIED_PIGLIN_ANGER = new AngerConfig("zombified_piglin_anger");
-    public static FireworkEventConfig CONTRIBUTOR_FIREWORK = new FireworkEventConfig();
+    public final static AngerConfig ENDERMAN_ANGER = new AngerConfig("enderman_anger");
+    public final static AngerConfig ZOMBIFIED_PIGLIN_ANGER = new AngerConfig("zombified_piglin_anger");
+    public final static FireworkEventConfig CONTRIBUTOR_FIREWORK = new FireworkEventConfig();
 
     public static void setup() {
         MinecraftForge.EVENT_BUS.<PlayerEvent.PlayerLoggedInEvent>addListener(e -> new FireworkEvent().init(e));

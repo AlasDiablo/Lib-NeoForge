@@ -1,10 +1,10 @@
 package fr.alasdiablo.diolib.util;
 
 import com.google.common.collect.Maps;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.FireBlock;
-import net.minecraft.item.AxeItem;
+import net.minecraft.world.item.AxeItem;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.FireBlock;
 
 @SuppressWarnings("unused")
 public class BlockHelper {
@@ -39,8 +39,8 @@ public class BlockHelper {
         return block;
     }
 
-    public static void createStripablesBlock(Block source, Block target) {
-        AxeItem.STRIPABLES = Maps.newHashMap(AxeItem.STRIPABLES);
-        AxeItem.STRIPABLES.put(source, target);
+    public static void createStrippablesBlock(Block source, Block target) {
+        AxeItem.STRIPPABLES = Maps.newHashMap(AxeItem.STRIPPABLES);
+        AxeItem.STRIPPABLES.put(source, target);
     }
 }

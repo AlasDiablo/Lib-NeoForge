@@ -6,13 +6,16 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.mojang.datafixers.util.Pair;
 import fr.alasdiablo.diolib.DiaboloLib;
-import mcp.MethodsReturnNonnullByDefault;
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.DirectoryCache;
-import net.minecraft.data.IDataProvider;
-import net.minecraft.data.LootTableProvider;
-import net.minecraft.loot.*;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.data.DataProvider;
+import net.minecraft.data.HashCache;
+import net.minecraft.data.loot.LootTableProvider;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.LootTables;
+import net.minecraft.world.level.storage.loot.ValidationContext;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSet;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.io.IOException;
@@ -29,12 +32,12 @@ import java.util.function.Supplier;
 public class DioLootTableProvider extends LootTableProvider {
     private final DataGenerator dataGenerator;
     private static final Gson GSON = (new GsonBuilder()).setPrettyPrinting().disableHtmlEscaping().create();
-    protected final List<Pair<Supplier<Consumer<BiConsumer<ResourceLocation, LootTable.Builder>>>, LootParameterSet>> lootTableList;
-    private final LootParameterSet lootParameterSet;
+    protected final List<Pair<Supplier<Consumer<BiConsumer<ResourceLocation, LootTable.Builder>>>, LootContextParamSet>> lootTableList;
+    private final LootContextParamSet lootParameterSet;
     private final String name;
 
 
-    public DioLootTableProvider(DataGenerator dataGeneratorIn, List<Pair<Supplier<Consumer<BiConsumer<ResourceLocation, LootTable.Builder>>>, LootParameterSet>> lootTableListIn, LootParameterSet lootParameterSetIn, String nameIn) {
+    public DioLootTableProvider(DataGenerator dataGeneratorIn, List<Pair<Supplier<Consumer<BiConsumer<ResourceLocation, LootTable.Builder>>>, LootContextParamSet>> lootTableListIn, LootContextParamSet lootParameterSetIn, String nameIn) {
         super(dataGeneratorIn);
         this.dataGenerator = dataGeneratorIn;
         this.lootTableList = lootTableListIn;
@@ -43,7 +46,7 @@ public class DioLootTableProvider extends LootTableProvider {
     }
 
     @Override
-    public void run(DirectoryCache cache) {
+    public void run(HashCache cache) {
         final Path path = this.dataGenerator.getOutputFolder();
         final Map<ResourceLocation, LootTable> map = Maps.newHashMap();
 
@@ -53,7 +56,7 @@ public class DioLootTableProvider extends LootTableProvider {
             }
         }));
 
-        ValidationTracker validationtracker = new ValidationTracker(this.lootParameterSet, (resourceLocation) -> null, map::get);
+        ValidationContext validationtracker = new ValidationContext(this.lootParameterSet, (resourceLocation) -> null, map::get);
         this.validate(map, validationtracker);
         Multimap<String, String> multimap = validationtracker.getProblems();
 
@@ -65,7 +68,7 @@ public class DioLootTableProvider extends LootTableProvider {
                 Path path1 = getPath(path, resourceLocation);
 
                 try {
-                    IDataProvider.save(GSON, cache, LootTableManager.serialize(lootTable), path1);
+                    DataProvider.save(GSON, cache, LootTables.serialize(lootTable), path1);
                 } catch (IOException ioexception) {
                     DiaboloLib.logger.error("Couldn't save loot table {}", path1, ioexception);
                 }
@@ -75,12 +78,12 @@ public class DioLootTableProvider extends LootTableProvider {
     }
 
     @Override
-    protected void validate(Map<ResourceLocation, LootTable> map, ValidationTracker validationtracker) {
-        map.forEach((resourceLocation, lootTable) -> LootTableManager.validate(validationtracker, resourceLocation, lootTable));
+    protected void validate(Map<ResourceLocation, LootTable> map, ValidationContext validationtracker) {
+        map.forEach((resourceLocation, lootTable) -> LootTables.validate(validationtracker, resourceLocation, lootTable));
     }
 
     @Override
-    protected List<Pair<Supplier<Consumer<BiConsumer<ResourceLocation, LootTable.Builder>>>, LootParameterSet>> getTables() {
+    protected List<Pair<Supplier<Consumer<BiConsumer<ResourceLocation, LootTable.Builder>>>, LootContextParamSet>> getTables() {
         return this.lootTableList;
     }
 

@@ -5,13 +5,13 @@ import com.google.gson.*;
 import fr.alasdiablo.diolib.DiaboloLib;
 import fr.alasdiablo.diolib.config.ModConfig;
 import fr.alasdiablo.diolib.lang.ImmutablePair;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.projectile.FireworkRocketEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.nbt.ListNBT;
-import net.minecraft.world.World;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.FireworkRocketEntity;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.Event;
 import org.apache.logging.log4j.message.FormattedMessage;
@@ -38,12 +38,12 @@ public class FireworkEvent implements IEvent {
      * @param world  Current world
      * @param star   The firework star element
      */
-    private void generateFirework(PlayerEntity player, World world, CompoundNBT star, String playerType) {
+    private void generateFirework(Player player, Level world, CompoundTag star, String playerType) {
         final ItemStack firework = new ItemStack(Items.FIREWORK_ROCKET);
-        final CompoundNBT rocket = new CompoundNBT();
-        final CompoundNBT fireworkCompound = firework.getOrCreateTag();
+        final CompoundTag rocket = new CompoundTag();
+        final CompoundTag fireworkCompound = firework.getOrCreateTag();
         rocket.putInt("Flight", 3);
-        rocket.put("Explosions", Arrays.stream(new CompoundNBT[]{star}).collect(Collectors.toCollection(ListNBT::new)));
+        rocket.put("Explosions", Arrays.stream(new CompoundTag[]{star}).collect(Collectors.toCollection(ListTag::new)));
         fireworkCompound.put("Fireworks", rocket);
         DiaboloLib.logger.debug(new FormattedMessage("Spawning %s[%s] Firework.", playerType, player.getName().getString()));
         world.addFreshEntity(new FireworkRocketEntity(world, player.xOld, player.yOld, player.zOld, firework));
@@ -76,12 +76,11 @@ public class FireworkEvent implements IEvent {
     }
 
     private int getColor(String contributionType) {
-        switch (contributionType) {
-            case "code": return 6719955; // light blue
-            case "test": return 4312372; // lime
-            case "bug": return 15790320; // white
-        }
-        return 15790320;
+        return switch (contributionType) {
+            case "code" -> 6719955; // light blue
+            case "test" -> 4312372; // lime
+            default -> 15790320;    // white
+        };
     }
 
     private static final String ALASDIABLO_UUID = "e7956203-8c12-429e-9956-99775b8199ac";
@@ -95,11 +94,11 @@ public class FireworkEvent implements IEvent {
     public void init(Event event) {
         PlayerEvent.PlayerLoggedInEvent playerLoggedInEvent = (PlayerEvent.PlayerLoggedInEvent) event;
         if (ModConfig.CONTRIBUTOR_FIREWORK.canContributorFirework()) {
-            final PlayerEntity player = playerLoggedInEvent.getPlayer();
-            final World world = player.level;
+            final Player player = playerLoggedInEvent.getPlayer();
+            final Level world = player.level;
             switch (player.getStringUUID()) {
                 case ALASDIABLO_UUID: {
-                    final CompoundNBT star = new CompoundNBT();
+                    final CompoundTag star = new CompoundTag();
                     star.putIntArray("Colors", Collections.singletonList(15790320));
                     star.putIntArray("FadeColors", Collections.singletonList(11743532));
                     star.putBoolean("Flicker", true);
@@ -109,7 +108,7 @@ public class FireworkEvent implements IEvent {
                     break;
                 }
                 case SAFYRUS_UUID: {
-                    final CompoundNBT star = new CompoundNBT();
+                    final CompoundTag star = new CompoundTag();
                     star.putIntArray("Colors", Lists.newArrayList(6719955, 15790320));
                     star.putIntArray("FadeColors", Lists.newArrayList(2437522, 11250603));
                     star.putBoolean("Flicker", true);
@@ -122,14 +121,14 @@ public class FireworkEvent implements IEvent {
         }
 
         if (ModConfig.CONTRIBUTOR_FIREWORK.canContributorFirework()) {
-            final PlayerEntity player = playerLoggedInEvent.getPlayer();
-            final World world = player.level;
+            final Player player = playerLoggedInEvent.getPlayer();
+            final Level world = player.level;
             try {
                 final Map<String, ImmutablePair<String, String>> contributors = this.getContributor();
                 final String UUID = player.getStringUUID();
                 if (contributors.containsKey(UUID)) {
                     final String contributionType = contributors.get(UUID).getValue();
-                    final CompoundNBT star = new CompoundNBT();
+                    final CompoundTag star = new CompoundTag();
                     star.putIntArray("Colors", Collections.singletonList(getColor(contributionType)));
                     star.putInt("Type", 4);
                     this.generateFirework(player, world, star, "Contributor");

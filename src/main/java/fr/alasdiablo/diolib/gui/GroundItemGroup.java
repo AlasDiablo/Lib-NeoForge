@@ -2,9 +2,9 @@ package fr.alasdiablo.diolib.gui;
 
 import fr.alasdiablo.diolib.DiaboloLib;
 import fr.alasdiablo.diolib.util.DateRange;
-import mcp.MethodsReturnNonnullByDefault;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.MethodsReturnNonnullByDefault;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.CreativeModeTab;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.awt.Color;
@@ -12,7 +12,7 @@ import java.awt.Color;
 @SuppressWarnings("unused")
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
-public abstract class GroundItemGroup extends ItemGroup {
+public abstract class GroundItemGroup extends CreativeModeTab {
 
     public GroundItemGroup(String label) {
         super(label);
@@ -26,7 +26,7 @@ public abstract class GroundItemGroup extends ItemGroup {
     }
 
     @Override
-    public ItemGroup setBackgroundImage(ResourceLocation texture) {
+    public CreativeModeTab setBackgroundImage(ResourceLocation texture) {
         DiaboloLib.logger.warn("setBackgroundImageName in OreItemGroup do nothing, please don't user it.");
         return this;
     }

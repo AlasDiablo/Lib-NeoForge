@@ -1,6 +1,6 @@
 package fr.alasdiablo.diolib.generic;
 
-import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.valueproviders.UniformInt;
 
 import java.util.Random;
 
@@ -25,15 +25,11 @@ public interface IDropExperience {
      * @return Return the a random quantity of xp corresponding to <i>an Entity, Block or Other Element</i>
      */
     default int getExperience(Random random, IDropExperience dropExperience) {
-        switch (dropExperience.getExperienceRarity()) {
-            case COMMON:
-                return MathHelper.nextInt(random, 0, 2);
-            case UNCOMMON:
-                return MathHelper.nextInt(random, 2, 5);
-            case RARE:
-                return MathHelper.nextInt(random, 3, 7);
-            default:
-                return -1;
-        }
+        return switch (dropExperience.getExperienceRarity()) {
+            case COMMON -> UniformInt.of(0, 2).sample(random);
+            case UNCOMMON -> UniformInt.of(2, 5).sample(random);
+            case RARE -> UniformInt.of(3, 7).sample(random);
+            default -> -1;
+        };
     }
 }

@@ -1,16 +1,16 @@
 package fr.alasdiablo.diolib.util;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.color.BlockColors;
-import net.minecraft.client.renderer.color.IBlockColor;
-import net.minecraft.client.renderer.color.IItemColor;
-import net.minecraft.client.renderer.color.ItemColors;
-import net.minecraft.item.BlockItem;
-import net.minecraft.util.IItemProvider;
-import net.minecraft.world.FoliageColors;
-import net.minecraft.world.biome.BiomeColors;
+import net.minecraft.client.color.block.BlockColor;
+import net.minecraft.client.color.block.BlockColors;
+import net.minecraft.client.color.item.ItemColor;
+import net.minecraft.client.color.item.ItemColors;
+import net.minecraft.client.renderer.BiomeColors;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.level.FoliageColor;
+import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -25,6 +25,7 @@ public class ColorsHelper {
 
     private static final BlockColors BLOCK_COLORS;
     private static final ItemColors ITEM_COLORS;
+
     static {
         final Minecraft minecraft = Minecraft.getInstance();
         BLOCK_COLORS = minecraft.getBlockColors();
@@ -33,24 +34,27 @@ public class ColorsHelper {
 
     /**
      * Register color for an block
+     *
      * @param blockColor color of the block
-     * @param block item who get the blockColor
+     * @param block      item who get the blockColor
      */
-    public static void registerBlockColor(IBlockColor blockColor, Block block) {
+    public static void registerBlockColor(BlockColor blockColor, Block block) {
         BLOCK_COLORS.register(blockColor, block);
     }
 
     /**
      * Register color for an item
+     *
      * @param itemColor color of the item
-     * @param item item who get the itemColor
+     * @param item      item who get the itemColor
      */
-    public static void registerItemColor(IItemColor itemColor, IItemProvider item) {
+    public static void registerItemColor(ItemColor itemColor, ItemLike item) {
         ITEM_COLORS.register(itemColor, item);
     }
 
     /**
      * Register color for a basic Foliage Color
+     *
      * @param block target block
      * @param color target color
      */
@@ -70,6 +74,7 @@ public class ColorsHelper {
 
     /**
      * Register color for a basic Foliage Color
+     *
      * @param block target block
      */
     public static void registerFoliageColor(Block block) {
@@ -78,7 +83,7 @@ public class ColorsHelper {
                     if (world != null && pos != null)
                         return BiomeColors.getAverageFoliageColor(world, pos);
                     else
-                        return FoliageColors.getDefaultColor();
+                        return FoliageColor.getDefaultColor();
                 },
                 block
         );

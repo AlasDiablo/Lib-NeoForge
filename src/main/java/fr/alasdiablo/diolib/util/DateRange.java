@@ -26,38 +26,30 @@ public class DateRange {
     }
 
     private static boolean spring() {
-        switch (CURRENT_MONTH) {
-            case 3: case 4:
-                return true;
-            default:
-                return false;
-        }
+        return switch (CURRENT_MONTH) {
+            case 3, 4 -> true;
+            default -> false;
+        };
     }
 
     private static boolean summer() {
-        switch (CURRENT_MONTH) {
-            case 5: case 6: case 7: case 8:
-                return true;
-            default:
-                return false;
-        }
+        return switch (CURRENT_MONTH) {
+            case 5, 6, 7, 8 -> true;
+            default -> false;
+        };
     }
 
     private static boolean autumn() {
-        switch (CURRENT_MONTH) {
-            case 9: case 10:
-                return true;
-            default:
-                return false;
-        }
+        return switch (CURRENT_MONTH) {
+            case 9, 10 -> true;
+            default -> false;
+        };
     }
 
     private static boolean winter() {
-        switch (CURRENT_MONTH) {
-            case 11: case 12: case 1: case 2:
-                return true;
-            default:
-                return false;
-        }
+        return switch (CURRENT_MONTH) {
+            case 11, 12, 1, 2 -> true;
+            default -> false;
+        };
     }
 }
