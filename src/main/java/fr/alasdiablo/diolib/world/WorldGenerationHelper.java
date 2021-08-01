@@ -12,6 +12,7 @@ import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.StructureFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.ReplaceBlockConfiguration;
@@ -47,6 +48,16 @@ public class WorldGenerationHelper {
         }
 
         biome.getGenerationSettings().features.get(decoration.ordinal()).add(() -> configuredFeature);
+    }
+
+    public static void addNoiseAffectingFeature(StructureFeature<?> structureFeature) {
+        if (structureFeature == null) throw new NullPointerException("configuredFeature is null");
+
+        if (StructureFeature.NOISE_AFFECTING_FEATURES instanceof ImmutableList) {
+            StructureFeature.NOISE_AFFECTING_FEATURES = new ArrayList<>(StructureFeature.NOISE_AFFECTING_FEATURES);
+        }
+
+        StructureFeature.NOISE_AFFECTING_FEATURES.add(structureFeature);
     }
 
     public static class ConfiguredFeatureHelper {

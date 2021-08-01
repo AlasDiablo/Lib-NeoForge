@@ -1,3 +1,13 @@
+### 2.0.15
+
+#### Add
++ WorldGenHelper to access NOISE_AFFECTING_FEATURES
+
+### 2.0.14
+
+#### Fix
++ Malformed meta-inf
+
 ### 2.0.13
 
 #### Update
