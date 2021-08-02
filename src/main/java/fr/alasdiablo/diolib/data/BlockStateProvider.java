@@ -16,28 +16,41 @@ import java.nio.file.Path;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+/**
+ * Use DioBlockStateProvider instead
+ * This class will be remove in version 3.x.x
+ * @see fr.alasdiablo.diolib.data.DioBlockStateProvider
+ */
 @SuppressWarnings("unused")
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
+@Deprecated
 public abstract class BlockStateProvider implements DataProvider {
+    @Deprecated
     private static final Gson GSON = (new GsonBuilder()).setPrettyPrinting().disableHtmlEscaping().create();
-
+    @Deprecated
     protected final Map<String, IGeneratedBlockstate> registeredBlocks = new LinkedHashMap<>();
 
+    @Deprecated
     private final DataGenerator generator;
+    @Deprecated
     private final String modid;
 
+    @Deprecated
     public BlockStateProvider(DataGenerator generator, String modid) {
         this.generator = generator;
         this.modid = modid;
     }
 
+    @Deprecated
     protected abstract void registerStates();
 
+    @Deprecated
     protected void addBlockState(String blockName, IGeneratedBlockstate blockstate) {
         this.registeredBlocks.put(blockName, blockstate);
     }
 
+    @Deprecated
     @Override
     public void run(HashCache cache) {
         this.registeredBlocks.clear();
@@ -47,6 +60,7 @@ public abstract class BlockStateProvider implements DataProvider {
         }
     }
 
+    @Deprecated
     private void saveBlockState(HashCache cache, JsonObject stateJson, String blockName) {
         Path mainOutput = generator.getOutputFolder();
         String pathSuffix = "assets/" + modid + "/blockstates/" + blockName + ".json";
@@ -58,6 +72,7 @@ public abstract class BlockStateProvider implements DataProvider {
         }
     }
 
+    @Deprecated
     @Override
     public String getName() {
         return "Block States: " + this.modid;
