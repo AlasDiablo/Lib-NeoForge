@@ -1,3 +1,13 @@
+### 2.0.16
+
+#### Deprecated
++ BlockStateProvider
++ ImmutablePair.getKey() and ImmutablePair.getValue()
+
+#### Add
++ DioBlockStateProvider
++ ImmutablePair.of(Key, Value)
+
 ### 2.0.15
 
 #### Add
