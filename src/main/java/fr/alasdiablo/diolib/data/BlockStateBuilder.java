@@ -1,20 +1,19 @@
 package fr.alasdiablo.diolib.data;
 
 import com.google.gson.JsonObject;
-import fr.alasdiablo.diolib.lang.ImmutablePair;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.client.model.generators.IGeneratedBlockstate;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 @SuppressWarnings("unused")
 public class BlockStateBuilder implements IGeneratedBlockstate {
 
-    private final List<ImmutablePair<String, JsonObject>> variants;
+    private final Map<String, JsonObject> variants;
 
     public BlockStateBuilder() {
-        this.variants = new ArrayList<>();
+        this.variants = new HashMap<>();
     }
 
     public void addVariants(String stateNameIn, int rotateXIn, int rotateYIn, boolean uvlock, ResourceLocation modelPathIn) {
@@ -23,7 +22,7 @@ public class BlockStateBuilder implements IGeneratedBlockstate {
         if (rotateXIn != 0) obj.addProperty("x", rotateXIn);
         if (rotateYIn != 0) obj.addProperty("y", rotateYIn);
         if (uvlock) obj.addProperty("uvlock", true);
-        this.variants.add(new ImmutablePair<>(stateNameIn, obj));
+        this.variants.put(stateNameIn, obj);
     }
 
     public void addVariants(String stateNameIn, int rotateXIn, int rotateYIn, ResourceLocation modelPathIn) {
@@ -31,19 +30,23 @@ public class BlockStateBuilder implements IGeneratedBlockstate {
         obj.addProperty("model", modelPathIn.toString());
         if (rotateXIn != 0) obj.addProperty("x", rotateXIn);
         if (rotateYIn != 0) obj.addProperty("y", rotateYIn);
-        this.variants.add(new ImmutablePair<>(stateNameIn, obj));
+        this.variants.put(stateNameIn, obj);
     }
 
     public void addVariants(String stateNameIn, ResourceLocation modelPathIn) {
         JsonObject obj = new JsonObject();
         obj.addProperty("model", modelPathIn.toString());
-        this.variants.add(new ImmutablePair<>(stateNameIn, obj));
+        this.variants.put(stateNameIn, obj);
+    }
+
+    public void addVariants(BlockStateVariant variant) {
+        this.variants.put(variant.getKey(), variant.getJson());
     }
 
     @Override
     public JsonObject toJson() {
         final JsonObject variantsObj = new JsonObject();
-        this.variants.forEach(variant -> variantsObj.add(variant.getKey(), variant.getValue()));
+        this.variants.forEach(variantsObj::add);
         final JsonObject blockState = new JsonObject();
         blockState.add("variants", variantsObj);
         return blockState;

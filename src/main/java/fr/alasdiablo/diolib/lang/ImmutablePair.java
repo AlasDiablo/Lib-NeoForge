@@ -4,23 +4,29 @@ import java.util.Objects;
 
 public record ImmutablePair<K, V>(K key, V value) {
 
+    @Deprecated
     public K getKey() {
         return key;
     }
 
+    @Deprecated
     public V getValue() {
         return value;
+    }
+
+    public static <K, V> ImmutablePair<K, V> of(K key, V value) {
+        return new ImmutablePair<>(key, value);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof ImmutablePair<?, ?> that)) return false;
-        return getKey().equals(that.getKey()) && getValue().equals(that.getValue());
+        return key().equals(that.key()) && value().equals(that.value());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getKey(), getValue());
+        return Objects.hash(key(), value());
     }
 }

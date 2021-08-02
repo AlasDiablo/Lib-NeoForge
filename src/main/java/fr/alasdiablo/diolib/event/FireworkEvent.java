@@ -97,7 +97,7 @@ public class FireworkEvent implements IEvent {
             final Player player = playerLoggedInEvent.getPlayer();
             final Level world = player.level;
             switch (player.getStringUUID()) {
-                case ALASDIABLO_UUID: {
+                case ALASDIABLO_UUID -> {
                     final CompoundTag star = new CompoundTag();
                     star.putIntArray("Colors", Collections.singletonList(15790320));
                     star.putIntArray("FadeColors", Collections.singletonList(11743532));
@@ -105,9 +105,8 @@ public class FireworkEvent implements IEvent {
                     star.putBoolean("Trail", true);
                     star.putInt("Type", 1);
                     this.generateFirework(player, world, star, "Author");
-                    break;
                 }
-                case SAFYRUS_UUID: {
+                case SAFYRUS_UUID -> {
                     final CompoundTag star = new CompoundTag();
                     star.putIntArray("Colors", Lists.newArrayList(6719955, 15790320));
                     star.putIntArray("FadeColors", Lists.newArrayList(2437522, 11250603));
@@ -115,7 +114,6 @@ public class FireworkEvent implements IEvent {
                     star.putBoolean("Trail", true);
                     star.putInt("Type", 2);
                     this.generateFirework(player, world, star, "Author");
-                    break;
                 }
             }
         }
@@ -127,7 +125,7 @@ public class FireworkEvent implements IEvent {
                 final Map<String, ImmutablePair<String, String>> contributors = this.getContributor();
                 final String UUID = player.getStringUUID();
                 if (contributors.containsKey(UUID)) {
-                    final String contributionType = contributors.get(UUID).getValue();
+                    final String contributionType = contributors.get(UUID).value();
                     final CompoundTag star = new CompoundTag();
                     star.putIntArray("Colors", Collections.singletonList(getColor(contributionType)));
                     star.putInt("Type", 4);

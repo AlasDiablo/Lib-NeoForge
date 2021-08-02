@@ -80,8 +80,8 @@ public class MultipartBlockStateBuilder implements IGeneratedBlockstate {
         final JsonArray multipartObj = new JsonArray();
         this.multiparts.forEach(multipart -> {
             JsonObject object = new JsonObject();
-            if (multipart.getKey() != null) object.add("when", multipart.getKey());
-            object.add("apply", multipart.getValue());
+            if (multipart.key() != null) object.add("when", multipart.key());
+            object.add("apply", multipart.value());
             multipartObj.add(object);
         });
         final JsonObject blockState = new JsonObject();
