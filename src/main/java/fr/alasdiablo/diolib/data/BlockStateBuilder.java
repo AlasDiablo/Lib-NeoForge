@@ -17,11 +17,20 @@ public class BlockStateBuilder implements IGeneratedBlockstate {
         this.variants = new ArrayList<>();
     }
 
+    public void addVariants(String stateNameIn, int rotateXIn, int rotateYIn, boolean uvlock, ResourceLocation modelPathIn) {
+        JsonObject obj = new JsonObject();
+        obj.addProperty("model", modelPathIn.toString());
+        if (rotateXIn != 0) obj.addProperty("x", rotateXIn);
+        if (rotateYIn != 0) obj.addProperty("y", rotateYIn);
+        if (uvlock) obj.addProperty("uvlock", true);
+        this.variants.add(new ImmutablePair<>(stateNameIn, obj));
+    }
+
     public void addVariants(String stateNameIn, int rotateXIn, int rotateYIn, ResourceLocation modelPathIn) {
         JsonObject obj = new JsonObject();
         obj.addProperty("model", modelPathIn.toString());
-        obj.addProperty("x", rotateXIn);
-        obj.addProperty("y", rotateYIn);
+        if (rotateXIn != 0) obj.addProperty("x", rotateXIn);
+        if (rotateYIn != 0) obj.addProperty("y", rotateYIn);
         this.variants.add(new ImmutablePair<>(stateNameIn, obj));
     }
 
