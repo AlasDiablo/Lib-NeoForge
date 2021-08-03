@@ -1,3 +1,8 @@
+### 2.0.17
+
+#### Add
++ DioBlockModelProvider
+
 ### 2.0.16
 
 #### Deprecated
