@@ -3,6 +3,9 @@
 #### Add
 + DioBlockModelProvider
 
+#### Fix 
++ DioBlockStateProvider
+
 ### 2.0.16
 
 #### Deprecated
