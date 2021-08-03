@@ -11,13 +11,13 @@ public abstract class DioBlockModelProvider extends BlockModelProvider {
         super(generator, modid, existingFileHelper);
     }
 
-    private void button(String blockNameIn, String textureNameIn) {
+    protected void button(String blockNameIn, String textureNameIn) {
         withExistingParent(blockNameIn, Utils.rl("minecraft", "block/button")).texture("texture", Utils.rl(this.modid, "block/" + textureNameIn));
         withExistingParent(blockNameIn + "_inventory", Utils.rl("minecraft", "block/button_inventory")).texture("texture", Utils.rl(this.modid, "block/" + textureNameIn));
         withExistingParent(blockNameIn + "_pressed", Utils.rl("minecraft", "block/button_pressed")).texture("texture", Utils.rl(this.modid, "block/" + textureNameIn));
     }
 
-    private void door(String blockNameIn) {
+    protected void door(String blockNameIn) {
         withExistingParent(blockNameIn + "_bottom", Utils.rl("minecraft", "block/door_bottom"))
                 .texture("top", Utils.rl(this.modid, "block/" + blockNameIn + "_top"))
                 .texture("bottom", Utils.rl(this.modid, "block/" + blockNameIn + "_bottom"));
@@ -35,24 +35,24 @@ public abstract class DioBlockModelProvider extends BlockModelProvider {
                 .texture("bottom", Utils.rl(this.modid, "block/" + blockNameIn + "_bottom"));
     }
 
-    private void fenceGate(String blockNameIn, String textureNameIn) {
+    protected void fenceGate(String blockNameIn, String textureNameIn) {
         withExistingParent(blockNameIn, Utils.rl("minecraft", "block/template_fence_gate")).texture("texture", Utils.rl(this.modid, "block/" + textureNameIn));
         withExistingParent(blockNameIn + "_open", Utils.rl("minecraft", "block/template_fence_gate_open")).texture("texture", Utils.rl(this.modid, "block/" + textureNameIn));
         withExistingParent(blockNameIn + "_wall", Utils.rl("minecraft", "block/template_fence_gate_wall")).texture("texture", Utils.rl(this.modid, "block/" + textureNameIn));
         withExistingParent(blockNameIn + "_wall_open", Utils.rl("minecraft", "block/template_fence_gate_wall_open")).texture("texture", Utils.rl(this.modid, "block/" + textureNameIn));
     }
 
-    private void fence(String blockNameIn, String textureNameIn) {
+    protected void fence(String blockNameIn, String textureNameIn) {
         withExistingParent(blockNameIn + "_post", Utils.rl("minecraft", "block/fence_post")).texture("texture", Utils.rl(this.modid, "block/" + textureNameIn));
         withExistingParent(blockNameIn + "_inventory", Utils.rl("minecraft", "block/fence_inventory")).texture("texture", Utils.rl(this.modid, "block/" + textureNameIn));
         withExistingParent(blockNameIn + "_side", Utils.rl("minecraft", "block/fence_side")).texture("texture", Utils.rl(this.modid, "block/" + textureNameIn));
     }
 
-    private void leaves(String blockNameIn) {
+    protected void leaves(String blockNameIn) {
         withExistingParent(blockNameIn, Utils.rl("minecraft", "block/leaves")).texture("all", Utils.rl(this.modid, "block/" + blockNameIn));
     }
 
-    private void pillar(String blockNameIn) {
+    protected void pillar(String blockNameIn) {
         withExistingParent(blockNameIn, Utils.rl("minecraft", "block/cube_column"))
                 .texture("end", Utils.rl(this.modid, "block/" + blockNameIn + "_end"))
                 .texture("side", Utils.rl(this.modid, "block/" + blockNameIn + "_side"));
@@ -62,7 +62,7 @@ public abstract class DioBlockModelProvider extends BlockModelProvider {
                 .texture("side", Utils.rl(this.modid, "block/" + blockNameIn + "_side"));
     }
 
-    private void pressurePlate(String blockNameIn, String textureNameIn) {
+    protected void pressurePlate(String blockNameIn, String textureNameIn) {
         withExistingParent(blockNameIn, Utils.rl("minecraft", "block/pressure_plate_up"))
                 .texture("texture", Utils.rl(this.modid, "block/" + textureNameIn));
 
@@ -70,12 +70,12 @@ public abstract class DioBlockModelProvider extends BlockModelProvider {
                 .texture("texture", Utils.rl(this.modid, "block/" + textureNameIn));
     }
 
-    private void cross(String blockNameIn) {
+    protected void cross(String blockNameIn) {
         withExistingParent(blockNameIn, Utils.rl("minecraft", "block/cross"))
                 .texture("cross", Utils.rl(this.modid, "block/" + blockNameIn));
     }
 
-    private void slab(String blockNameIn, String textureNameIn) {
+    protected void slab(String blockNameIn, String textureNameIn) {
         withExistingParent(blockNameIn, Utils.rl("minecraft", "block/slab"))
                 .texture("bottom", Utils.rl(this.modid, "block/" + textureNameIn))
                 .texture("top", Utils.rl(this.modid, "block/" + textureNameIn))
@@ -87,7 +87,7 @@ public abstract class DioBlockModelProvider extends BlockModelProvider {
                 .texture("side", Utils.rl(this.modid, "block/" + textureNameIn));
     }
 
-    private void stairs(String blockNameIn, String textureNameIn) {
+    protected void stairs(String blockNameIn, String textureNameIn) {
         withExistingParent(blockNameIn, Utils.rl("minecraft", "block/stairs"))
                 .texture("bottom", Utils.rl(this.modid, "block/" + textureNameIn))
                 .texture("top", Utils.rl(this.modid, "block/" + textureNameIn))
@@ -104,7 +104,7 @@ public abstract class DioBlockModelProvider extends BlockModelProvider {
                 .texture("side", Utils.rl(this.modid, "block/" + textureNameIn));
     }
 
-    private void trapdoor(String blockNameIn, String textureNameIn) {
+    protected void trapdoor(String blockNameIn, String textureNameIn) {
         withExistingParent(blockNameIn + "_bottom", Utils.rl("minecraft", "block/template_trapdoor_bottom"))
                 .texture("texture", Utils.rl(this.modid, "block/" + textureNameIn));
 
@@ -115,7 +115,7 @@ public abstract class DioBlockModelProvider extends BlockModelProvider {
                 .texture("texture", Utils.rl(this.modid, "block/" + textureNameIn));
     }
 
-    private void cubeAll(String blockNameIn) {
+    protected void cubeAll(String blockNameIn) {
         withExistingParent(blockNameIn, Utils.rl("minecraft", "block/cube_all"))
                 .texture("all", Utils.rl(this.modid, "block/" + blockNameIn));
     }
