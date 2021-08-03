@@ -269,10 +269,11 @@ public abstract class DioBlockStateProvider implements DataProvider {
 
     protected void pillar(String blockName) {
         ResourceLocation rl = Utils.rl(this.mod_id, "block/" + blockName);
+        ResourceLocation rl_horizontal = Utils.rl(this.mod_id, "block/" + blockName + "_horizontal");
         BlockStateBuilder stateBuilder = new BlockStateBuilder();
-        stateBuilder.addVariants("axis=x", 90, 90, rl);
+        stateBuilder.addVariants("axis=x", 90, 90, rl_horizontal);
         stateBuilder.addVariants("axis=y", 0, 0, rl);
-        stateBuilder.addVariants("axis=z", 90, 0, rl);
+        stateBuilder.addVariants("axis=z", 90, 0, rl_horizontal);
         this.addBlockState(blockName, stateBuilder);
     }
 

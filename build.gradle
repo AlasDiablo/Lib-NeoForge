@@ -71,13 +71,13 @@ dependencies {
 jar {
     manifest {
         attributes([
-            "Specification-Title"     : "DiaboloLib",
-            "Specification-Vendor"    : "AlasDiablo, lIotaMiu, Safyrus",
-            "Specification-Version"   : "1",
-            "Implementation-Title"    : project.name,
-            "Implementation-Version"  : project.jar.archiveVersion,
-            "Implementation-Vendor"   :"AlasDiablo, lIotaMiu, Safyrus",
-            "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+                "Specification-Title"     : "DiaboloLib",
+                "Specification-Vendor"    : "AlasDiablo, lIotaMiu, Safyrus",
+                "Specification-Version"   : "1",
+                "Implementation-Title"    : project.name,
+                "Implementation-Version"  : project.jar.archiveVersion,
+                "Implementation-Vendor"   : "AlasDiablo, lIotaMiu, Safyrus",
+                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
     destinationDirectory.set(file(rootProject.getRootDir().getPath() + '/output'))
@@ -87,7 +87,7 @@ jar.finalizedBy('reobfJar')
 
 task sourcesJar(type: Jar) {
     from sourceSets.main.allJava
-    from (sourceSets.main.output) {
+    from(sourceSets.main.output) {
         include 'LICENSE'
     }
     def archiveName = 'sources-' + deobfSourceClassifier
@@ -99,6 +99,7 @@ task deobfJar(type: Jar) {
     from sourceSets.main.output
     def archiveName = 'deobf-' + deobfSourceClassifier
     archiveClassifier.set(archiveName)
+    manifest { attributes(["Implementation-Version": project.jar.archiveVersion]) }
     destinationDirectory.set(file(rootProject.getRootDir().getPath() + '/output'))
 }
 
