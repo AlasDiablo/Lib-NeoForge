@@ -51,7 +51,7 @@ public abstract class DioBlockStateProvider implements DataProvider {
         stateBuilder.addVariants("facing=east,half=lower,hinge=left,open=false", rl_bottom);
         stateBuilder.addVariants("facing=east,half=lower,hinge=left,open=true", 0, 90, rl_bottom_hinge);
         stateBuilder.addVariants("facing=east,half=lower,hinge=right,open=false", 0, 0, rl_bottom_hinge);
-        stateBuilder.addVariants("facing=east,half=lower,hinge=left,open=true", 0, 270, rl_bottom);
+        stateBuilder.addVariants("facing=east,half=lower,hinge=right,open=true", 0, 270, rl_bottom);
         stateBuilder.addVariants("facing=east,half=upper,hinge=left,open=false", 0, 0, rl_top);
         stateBuilder.addVariants("facing=east,half=upper,hinge=left,open=true", 0, 90, rl_top_hinge);
         stateBuilder.addVariants("facing=east,half=upper,hinge=right,open=false", 0, 0, rl_top_hinge);
@@ -60,7 +60,7 @@ public abstract class DioBlockStateProvider implements DataProvider {
         stateBuilder.addVariants("facing=north,half=lower,hinge=left,open=false", 0, 270, rl_bottom);
         stateBuilder.addVariants("facing=north,half=lower,hinge=left,open=true", 0, 0, rl_bottom_hinge);
         stateBuilder.addVariants("facing=north,half=lower,hinge=right,open=false", 0, 270, rl_bottom_hinge);
-        stateBuilder.addVariants("facing=north,half=lower,hinge=left,open=true", 0, 180, rl_bottom);
+        stateBuilder.addVariants("facing=north,half=lower,hinge=right,open=true", 0, 180, rl_bottom);
         stateBuilder.addVariants("facing=north,half=upper,hinge=left,open=false", 0, 270, rl_top);
         stateBuilder.addVariants("facing=north,half=upper,hinge=left,open=true", 0, 0, rl_top_hinge);
         stateBuilder.addVariants("facing=north,half=upper,hinge=right,open=false", 0, 270, rl_top_hinge);
@@ -69,7 +69,7 @@ public abstract class DioBlockStateProvider implements DataProvider {
         stateBuilder.addVariants("facing=south,half=lower,hinge=left,open=false", 0, 90, rl_bottom);
         stateBuilder.addVariants("facing=south,half=lower,hinge=left,open=true", 0, 180, rl_bottom_hinge);
         stateBuilder.addVariants("facing=south,half=lower,hinge=right,open=false", 0, 90, rl_bottom_hinge);
-        stateBuilder.addVariants("facing=south,half=lower,hinge=left,open=true", 0, 0, rl_bottom);
+        stateBuilder.addVariants("facing=south,half=lower,hinge=right,open=true", 0, 0, rl_bottom);
         stateBuilder.addVariants("facing=south,half=upper,hinge=left,open=false", 0, 90, rl_top);
         stateBuilder.addVariants("facing=south,half=upper,hinge=left,open=true", 0, 180, rl_top_hinge);
         stateBuilder.addVariants("facing=south,half=upper,hinge=right,open=false", 0, 90, rl_top_hinge);
@@ -78,7 +78,7 @@ public abstract class DioBlockStateProvider implements DataProvider {
         stateBuilder.addVariants("facing=west,half=lower,hinge=left,open=false", 0, 180, rl_bottom);
         stateBuilder.addVariants("facing=west,half=lower,hinge=left,open=true", 0, 270, rl_bottom_hinge);
         stateBuilder.addVariants("facing=west,half=lower,hinge=right,open=false", 0, 180, rl_bottom_hinge);
-        stateBuilder.addVariants("facing=west,half=lower,hinge=left,open=true", 0, 90, rl_bottom);
+        stateBuilder.addVariants("facing=west,half=lower,hinge=right,open=true", 0, 90, rl_bottom);
         stateBuilder.addVariants("facing=west,half=upper,hinge=left,open=false", 0, 180, rl_top);
         stateBuilder.addVariants("facing=west,half=upper,hinge=left,open=true", 0, 270, rl_top_hinge);
         stateBuilder.addVariants("facing=west,half=upper,hinge=right,open=false", 0, 180, rl_top_hinge);
@@ -222,7 +222,7 @@ public abstract class DioBlockStateProvider implements DataProvider {
         ResourceLocation rl_down = Utils.rl(this.mod_id, "block/" + blockName + "_down");
         BlockStateBuilder stateBuilder = new BlockStateBuilder();
         stateBuilder.addVariants("powered=false", rl);
-        stateBuilder.addVariants("powered=false", rl_down);
+        stateBuilder.addVariants("powered=true", rl_down);
         this.addBlockState(blockName, stateBuilder);
     }
 
@@ -260,10 +260,10 @@ public abstract class DioBlockStateProvider implements DataProvider {
         ResourceLocation rl_side = Utils.rl(this.mod_id, "block/" + blockName + "_side");
         MultipartBlockStateBuilder stateBuilder = new MultipartBlockStateBuilder();
         stateBuilder.addMultipart(rl_post);
-        stateBuilder.addMultipart(rl_post, true, 0, 0  , true , false, false, false);
-        stateBuilder.addMultipart(rl_post, true, 0, 90 , false, true , false, false);
-        stateBuilder.addMultipart(rl_post, true, 0, 180, false, false, true , false);
-        stateBuilder.addMultipart(rl_post, true, 0, 270, false, false, false, true );
+        stateBuilder.addMultipart(rl_side, true, 0, 0  , true , false, false, false);
+        stateBuilder.addMultipart(rl_side, true, 0, 90 , false, true , false, false);
+        stateBuilder.addMultipart(rl_side, true, 0, 180, false, false, true , false);
+        stateBuilder.addMultipart(rl_side, true, 0, 270, false, false, false, true );
         this.addBlockState(blockName, stateBuilder);
     }
 
