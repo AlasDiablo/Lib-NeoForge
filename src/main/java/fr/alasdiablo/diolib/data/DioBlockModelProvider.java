@@ -104,15 +104,15 @@ public abstract class DioBlockModelProvider extends BlockModelProvider {
                 .texture("side", Utils.rl(this.modid, "block/" + textureNameIn));
     }
 
-    protected void trapdoor(String blockNameIn, String textureNameIn) {
+    protected void trapdoor(String blockNameIn) {
         withExistingParent(blockNameIn + "_bottom", Utils.rl("minecraft", "block/template_trapdoor_bottom"))
-                .texture("texture", Utils.rl(this.modid, "block/" + textureNameIn));
+                .texture("texture", Utils.rl(this.modid, "block/" + blockNameIn));
 
         withExistingParent(blockNameIn + "_open", Utils.rl("minecraft", "block/template_trapdoor_open"))
-                .texture("texture", Utils.rl(this.modid, "block/" + textureNameIn));
+                .texture("texture", Utils.rl(this.modid, "block/" + blockNameIn));
 
         withExistingParent(blockNameIn + "_top", Utils.rl("minecraft", "block/template_trapdoor_top"))
-                .texture("texture", Utils.rl(this.modid, "block/" + textureNameIn));
+                .texture("texture", Utils.rl(this.modid, "block/" + blockNameIn));
     }
 
     protected void cubeAll(String blockNameIn) {
