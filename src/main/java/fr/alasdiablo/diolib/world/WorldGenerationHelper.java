@@ -32,7 +32,9 @@ public class WorldGenerationHelper {
      * @param configuredFeature ConfiguredFeature containing the OreFeature
      * @param decoration        The GenerationStage of the ConfiguredFeature
      */
-    public static <FC extends FeatureConfiguration> void addFeature(Biome biome, @Nullable ConfiguredFeature<FC, ?> configuredFeature, GenerationStep.Decoration decoration) {
+    public static <FC extends FeatureConfiguration> void addFeature(
+            Biome biome, @Nullable ConfiguredFeature<FC, ?> configuredFeature, GenerationStep.Decoration decoration
+    ) {
         if (configuredFeature == null) throw new NullPointerException("configuredFeature is null");
 
         if (biome.getGenerationSettings().features instanceof ImmutableList) {
@@ -86,7 +88,9 @@ public class WorldGenerationHelper {
          * @param bottom    The minimum height
          * @param top       The maximum height
          */
-        public static ConfiguredFeature<?, ?> registerOreFeature(ResourceLocation name, RuleTest blockType, BlockState oreBlock, int size, int count, int bottom, int top) {
+        public static ConfiguredFeature<?, ?> registerOreFeature(
+                ResourceLocation name, RuleTest blockType, BlockState oreBlock, int size, int count, int bottom, int top
+        ) {
             ConfiguredFeature<?, ?> feature = ConfiguredFeatureHelper.register(
                     name,
                     Feature.ORE.configured(
@@ -114,7 +118,9 @@ public class WorldGenerationHelper {
          * @param bottom           The minimum height
          * @param top              The maximum height
          */
-        public static ConfiguredFeature<?, ?> registerReplaceBlockFeature(ResourceLocation name, BlockState replacementBlock, BlockState oreBlock, int count, int bottom, int top) {
+        public static ConfiguredFeature<?, ?> registerReplaceBlockFeature(
+                ResourceLocation name, BlockState replacementBlock, BlockState oreBlock, int count, int bottom, int top
+        ) {
             ConfiguredFeature<?, ?> feature = ConfiguredFeatureHelper.register(
                     name,
                     Feature.REPLACE_SINGLE_BLOCK.configured(

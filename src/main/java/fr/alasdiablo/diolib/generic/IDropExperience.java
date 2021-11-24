@@ -13,6 +13,7 @@ public interface IDropExperience {
      * Getter use by <i>getExperience</i> for get the <i>ExperienceRarity</i>
      *
      * @return Return the <i>ExperienceRarity</i> set by an Entity, Block or Other Element
+     *
      * @see ExperienceRarity
      */
     ExperienceRarity getExperienceRarity();
@@ -22,6 +23,7 @@ public interface IDropExperience {
      *
      * @param random         Math function use for generate random number
      * @param dropExperience An Entity, Block or Other Element who implement <i>IDropExperience</i>
+     *
      * @return Return the a random quantity of xp corresponding to <i>an Entity, Block or Other Element</i>
      */
     default int getExperience(Random random, IDropExperience dropExperience) {

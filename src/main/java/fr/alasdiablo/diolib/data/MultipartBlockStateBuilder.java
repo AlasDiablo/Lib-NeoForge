@@ -41,7 +41,7 @@ public class MultipartBlockStateBuilder implements IGeneratedBlockstate {
     }
 
     public void addMultipart(ResourceLocation modelPathIn, boolean north, boolean east, boolean south, boolean west) {
-        JsonObject when = new JsonObject();
+        JsonObject when  = new JsonObject();
         JsonObject apply = new JsonObject();
         this.handleCardinalPoint(when, north, east, south, west);
         apply.addProperty("model", modelPathIn.toString());
@@ -49,7 +49,7 @@ public class MultipartBlockStateBuilder implements IGeneratedBlockstate {
     }
 
     public void addMultipart(ResourceLocation modelPathIn, boolean uvLockIn, boolean north, boolean east, boolean south, boolean west) {
-        JsonObject when = new JsonObject();
+        JsonObject when  = new JsonObject();
         JsonObject apply = new JsonObject();
         this.handleCardinalPoint(when, north, east, south, west);
         apply.addProperty("model", modelPathIn.toString());
@@ -58,7 +58,7 @@ public class MultipartBlockStateBuilder implements IGeneratedBlockstate {
     }
 
     public void addMultipart(ResourceLocation modelPathIn, boolean uvLockIn, int xIn, int yIn, boolean north, boolean east, boolean south, boolean west) {
-        JsonObject when = new JsonObject();
+        JsonObject when  = new JsonObject();
         JsonObject apply = new JsonObject();
         this.handleCardinalPoint(when, north, east, south, west);
         apply.addProperty("model", modelPathIn.toString());

@@ -9,6 +9,7 @@ import net.minecraft.world.level.biome.Biome;
 public interface IWorldGenerator {
     /**
      * Function use to add all ConfiguredFeature to a biome
+     *
      * @param biome Biome which receives the ConfiguredFeature
      */
     void startWorldGeneration(Biome biome);

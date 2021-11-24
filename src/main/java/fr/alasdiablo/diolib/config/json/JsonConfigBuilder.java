@@ -16,8 +16,8 @@ public class JsonConfigBuilder {
     private static final List<String> modIDList = new ArrayList<>();
 
     private final Map<String, JsonConfig> jsonConfigs;
-    private final String modID;
-    private final List<String> configDir;
+    private final String                  modID;
+    private final List<String>            configDir;
 
     public JsonConfigBuilder(String modID) throws DuplicatedJsonConfigException {
         this.modID = modID;
@@ -27,7 +27,7 @@ public class JsonConfigBuilder {
         }
 
         this.jsonConfigs = new HashMap<>();
-        this.configDir = Collections.singletonList(modID);
+        this.configDir   = Collections.singletonList(modID);
     }
 
     public JsonConfigBuilder(String modID, String... configSubDir) throws DuplicatedJsonConfigException {
@@ -55,7 +55,7 @@ public class JsonConfigBuilder {
 
     public void build() throws IOException {
         String currentPath = FMLPaths.CONFIGDIR.get().toAbsolutePath().toString();
-        Path path = null;
+        Path   path        = null;
 
         for (String e: this.configDir) {
             Path tmpPath = Paths.get(currentPath, e);

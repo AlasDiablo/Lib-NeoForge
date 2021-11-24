@@ -30,25 +30,33 @@ import java.util.function.Supplier;
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
 public class DioLootTableProvider extends LootTableProvider {
-    private final DataGenerator dataGenerator;
-    private static final Gson GSON = (new GsonBuilder()).setPrettyPrinting().disableHtmlEscaping().create();
-    protected final List<Pair<Supplier<Consumer<BiConsumer<ResourceLocation, LootTable.Builder>>>, LootContextParamSet>> lootTableList;
-    private final LootContextParamSet lootParameterSet;
-    private final String name;
+    private static final Gson                                                                                                 GSON
+            = (new GsonBuilder()).setPrettyPrinting().disableHtmlEscaping().create();
+    protected final      List<Pair<Supplier<Consumer<BiConsumer<ResourceLocation, LootTable.Builder>>>, LootContextParamSet>> lootTableList;
+    private final        DataGenerator                                                                                        dataGenerator;
+    private final        LootContextParamSet                                                                                  lootParameterSet;
+    private final        String                                                                                               name;
 
 
-    public DioLootTableProvider(DataGenerator dataGeneratorIn, List<Pair<Supplier<Consumer<BiConsumer<ResourceLocation, LootTable.Builder>>>, LootContextParamSet>> lootTableListIn, LootContextParamSet lootParameterSetIn, String nameIn) {
+    public DioLootTableProvider(
+            DataGenerator dataGeneratorIn, List<Pair<Supplier<Consumer<BiConsumer<ResourceLocation, LootTable.Builder>>>, LootContextParamSet>> lootTableListIn,
+            LootContextParamSet lootParameterSetIn, String nameIn
+    ) {
         super(dataGeneratorIn);
-        this.dataGenerator = dataGeneratorIn;
-        this.lootTableList = lootTableListIn;
+        this.dataGenerator    = dataGeneratorIn;
+        this.lootTableList    = lootTableListIn;
         this.lootParameterSet = lootParameterSetIn;
-        this.name = nameIn;
+        this.name             = nameIn;
+    }
+
+    private static Path getPath(Path pathIn, ResourceLocation id) {
+        return pathIn.resolve("data/" + id.getNamespace() + "/loot_tables/" + id.getPath() + ".json");
     }
 
     @Override
     public void run(HashCache cache) {
-        final Path path = this.dataGenerator.getOutputFolder();
-        final Map<ResourceLocation, LootTable> map = Maps.newHashMap();
+        final Path                             path = this.dataGenerator.getOutputFolder();
+        final Map<ResourceLocation, LootTable> map  = Maps.newHashMap();
 
         this.getTables().forEach((lootParameterSetPair) -> lootParameterSetPair.getFirst().get().accept((resourceLocation, builder) -> {
             if (map.put(resourceLocation, builder.setParamSet(lootParameterSetPair.getSecond()).build()) != null) {
@@ -85,10 +93,6 @@ public class DioLootTableProvider extends LootTableProvider {
     @Override
     protected List<Pair<Supplier<Consumer<BiConsumer<ResourceLocation, LootTable.Builder>>>, LootContextParamSet>> getTables() {
         return this.lootTableList;
-    }
-
-    private static Path getPath(Path pathIn, ResourceLocation id) {
-        return pathIn.resolve("data/" + id.getNamespace() + "/loot_tables/" + id.getPath() + ".json");
     }
 
     @Override

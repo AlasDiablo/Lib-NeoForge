@@ -4,17 +4,17 @@ import com.google.gson.JsonObject;
 
 public class BlockStateVariant {
 
-    private final String key;
-    private final String model;
-    private final int x;
-    private final int y;
+    private final String  key;
+    private final String  model;
+    private final int     x;
+    private final int     y;
     private final boolean uvlock;
 
     public BlockStateVariant(String key, String model, int x, int y, boolean uvlock) {
-        this.key = key;
-        this.model = model;
-        this.x = x;
-        this.y = y;
+        this.key    = key;
+        this.model  = model;
+        this.x      = x;
+        this.y      = y;
         this.uvlock = uvlock;
     }
 

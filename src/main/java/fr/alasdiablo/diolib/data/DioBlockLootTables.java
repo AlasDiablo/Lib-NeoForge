@@ -26,7 +26,7 @@ public abstract class DioBlockLootTables extends BlockLoot {
         this.addTables();
         Set<ResourceLocation> set = Sets.newHashSet();
 
-        for (Block block : getKnownBlocks()) {
+        for (Block block: getKnownBlocks()) {
             ResourceLocation resourcelocation = block.getLootTable();
             if (resourcelocation != BuiltInLootTables.EMPTY && set.add(resourcelocation)) {
                 LootTable.Builder lootTableBuilder = this.lootTables.remove(resourcelocation);

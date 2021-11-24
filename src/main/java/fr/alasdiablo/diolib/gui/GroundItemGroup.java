@@ -7,7 +7,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 
 import javax.annotation.ParametersAreNonnullByDefault;
-import java.awt.Color;
+import java.awt.*;
 
 @SuppressWarnings("unused")
 @MethodsReturnNonnullByDefault

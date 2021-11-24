@@ -1,6 +1,5 @@
 package fr.alasdiablo.diolib.data;
 
-import com.google.common.collect.Lists;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
@@ -28,11 +27,11 @@ public abstract class DioBlockStateProvider implements DataProvider {
     protected final Map<String, IGeneratedBlockstate> registeredBlocks = new LinkedHashMap<>();
 
     private final DataGenerator generator;
-    private final String mod_id;
+    private final String        mod_id;
 
     public DioBlockStateProvider(DataGenerator generator, String mod_id) {
         this.generator = generator;
-        this.mod_id = mod_id;
+        this.mod_id    = mod_id;
     }
 
     protected abstract void registerStates();
@@ -42,11 +41,11 @@ public abstract class DioBlockStateProvider implements DataProvider {
     }
 
     protected void door(String blockName) {
-        ResourceLocation rl_top = Utils.rl(this.mod_id, "block/" + blockName + "_top");
-        ResourceLocation rl_top_hinge = Utils.rl(this.mod_id, "block/" + blockName + "_top_hinge");
-        ResourceLocation rl_bottom = Utils.rl(this.mod_id, "block/" + blockName + "_bottom");
-        ResourceLocation rl_bottom_hinge = Utils.rl(this.mod_id, "block/" + blockName + "_bottom_hinge");
-        BlockStateBuilder stateBuilder = new BlockStateBuilder();
+        ResourceLocation  rl_top          = Utils.rl(this.mod_id, "block/" + blockName + "_top");
+        ResourceLocation  rl_top_hinge    = Utils.rl(this.mod_id, "block/" + blockName + "_top_hinge");
+        ResourceLocation  rl_bottom       = Utils.rl(this.mod_id, "block/" + blockName + "_bottom");
+        ResourceLocation  rl_bottom_hinge = Utils.rl(this.mod_id, "block/" + blockName + "_bottom_hinge");
+        BlockStateBuilder stateBuilder    = new BlockStateBuilder();
 
         stateBuilder.addVariants("facing=east,half=lower,hinge=left,open=false", rl_bottom);
         stateBuilder.addVariants("facing=east,half=lower,hinge=left,open=true", 0, 90, rl_bottom_hinge);
@@ -88,8 +87,8 @@ public abstract class DioBlockStateProvider implements DataProvider {
     }
 
     protected void button(String blockName) {
-        ResourceLocation rl = Utils.rl(this.mod_id, "block/" + blockName);
-        ResourceLocation rl_pressed = Utils.rl(this.mod_id, "block/" + blockName + "_pressed");
+        ResourceLocation  rl           = Utils.rl(this.mod_id, "block/" + blockName);
+        ResourceLocation  rl_pressed   = Utils.rl(this.mod_id, "block/" + blockName + "_pressed");
         BlockStateBuilder stateBuilder = new BlockStateBuilder();
 
         stateBuilder.addVariants("face=ceiling,facing=east,powered=false", 180, 270, rl);
@@ -125,9 +124,9 @@ public abstract class DioBlockStateProvider implements DataProvider {
     }
 
     protected void trapdoor(String blockName) {
-        ResourceLocation rl_bottom = Utils.rl(this.mod_id, "block/" + blockName + "_bottom");
-        ResourceLocation rl_top = Utils.rl(this.mod_id, "block/" + blockName + "_top");
-        ResourceLocation rl_open = Utils.rl(this.mod_id, "block/" + blockName + "_open");
+        ResourceLocation  rl_bottom    = Utils.rl(this.mod_id, "block/" + blockName + "_bottom");
+        ResourceLocation  rl_top       = Utils.rl(this.mod_id, "block/" + blockName + "_top");
+        ResourceLocation  rl_open      = Utils.rl(this.mod_id, "block/" + blockName + "_open");
         BlockStateBuilder stateBuilder = new BlockStateBuilder();
 
         stateBuilder.addVariants("facing=east,half=bottom,open=false", rl_bottom);
@@ -143,20 +142,20 @@ public abstract class DioBlockStateProvider implements DataProvider {
         stateBuilder.addVariants("facing=west,half=bottom,open=false", rl_bottom);
         stateBuilder.addVariants("facing=west,half=bottom,open=true", 0, 270, rl_open);
         stateBuilder.addVariants("facing=west,half=top,open=false", rl_top);
-        stateBuilder.addVariants("facing=west,half=top,open=true",0, 270, rl_open);
+        stateBuilder.addVariants("facing=west,half=top,open=true", 0, 270, rl_open);
 
         stateBuilder.addVariants("facing=south,half=bottom,open=false", rl_bottom);
         stateBuilder.addVariants("facing=south,half=bottom,open=true", 0, 180, rl_open);
         stateBuilder.addVariants("facing=south,half=top,open=false", rl_top);
-        stateBuilder.addVariants("facing=south,half=top,open=true",0, 180, rl_open);
+        stateBuilder.addVariants("facing=south,half=top,open=true", 0, 180, rl_open);
 
         this.addBlockState(blockName, stateBuilder);
     }
 
     protected void stairs(String blockName) {
-        ResourceLocation rl = Utils.rl(this.mod_id, "block/" + blockName);
-        ResourceLocation rl_inner = Utils.rl(this.mod_id, "block/" + blockName + "_inner");
-        ResourceLocation rl_outer = Utils.rl(this.mod_id, "block/" + blockName + "_outer");
+        ResourceLocation  rl           = Utils.rl(this.mod_id, "block/" + blockName);
+        ResourceLocation  rl_inner     = Utils.rl(this.mod_id, "block/" + blockName + "_inner");
+        ResourceLocation  rl_outer     = Utils.rl(this.mod_id, "block/" + blockName + "_outer");
         BlockStateBuilder stateBuilder = new BlockStateBuilder();
 
         stateBuilder.addVariants("facing=east,half=bottom,shape=inner_left", 0, 270, true, rl_inner);
@@ -207,10 +206,10 @@ public abstract class DioBlockStateProvider implements DataProvider {
     }
 
     protected void slab(String slabBlockName, String fullBlockName) {
-        ResourceLocation rl = Utils.rl(this.mod_id, "block/" + slabBlockName);
-        ResourceLocation rl_top = Utils.rl(this.mod_id, "block/" + slabBlockName + "_top");
-        ResourceLocation rl_full_block = Utils.rl(this.mod_id, "block/" + fullBlockName);
-        BlockStateBuilder stateBuilder = new BlockStateBuilder();
+        ResourceLocation  rl            = Utils.rl(this.mod_id, "block/" + slabBlockName);
+        ResourceLocation  rl_top        = Utils.rl(this.mod_id, "block/" + slabBlockName + "_top");
+        ResourceLocation  rl_full_block = Utils.rl(this.mod_id, "block/" + fullBlockName);
+        BlockStateBuilder stateBuilder  = new BlockStateBuilder();
         stateBuilder.addVariants("type=bottom", rl);
         stateBuilder.addVariants("type=top", rl_top);
         stateBuilder.addVariants("type=double", rl_full_block);
@@ -218,8 +217,8 @@ public abstract class DioBlockStateProvider implements DataProvider {
     }
 
     protected void pressurePlate(String blockName) {
-        ResourceLocation rl = Utils.rl(this.mod_id, "block/" + blockName);
-        ResourceLocation rl_down = Utils.rl(this.mod_id, "block/" + blockName + "_down");
+        ResourceLocation  rl           = Utils.rl(this.mod_id, "block/" + blockName);
+        ResourceLocation  rl_down      = Utils.rl(this.mod_id, "block/" + blockName + "_down");
         BlockStateBuilder stateBuilder = new BlockStateBuilder();
         stateBuilder.addVariants("powered=false", rl);
         stateBuilder.addVariants("powered=true", rl_down);
@@ -227,10 +226,10 @@ public abstract class DioBlockStateProvider implements DataProvider {
     }
 
     protected void woodenFenceGate(String blockName) {
-        ResourceLocation rl = Utils.rl(this.mod_id, "block/" + blockName);
-        ResourceLocation rl_open = Utils.rl(this.mod_id, "block/" + blockName + "_open");
-        ResourceLocation rl_wall = Utils.rl(this.mod_id, "block/" + blockName + "_wall");
-        ResourceLocation rl_wall_open = Utils.rl(this.mod_id, "block/" + blockName + "_wall_open");
+        ResourceLocation  rl           = Utils.rl(this.mod_id, "block/" + blockName);
+        ResourceLocation  rl_open      = Utils.rl(this.mod_id, "block/" + blockName + "_open");
+        ResourceLocation  rl_wall      = Utils.rl(this.mod_id, "block/" + blockName + "_wall");
+        ResourceLocation  rl_wall_open = Utils.rl(this.mod_id, "block/" + blockName + "_wall_open");
         BlockStateBuilder stateBuilder = new BlockStateBuilder();
         stateBuilder.addVariants("facing=east,in_wall=false,open=false", 0, 270, true, rl);
         stateBuilder.addVariants("facing=east,in_wall=false,open=true", 0, 270, true, rl_open);
@@ -256,21 +255,21 @@ public abstract class DioBlockStateProvider implements DataProvider {
     }
 
     protected void woodenFence(String blockName) {
-        ResourceLocation rl_post = Utils.rl(this.mod_id, "block/" + blockName + "_post");
-        ResourceLocation rl_side = Utils.rl(this.mod_id, "block/" + blockName + "_side");
+        ResourceLocation           rl_post      = Utils.rl(this.mod_id, "block/" + blockName + "_post");
+        ResourceLocation           rl_side      = Utils.rl(this.mod_id, "block/" + blockName + "_side");
         MultipartBlockStateBuilder stateBuilder = new MultipartBlockStateBuilder();
         stateBuilder.addMultipart(rl_post);
-        stateBuilder.addMultipart(rl_side, true, 0, 0  , true , false, false, false);
-        stateBuilder.addMultipart(rl_side, true, 0, 90 , false, true , false, false);
-        stateBuilder.addMultipart(rl_side, true, 0, 180, false, false, true , false);
-        stateBuilder.addMultipart(rl_side, true, 0, 270, false, false, false, true );
+        stateBuilder.addMultipart(rl_side, true, 0, 0, true, false, false, false);
+        stateBuilder.addMultipart(rl_side, true, 0, 90, false, true, false, false);
+        stateBuilder.addMultipart(rl_side, true, 0, 180, false, false, true, false);
+        stateBuilder.addMultipart(rl_side, true, 0, 270, false, false, false, true);
         this.addBlockState(blockName, stateBuilder);
     }
 
     protected void pillar(String blockName) {
-        ResourceLocation rl = Utils.rl(this.mod_id, "block/" + blockName);
-        ResourceLocation rl_horizontal = Utils.rl(this.mod_id, "block/" + blockName + "_horizontal");
-        BlockStateBuilder stateBuilder = new BlockStateBuilder();
+        ResourceLocation  rl            = Utils.rl(this.mod_id, "block/" + blockName);
+        ResourceLocation  rl_horizontal = Utils.rl(this.mod_id, "block/" + blockName + "_horizontal");
+        BlockStateBuilder stateBuilder  = new BlockStateBuilder();
         stateBuilder.addVariants("axis=x", 90, 90, rl_horizontal);
         stateBuilder.addVariants("axis=y", 0, 0, rl);
         stateBuilder.addVariants("axis=z", 90, 0, rl_horizontal);
@@ -282,7 +281,7 @@ public abstract class DioBlockStateProvider implements DataProvider {
     }
 
     protected void cubeAll(String blockName) {
-        ResourceLocation rl = Utils.rl(this.mod_id, "block/" + blockName);
+        ResourceLocation  rl           = Utils.rl(this.mod_id, "block/" + blockName);
         BlockStateBuilder stateBuilder = new BlockStateBuilder();
         stateBuilder.addVariants("", rl);
         this.addBlockState(blockName, stateBuilder);
@@ -292,15 +291,15 @@ public abstract class DioBlockStateProvider implements DataProvider {
     public void run(HashCache cache) {
         this.registeredBlocks.clear();
         this.registerStates();
-        for (Map.Entry<String, IGeneratedBlockstate> entry : registeredBlocks.entrySet()) {
+        for (Map.Entry<String, IGeneratedBlockstate> entry: registeredBlocks.entrySet()) {
             this.saveBlockState(cache, entry.getValue().toJson(), entry.getKey());
         }
     }
 
     private void saveBlockState(HashCache cache, JsonObject stateJson, String blockName) {
-        Path mainOutput = generator.getOutputFolder();
+        Path   mainOutput = generator.getOutputFolder();
         String pathSuffix = "assets/" + mod_id + "/blockstates/" + blockName + ".json";
-        Path outputPath = mainOutput.resolve(pathSuffix);
+        Path   outputPath = mainOutput.resolve(pathSuffix);
         try {
             DataProvider.save(GSON, cache, stateJson, outputPath);
         } catch (IOException e) {

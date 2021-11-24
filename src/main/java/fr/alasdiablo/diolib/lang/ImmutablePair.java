@@ -4,6 +4,10 @@ import java.util.Objects;
 
 public record ImmutablePair<K, V>(K key, V value) {
 
+    public static <K, V> ImmutablePair<K, V> of(K key, V value) {
+        return new ImmutablePair<>(key, value);
+    }
+
     @Deprecated
     public K getKey() {
         return key;
@@ -12,10 +16,6 @@ public record ImmutablePair<K, V>(K key, V value) {
     @Deprecated
     public V getValue() {
         return value;
-    }
-
-    public static <K, V> ImmutablePair<K, V> of(K key, V value) {
-        return new ImmutablePair<>(key, value);
     }
 
     @Override

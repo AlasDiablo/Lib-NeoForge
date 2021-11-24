@@ -11,7 +11,7 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-def build_number = 17
+def build_number = 18
 def isExperimental = true
 version = "2.0.${build_number}"
 if (isExperimental) {
@@ -65,21 +65,19 @@ minecraft {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.17.1-37.0.1'
+    minecraft 'net.minecraftforge:forge:1.17.1-37.0.110'
 }
 
 jar {
-    manifest {
-        attributes([
-                "Specification-Title"     : "DiaboloLib",
-                "Specification-Vendor"    : "AlasDiablo, lIotaMiu, Safyrus",
-                "Specification-Version"   : "1",
-                "Implementation-Title"    : project.name,
-                "Implementation-Version"  : project.jar.archiveVersion,
-                "Implementation-Vendor"   : "AlasDiablo, lIotaMiu, Safyrus",
-                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
-        ])
-    }
+    manifest.attributes([
+            "Specification-Title"     : "DiaboloLib",
+            "Specification-Vendor"    : "AlasDiablo, lIotaMiu, Safyrus",
+            "Specification-Version"   : "1",
+            "Implementation-Title"    : project.name,
+            "Implementation-Version"  : project.jar.archiveVersion,
+            "Implementation-Vendor"   : "AlasDiablo, lIotaMiu, Safyrus",
+            "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+    ])
     destinationDirectory.set(file(rootProject.getRootDir().getPath() + '/output'))
 }
 
@@ -99,7 +97,7 @@ task deobfJar(type: Jar) {
     from sourceSets.main.output
     def archiveName = 'deobf-' + deobfSourceClassifier
     archiveClassifier.set(archiveName)
-    manifest { attributes(["Implementation-Version": project.jar.archiveVersion]) }
+    manifest.attributes(["Implementation-Version": project.jar.archiveVersion])
     destinationDirectory.set(file(rootProject.getRootDir().getPath() + '/output'))
 }
 

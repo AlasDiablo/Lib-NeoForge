@@ -19,6 +19,7 @@ import java.util.Map;
 /**
  * Use DioBlockStateProvider instead
  * This class will be remove in version 3.x.x
+ *
  * @see fr.alasdiablo.diolib.data.DioBlockStateProvider
  */
 @SuppressWarnings("unused")
@@ -27,19 +28,19 @@ import java.util.Map;
 @Deprecated
 public abstract class BlockStateProvider implements DataProvider {
     @Deprecated
-    private static final Gson GSON = (new GsonBuilder()).setPrettyPrinting().disableHtmlEscaping().create();
+    private static final Gson                              GSON             = (new GsonBuilder()).setPrettyPrinting().disableHtmlEscaping().create();
     @Deprecated
-    protected final Map<String, IGeneratedBlockstate> registeredBlocks = new LinkedHashMap<>();
+    protected final      Map<String, IGeneratedBlockstate> registeredBlocks = new LinkedHashMap<>();
 
     @Deprecated
     private final DataGenerator generator;
     @Deprecated
-    private final String modid;
+    private final String        modid;
 
     @Deprecated
     public BlockStateProvider(DataGenerator generator, String modid) {
         this.generator = generator;
-        this.modid = modid;
+        this.modid     = modid;
     }
 
     @Deprecated
@@ -55,16 +56,16 @@ public abstract class BlockStateProvider implements DataProvider {
     public void run(HashCache cache) {
         this.registeredBlocks.clear();
         this.registerStates();
-        for (Map.Entry<String, IGeneratedBlockstate> entry : registeredBlocks.entrySet()) {
+        for (Map.Entry<String, IGeneratedBlockstate> entry: registeredBlocks.entrySet()) {
             this.saveBlockState(cache, entry.getValue().toJson(), entry.getKey());
         }
     }
 
     @Deprecated
     private void saveBlockState(HashCache cache, JsonObject stateJson, String blockName) {
-        Path mainOutput = generator.getOutputFolder();
+        Path   mainOutput = generator.getOutputFolder();
         String pathSuffix = "assets/" + modid + "/blockstates/" + blockName + ".json";
-        Path outputPath = mainOutput.resolve(pathSuffix);
+        Path   outputPath = mainOutput.resolve(pathSuffix);
         try {
             DataProvider.save(GSON, cache, stateJson, outputPath);
         } catch (IOException e) {

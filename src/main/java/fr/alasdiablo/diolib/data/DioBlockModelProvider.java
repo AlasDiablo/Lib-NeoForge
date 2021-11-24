@@ -13,8 +13,10 @@ public abstract class DioBlockModelProvider extends BlockModelProvider {
 
     protected void button(String blockNameIn, String textureNameIn) {
         withExistingParent(blockNameIn, Utils.rl("minecraft", "block/button")).texture("texture", Utils.rl(this.modid, "block/" + textureNameIn));
-        withExistingParent(blockNameIn + "_inventory", Utils.rl("minecraft", "block/button_inventory")).texture("texture", Utils.rl(this.modid, "block/" + textureNameIn));
-        withExistingParent(blockNameIn + "_pressed", Utils.rl("minecraft", "block/button_pressed")).texture("texture", Utils.rl(this.modid, "block/" + textureNameIn));
+        withExistingParent(blockNameIn + "_inventory", Utils.rl("minecraft", "block/button_inventory")).texture(
+                "texture", Utils.rl(this.modid, "block/" + textureNameIn));
+        withExistingParent(blockNameIn + "_pressed", Utils.rl("minecraft", "block/button_pressed")).texture(
+                "texture", Utils.rl(this.modid, "block/" + textureNameIn));
     }
 
     protected void door(String blockNameIn) {
@@ -37,14 +39,18 @@ public abstract class DioBlockModelProvider extends BlockModelProvider {
 
     protected void fenceGate(String blockNameIn, String textureNameIn) {
         withExistingParent(blockNameIn, Utils.rl("minecraft", "block/template_fence_gate")).texture("texture", Utils.rl(this.modid, "block/" + textureNameIn));
-        withExistingParent(blockNameIn + "_open", Utils.rl("minecraft", "block/template_fence_gate_open")).texture("texture", Utils.rl(this.modid, "block/" + textureNameIn));
-        withExistingParent(blockNameIn + "_wall", Utils.rl("minecraft", "block/template_fence_gate_wall")).texture("texture", Utils.rl(this.modid, "block/" + textureNameIn));
-        withExistingParent(blockNameIn + "_wall_open", Utils.rl("minecraft", "block/template_fence_gate_wall_open")).texture("texture", Utils.rl(this.modid, "block/" + textureNameIn));
+        withExistingParent(blockNameIn + "_open", Utils.rl("minecraft", "block/template_fence_gate_open")).texture(
+                "texture", Utils.rl(this.modid, "block/" + textureNameIn));
+        withExistingParent(blockNameIn + "_wall", Utils.rl("minecraft", "block/template_fence_gate_wall")).texture(
+                "texture", Utils.rl(this.modid, "block/" + textureNameIn));
+        withExistingParent(blockNameIn + "_wall_open", Utils.rl("minecraft", "block/template_fence_gate_wall_open")).texture(
+                "texture", Utils.rl(this.modid, "block/" + textureNameIn));
     }
 
     protected void fence(String blockNameIn, String textureNameIn) {
         withExistingParent(blockNameIn + "_post", Utils.rl("minecraft", "block/fence_post")).texture("texture", Utils.rl(this.modid, "block/" + textureNameIn));
-        withExistingParent(blockNameIn + "_inventory", Utils.rl("minecraft", "block/fence_inventory")).texture("texture", Utils.rl(this.modid, "block/" + textureNameIn));
+        withExistingParent(blockNameIn + "_inventory", Utils.rl("minecraft", "block/fence_inventory")).texture(
+                "texture", Utils.rl(this.modid, "block/" + textureNameIn));
         withExistingParent(blockNameIn + "_side", Utils.rl("minecraft", "block/fence_side")).texture("texture", Utils.rl(this.modid, "block/" + textureNameIn));
     }
 

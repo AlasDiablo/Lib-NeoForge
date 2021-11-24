@@ -1,9 +1,17 @@
+### 2.0.18
+
+#### Add
+
++ SimpleUnicode (change letter like `é` to unicode value)
+
 ### 2.0.17
 
 #### Add
+
 + DioBlockModelProvider
 
-#### Fix 
+#### Fix
+
 + DioBlockStateProvider
 
 ### 2.0.16

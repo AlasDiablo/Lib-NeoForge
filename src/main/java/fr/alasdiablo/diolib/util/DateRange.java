@@ -10,11 +10,11 @@ public class DateRange {
     //   - Summer: 5, 6, 7, 8
     //   - Autumn: 9, 10
 
-    public static final int CURRENT_MONTH = currentMonth();
-    public static final boolean IS_WINTER = winter();
-    public static final boolean IS_SPRING = spring();
-    public static final boolean IS_SUMMER = summer();
-    public static final boolean IS_AUTUMN = autumn();
+    public static final int     CURRENT_MONTH  = currentMonth();
+    public static final boolean IS_WINTER      = winter();
+    public static final boolean IS_SPRING      = spring();
+    public static final boolean IS_SUMMER      = summer();
+    public static final boolean IS_AUTUMN      = autumn();
     public static final boolean IS_APRIL_FIRST = april();
 
     private static int currentMonth() {

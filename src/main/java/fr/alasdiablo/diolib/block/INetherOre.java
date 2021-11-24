@@ -27,11 +27,12 @@ public interface INetherOre {
      * @param isAggro    if null use value set by MobAngerConfig, enable or disable mob aggro
      */
     default void angerZombifiedPiglin(Player player, Level world, BlockPos pos, @Nullable Integer aggroRange, @Nullable Boolean isAggro) {
-        isAggro = (isAggro == null) ? ModConfig.ZOMBIFIED_PIGLIN_ANGER.canAnger() : isAggro;
+        isAggro    = (isAggro == null) ? ModConfig.ZOMBIFIED_PIGLIN_ANGER.canAnger() : isAggro;
         aggroRange = (aggroRange == null) ? ModConfig.ZOMBIFIED_PIGLIN_ANGER.getAngerRange() : aggroRange;
         if (isAggro) {
             final int x = pos.getX(), y = pos.getY(), z = pos.getZ();
-            List<ZombifiedPiglin> list = world.getEntitiesOfClass(ZombifiedPiglin.class,
+            List<ZombifiedPiglin> list = world.getEntitiesOfClass(
+                    ZombifiedPiglin.class,
                     AABB.of(new BoundingBox(
                                     x - aggroRange,
                                     y - aggroRange,

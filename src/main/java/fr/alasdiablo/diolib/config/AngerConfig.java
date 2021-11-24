@@ -8,13 +8,13 @@ public class AngerConfig extends JsonConfig {
 
     private final String elementName;
 
-    private int angerRange;
+    private int     angerRange;
     private boolean canAnger;
 
     public AngerConfig(String elementName) {
         this.elementName = elementName;
-        this.canAnger = true;
-        this.angerRange = 10;
+        this.canAnger    = true;
+        this.angerRange  = 10;
     }
 
     public int getAngerRange() {
@@ -28,7 +28,7 @@ public class AngerConfig extends JsonConfig {
     @Override
     protected void read(JsonObject json) {
         this.angerRange = json.get("anger_range").getAsInt();
-        this.canAnger = json.get("can_anger").getAsBoolean();
+        this.canAnger   = json.get("can_anger").getAsBoolean();
         DiaboloLib.logger.debug("Data change for " + this.elementName + ", canAnger : " + this.canAnger + ", angerRange : " + this.angerRange);
     }
 

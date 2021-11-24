@@ -20,17 +20,12 @@ public enum ExtenedFillerBlockType {
     DIORITE(Blocks.DIORITE),
     ANDESITE(Blocks.ANDESITE);
 
-    private final Block block;
+    private static final Map<ResourceLocation, RuleTest> RULE_TEST_MAP = new HashMap<>();
+    private final        Block                           block;
 
     ExtenedFillerBlockType(Block block) {
         this.block = block;
     }
-
-    public RuleTest get() {
-        return createOrGetRuleTest(this.block);
-    }
-
-    private static final Map<ResourceLocation, RuleTest> RULE_TEST_MAP = new HashMap<>();
 
     public static RuleTest createOrGetRuleTest(Block block) {
         ResourceLocation registryName = block.getRegistryName();
@@ -41,5 +36,9 @@ public enum ExtenedFillerBlockType {
             RULE_TEST_MAP.put(registryName, rule);
             return rule;
         }
+    }
+
+    public RuleTest get() {
+        return createOrGetRuleTest(this.block);
     }
 }

@@ -14,7 +14,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-import java.awt.Color;
+import java.awt.*;
 
 /**
  * Helper use for register block and item color quickly
@@ -24,12 +24,12 @@ import java.awt.Color;
 public class ColorsHelper {
 
     private static final BlockColors BLOCK_COLORS;
-    private static final ItemColors ITEM_COLORS;
+    private static final ItemColors  ITEM_COLORS;
 
     static {
         final Minecraft minecraft = Minecraft.getInstance();
         BLOCK_COLORS = minecraft.getBlockColors();
-        ITEM_COLORS = minecraft.getItemColors();
+        ITEM_COLORS  = minecraft.getItemColors();
     }
 
     /**

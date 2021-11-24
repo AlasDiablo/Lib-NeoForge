@@ -18,10 +18,12 @@ public class RegistryHelper {
      *
      * @param registryName The RegistryName which receives the prefix
      * @param prefix       The prefix that is added to the RegistryName
+     *
      * @return Return the addition of the <i>registryName</i> and the <i>prefix</i>
      */
     public static ResourceLocation setPrefixOnRegistryName(@Nullable ResourceLocation registryName, String prefix) {
-        return registryName == null || prefix == null ? null : new ResourceLocation(registryName.getNamespace(), String.format("%s_%s", prefix, registryName.getPath()));
+        return registryName == null || prefix == null ? null : new ResourceLocation(
+                registryName.getNamespace(), String.format("%s_%s", prefix, registryName.getPath()));
     }
 
     /**
@@ -31,7 +33,7 @@ public class RegistryHelper {
      * @param blocks   Array of block need to be register
      */
     public static void registerBlock(IForgeRegistry<Block> registry, Block... blocks) {
-        for (Block block : blocks) {
+        for (Block block: blocks) {
             register(registry, block);
         }
     }
@@ -44,7 +46,7 @@ public class RegistryHelper {
      * @param blocks     Array of block need to be register as BlockItem
      */
     public static void registerBlockItem(IForgeRegistry<Item> registry, Item.Properties properties, Block... blocks) {
-        for (Block block : blocks) {
+        for (Block block: blocks) {
             register(registry, new BlockItem(block, properties).setRegistryName(Objects.requireNonNull(block.getRegistryName())));
         }
     }
@@ -56,7 +58,7 @@ public class RegistryHelper {
      * @param items    Array of item need to be register
      */
     public static void registerItem(IForgeRegistry<Item> registry, Item... items) {
-        for (Item item : items) {
+        for (Item item: items) {
             register(registry, item);
         }
     }

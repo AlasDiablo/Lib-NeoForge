@@ -27,11 +27,12 @@ public interface IEndOre {
      * @param isAggro    if null use value set by MobAngerConfig, enable or disable mob aggro
      */
     default void angerEnderman(Player player, Level world, BlockPos pos, @Nullable Integer aggroRange, @Nullable Boolean isAggro) {
-        isAggro = (isAggro == null) ? ModConfig.ENDERMAN_ANGER.canAnger() : isAggro;
+        isAggro    = (isAggro == null) ? ModConfig.ENDERMAN_ANGER.canAnger() : isAggro;
         aggroRange = (aggroRange == null) ? ModConfig.ENDERMAN_ANGER.getAngerRange() : aggroRange;
         if (isAggro) {
             final int x = pos.getX(), y = pos.getY(), z = pos.getZ();
-            List<EnderMan> list = world.getEntitiesOfClass(EnderMan.class,
+            List<EnderMan> list = world.getEntitiesOfClass(
+                    EnderMan.class,
                     AABB.of(new BoundingBox(
                                     x - aggroRange,
                                     y - aggroRange,
