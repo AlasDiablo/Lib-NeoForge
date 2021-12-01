@@ -2,9 +2,6 @@ package fr.alasdiablo.diolib.config;
 
 import fr.alasdiablo.diolib.DiaboloLib;
 import fr.alasdiablo.diolib.config.json.JsonConfigBuilder;
-import fr.alasdiablo.diolib.event.FireworkEvent;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.entity.player.PlayerEvent;
 
 import java.io.IOException;
 
@@ -14,8 +11,7 @@ public class ModConfig {
     public final static AngerConfig         ZOMBIFIED_PIGLIN_ANGER = new AngerConfig("zombified_piglin_anger");
     public final static FireworkEventConfig CONTRIBUTOR_FIREWORK   = new FireworkEventConfig();
 
-    public static void setup() {
-        MinecraftForge.EVENT_BUS.<PlayerEvent.PlayerLoggedInEvent>addListener(e -> new FireworkEvent().init(e));
+    public static void init() {
         try {
             final JsonConfigBuilder configBuilder = new JsonConfigBuilder("diabololib");
 

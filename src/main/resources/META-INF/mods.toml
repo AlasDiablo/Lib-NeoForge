@@ -1,6 +1,7 @@
 modLoader="javafml"
-loaderVersion="[37,)"
-license="All rights reserved"
+loaderVersion="[38,)"
+license="LGPL-3.0"
+issueTrackerURL="https://github.com/Janoeo/DiaboloLib/issues"
 [[mods]]
 modId="diolib"
 version="${file.jarVersion}"
@@ -13,12 +14,12 @@ Libray Mod for Janoeo Project and more !
 [[dependencies.diolib]]
     modId="forge"
     mandatory=true
-    versionRange="[37,)"
+    versionRange="[38,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.diolib]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.17.1,1.18)"
+    versionRange="[1.18,1.19)"
     ordering="NONE"
     side="BOTH"

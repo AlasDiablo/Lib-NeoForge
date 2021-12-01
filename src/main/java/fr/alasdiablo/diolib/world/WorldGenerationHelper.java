@@ -121,6 +121,7 @@ public class WorldGenerationHelper {
         public static ConfiguredFeature<?, ?> registerReplaceBlockFeature(
                 ResourceLocation name, BlockState replacementBlock, BlockState oreBlock, int count, int bottom, int top
         ) {
+
             ConfiguredFeature<?, ?> feature = ConfiguredFeatureHelper.register(
                     name,
                     Feature.REPLACE_SINGLE_BLOCK.configured(

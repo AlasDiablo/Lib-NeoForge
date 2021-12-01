@@ -12,9 +12,9 @@ import java.awt.*;
 @SuppressWarnings("unused")
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
-public abstract class GroundItemGroup extends CreativeModeTab {
+public abstract class GroundCreativeModeTab extends CreativeModeTab {
 
-    public GroundItemGroup(String label) {
+    public GroundCreativeModeTab(String label) {
         super(label);
         if (DateRange.IS_WINTER) {
             super.setBackgroundImage(new ResourceLocation(DiaboloLib.MOD_ID, "textures/gui/container/creative_inventory/ground_winter.png"));
