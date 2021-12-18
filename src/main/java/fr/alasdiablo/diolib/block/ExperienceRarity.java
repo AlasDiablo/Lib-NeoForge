@@ -1,4 +1,4 @@
-package fr.alasdiablo.diolib.generic;
+package fr.alasdiablo.diolib.block;
 
 /**
  * Enum use for quantify xp drop by an Entity, Block or Other Element

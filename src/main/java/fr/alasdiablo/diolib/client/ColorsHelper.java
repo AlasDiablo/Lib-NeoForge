@@ -1,4 +1,4 @@
-package fr.alasdiablo.diolib.util;
+package fr.alasdiablo.diolib.client;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.color.block.BlockColor;

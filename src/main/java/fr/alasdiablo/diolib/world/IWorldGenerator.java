@@ -8,7 +8,7 @@ import net.minecraft.world.level.biome.Biome;
 @SuppressWarnings("unused")
 public interface IWorldGenerator {
     /**
-     * Function use to add all ConfiguredFeature to a biome
+     * Function used to add all ConfiguredFeature to a biome
      *
      * @param biome Biome which receives the ConfiguredFeature
      */

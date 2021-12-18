@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @SuppressWarnings("unused")
-public enum ExtenedFillerBlockType {
+public enum ExtendedFillerBlockType {
     GRAVEL(Blocks.GRAVEL),
     BASALT(Blocks.BASALT),
     END_STONE(Blocks.END_STONE),
@@ -23,7 +23,7 @@ public enum ExtenedFillerBlockType {
     private static final Map<ResourceLocation, RuleTest> RULE_TEST_MAP = new HashMap<>();
     private final        Block                           block;
 
-    ExtenedFillerBlockType(Block block) {
+    ExtendedFillerBlockType(Block block) {
         this.block = block;
     }
 

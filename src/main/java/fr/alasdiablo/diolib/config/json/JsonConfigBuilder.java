@@ -65,7 +65,7 @@ public class JsonConfigBuilder {
             } catch (FileAlreadyExistsException exception) {
                 path = tmpPath;
             }
-            DiaboloLib.logger.debug("Create folder: " + path);
+            DiaboloLib.LOGGER.debug("Create folder: " + path);
         }
         modIDList.add(modID);
 

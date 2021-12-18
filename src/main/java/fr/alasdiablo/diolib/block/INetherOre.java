@@ -1,6 +1,6 @@
 package fr.alasdiablo.diolib.block;
 
-import fr.alasdiablo.diolib.config.ModConfig;
+import fr.alasdiablo.diolib.config.DiaboloLibConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.monster.ZombifiedPiglin;
 import net.minecraft.world.entity.player.Player;
@@ -27,18 +27,18 @@ public interface INetherOre {
      * @param isAggro    if null use value set by MobAngerConfig, enable or disable mob aggro
      */
     default void angerZombifiedPiglin(Player player, Level world, BlockPos pos, @Nullable Integer aggroRange, @Nullable Boolean isAggro) {
-        isAggro    = (isAggro == null) ? ModConfig.ZOMBIFIED_PIGLIN_ANGER.canAnger() : isAggro;
-        aggroRange = (aggroRange == null) ? ModConfig.ZOMBIFIED_PIGLIN_ANGER.getAngerRange() : aggroRange;
+        isAggro    = (isAggro == null) ? DiaboloLibConfig.ZOMBIFIED_PIGLIN_ANGER.canAnger() : isAggro;
+        aggroRange = (aggroRange == null) ? DiaboloLibConfig.ZOMBIFIED_PIGLIN_ANGER.getAngerRange() : aggroRange;
         if (isAggro) {
             final int x = pos.getX(), y = pos.getY(), z = pos.getZ();
             List<ZombifiedPiglin> list = world.getEntitiesOfClass(
                     ZombifiedPiglin.class,
                     AABB.of(new BoundingBox(
-                                    x - aggroRange,
-                                    y - aggroRange,
-                                    z - aggroRange,
-                                    x + aggroRange + 1,
-                                    y + aggroRange + 1,
+                            x - aggroRange,
+                            y - aggroRange,
+                            z - aggroRange,
+                            x + aggroRange + 1,
+                            y + aggroRange + 1,
                                     z + aggroRange + 1
                             )
                     )

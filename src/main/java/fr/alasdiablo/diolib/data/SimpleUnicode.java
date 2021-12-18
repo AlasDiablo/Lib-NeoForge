@@ -1,4 +1,4 @@
-package fr.alasdiablo.diolib.util;
+package fr.alasdiablo.diolib.data;
 
 import com.google.common.collect.ImmutableMap;
 import org.apache.commons.lang3.StringUtils;

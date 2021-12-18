@@ -3,8 +3,8 @@ package fr.alasdiablo.diolib.event;
 import com.google.common.collect.Lists;
 import com.google.gson.JsonParser;
 import fr.alasdiablo.diolib.DiaboloLib;
-import fr.alasdiablo.diolib.config.ModConfig;
-import fr.alasdiablo.diolib.lang.ImmutablePair;
+import fr.alasdiablo.diolib.config.DiaboloLibConfig;
+import fr.alasdiablo.diolib.util.ImmutablePair;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.world.entity.player.Player;
@@ -30,6 +30,8 @@ import java.util.stream.Collectors;
  */
 public class FireworkEvent implements IEvent<PlayerEvent.PlayerLoggedInEvent> {
 
+    public static final FireworkEvent FIREWORK_EVENT = new FireworkEvent();
+
     private static final String                                     ALASDIABLO_UUID = "e7956203-8c12-429e-9956-99775b8199ac";
     private static final String                                     SAFYRUS_UUID    = "b4172f45-a45c-4b35-ac5f-2e9d57835154";
     private final        Map<String, ImmutablePair<String, String>> listOfContributor;
@@ -48,10 +50,10 @@ public class FireworkEvent implements IEvent<PlayerEvent.PlayerLoggedInEvent> {
                 var name              = contributorObject.get("name_when_add").getAsString();
                 var type              = contributorObject.get("type").getAsString();
                 this.listOfContributor.put(UUID, new ImmutablePair<>(name, type));
-                DiaboloLib.logger.debug(new FormattedMessage("Contributor found: %s/%s/%s", UUID, name, type));
+                DiaboloLib.LOGGER.debug(new FormattedMessage("Contributor found: %s/%s/%s", UUID, name, type));
             });
         } catch (IOException e) {
-            DiaboloLib.logger.error(new FormattedMessage("Error during ContributorEvent event execution: %s", e.getMessage()));
+            DiaboloLib.LOGGER.error(new FormattedMessage("Error during ContributorEvent event execution: %s", e.getMessage()));
         }
     }
 
@@ -72,7 +74,7 @@ public class FireworkEvent implements IEvent<PlayerEvent.PlayerLoggedInEvent> {
 
         fireworkCompound.put("Fireworks", rocket);
 
-        DiaboloLib.logger.debug(new FormattedMessage("Spawning [%s] Firework.", player.getName().getString()));
+        DiaboloLib.LOGGER.debug(new FormattedMessage("Spawning [%s] Firework.", player.getName().getString()));
 
         world.addFreshEntity(new FireworkRocketEntity(world, player.xOld, player.yOld, player.zOld, firework));
     }
@@ -131,7 +133,7 @@ public class FireworkEvent implements IEvent<PlayerEvent.PlayerLoggedInEvent> {
         var player = event.getPlayer();
         var world  = player.level;
         var UUID   = player.getStringUUID();
-        if (ModConfig.CONTRIBUTOR_FIREWORK.canContributorFirework()) {
+        if (DiaboloLibConfig.CONTRIBUTOR_FIREWORK.canContributorFirework()) {
             if (this.listOfContributor.containsKey(UUID)) {
                 var star = this.getStarFirework(UUID);
                 this.generateFirework(player, world, star);

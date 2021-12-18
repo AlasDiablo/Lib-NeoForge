@@ -29,14 +29,14 @@ public abstract class JsonConfig {
                 JsonObject json       = jsonParser.parse(fileReader).getAsJsonObject();
                 this.read(json);
                 fileReader.close();
-                DiaboloLib.logger.debug(String.format("Config %s have been loaded", this.getName()));
+                DiaboloLib.LOGGER.debug(String.format("Config %s have been loaded", this.getName()));
             } catch (FileNotFoundException e) {
                 this.preWrite();
-                DiaboloLib.logger.debug(String.format("Config %s have been write and loaded", this.getName()));
+                DiaboloLib.LOGGER.debug(String.format("Config %s have been write and loaded", this.getName()));
             } catch (JsonParseException | IllegalArgumentException | NullPointerException e) {
-                DiaboloLib.logger.warn(String.format("Error during config initialization on %s cause by: %s", this.getName(), e.getLocalizedMessage()));
+                DiaboloLib.LOGGER.warn(String.format("Error during config initialization on %s cause by: %s", this.getName(), e.getLocalizedMessage()));
                 this.preWrite();
-                DiaboloLib.logger.debug(String.format("Config %s have been rewrite and loaded", this.getName()));
+                DiaboloLib.LOGGER.debug(String.format("Config %s have been rewrite and loaded", this.getName()));
             }
         }
     }

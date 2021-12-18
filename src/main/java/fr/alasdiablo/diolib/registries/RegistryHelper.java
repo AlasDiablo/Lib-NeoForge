@@ -1,4 +1,4 @@
-package fr.alasdiablo.diolib.util;
+package fr.alasdiablo.diolib.registries;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
@@ -14,6 +14,18 @@ import java.util.Objects;
 public class RegistryHelper {
 
     /**
+     * Create an instance of a ResourceLocation
+     *
+     * @param domain Mod id
+     * @param path   path to the resource
+     *
+     * @return ResourceLocation containing the domain and the path
+     */
+    public static ResourceLocation rl(String domain, String path) {
+        return new ResourceLocation(domain, path);
+    }
+
+    /**
      * Utils use to add a prefix to a registryName
      *
      * @param registryName The RegistryName which receives the prefix
@@ -21,7 +33,7 @@ public class RegistryHelper {
      *
      * @return Return the addition of the <i>registryName</i> and the <i>prefix</i>
      */
-    public static ResourceLocation setPrefixOnRegistryName(@Nullable ResourceLocation registryName, String prefix) {
+    public static ResourceLocation setPrefixOnResourceLocation(@Nullable ResourceLocation registryName, String prefix) {
         return registryName == null || prefix == null ? null : new ResourceLocation(
                 registryName.getNamespace(), String.format("%s_%s", prefix, registryName.getPath()));
     }

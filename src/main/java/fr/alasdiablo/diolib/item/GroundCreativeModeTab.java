@@ -1,4 +1,4 @@
-package fr.alasdiablo.diolib.gui;
+package fr.alasdiablo.diolib.item;
 
 import fr.alasdiablo.diolib.DiaboloLib;
 import fr.alasdiablo.diolib.util.DateRange;
@@ -27,7 +27,7 @@ public abstract class GroundCreativeModeTab extends CreativeModeTab {
 
     @Override
     public CreativeModeTab setBackgroundImage(ResourceLocation texture) {
-        DiaboloLib.logger.warn("setBackgroundImageName in OreItemGroup do nothing, please don't user it.");
+        DiaboloLib.LOGGER.warn("setBackgroundImageName in OreItemGroup do nothing, please don't user it.");
         return this;
     }
 

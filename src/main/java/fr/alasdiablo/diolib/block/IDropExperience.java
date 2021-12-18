@@ -1,4 +1,4 @@
-package fr.alasdiablo.diolib.generic;
+package fr.alasdiablo.diolib.block;
 
 import net.minecraft.util.valueproviders.UniformInt;
 

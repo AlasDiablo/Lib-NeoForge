@@ -1,10 +1,12 @@
-package fr.alasdiablo.diolib.data;
+package fr.alasdiablo.diolib.data.provider;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import fr.alasdiablo.diolib.DiaboloLib;
-import fr.alasdiablo.diolib.util.Utils;
+import fr.alasdiablo.diolib.data.blockstate.BlockStateBuilder;
+import fr.alasdiablo.diolib.data.blockstate.MultipartBlockStateBuilder;
+import fr.alasdiablo.diolib.registries.RegistryHelper;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
@@ -27,11 +29,11 @@ public abstract class DioBlockStateProvider implements DataProvider {
     protected final Map<String, IGeneratedBlockstate> registeredBlocks = new LinkedHashMap<>();
 
     private final DataGenerator generator;
-    private final String        mod_id;
+    private final String        modId;
 
-    public DioBlockStateProvider(DataGenerator generator, String mod_id) {
+    public DioBlockStateProvider(DataGenerator generator, String modId) {
         this.generator = generator;
-        this.mod_id    = mod_id;
+        this.modId     = modId;
     }
 
     protected abstract void registerStates();
@@ -41,10 +43,10 @@ public abstract class DioBlockStateProvider implements DataProvider {
     }
 
     protected void door(String blockName) {
-        ResourceLocation  rl_top          = Utils.rl(this.mod_id, "block/" + blockName + "_top");
-        ResourceLocation  rl_top_hinge    = Utils.rl(this.mod_id, "block/" + blockName + "_top_hinge");
-        ResourceLocation  rl_bottom       = Utils.rl(this.mod_id, "block/" + blockName + "_bottom");
-        ResourceLocation  rl_bottom_hinge = Utils.rl(this.mod_id, "block/" + blockName + "_bottom_hinge");
+        ResourceLocation  rl_top          = RegistryHelper.rl(this.modId, "block/" + blockName + "_top");
+        ResourceLocation  rl_top_hinge    = RegistryHelper.rl(this.modId, "block/" + blockName + "_top_hinge");
+        ResourceLocation  rl_bottom       = RegistryHelper.rl(this.modId, "block/" + blockName + "_bottom");
+        ResourceLocation  rl_bottom_hinge = RegistryHelper.rl(this.modId, "block/" + blockName + "_bottom_hinge");
         BlockStateBuilder stateBuilder    = new BlockStateBuilder();
 
         stateBuilder.addVariants("facing=east,half=lower,hinge=left,open=false", rl_bottom);
@@ -87,8 +89,8 @@ public abstract class DioBlockStateProvider implements DataProvider {
     }
 
     protected void button(String blockName) {
-        ResourceLocation  rl           = Utils.rl(this.mod_id, "block/" + blockName);
-        ResourceLocation  rl_pressed   = Utils.rl(this.mod_id, "block/" + blockName + "_pressed");
+        ResourceLocation  rl           = RegistryHelper.rl(this.modId, "block/" + blockName);
+        ResourceLocation  rl_pressed   = RegistryHelper.rl(this.modId, "block/" + blockName + "_pressed");
         BlockStateBuilder stateBuilder = new BlockStateBuilder();
 
         stateBuilder.addVariants("face=ceiling,facing=east,powered=false", 180, 270, rl);
@@ -124,9 +126,9 @@ public abstract class DioBlockStateProvider implements DataProvider {
     }
 
     protected void trapdoor(String blockName) {
-        ResourceLocation  rl_bottom    = Utils.rl(this.mod_id, "block/" + blockName + "_bottom");
-        ResourceLocation  rl_top       = Utils.rl(this.mod_id, "block/" + blockName + "_top");
-        ResourceLocation  rl_open      = Utils.rl(this.mod_id, "block/" + blockName + "_open");
+        ResourceLocation  rl_bottom    = RegistryHelper.rl(this.modId, "block/" + blockName + "_bottom");
+        ResourceLocation  rl_top       = RegistryHelper.rl(this.modId, "block/" + blockName + "_top");
+        ResourceLocation  rl_open      = RegistryHelper.rl(this.modId, "block/" + blockName + "_open");
         BlockStateBuilder stateBuilder = new BlockStateBuilder();
 
         stateBuilder.addVariants("facing=east,half=bottom,open=false", rl_bottom);
@@ -153,9 +155,9 @@ public abstract class DioBlockStateProvider implements DataProvider {
     }
 
     protected void stairs(String blockName) {
-        ResourceLocation  rl           = Utils.rl(this.mod_id, "block/" + blockName);
-        ResourceLocation  rl_inner     = Utils.rl(this.mod_id, "block/" + blockName + "_inner");
-        ResourceLocation  rl_outer     = Utils.rl(this.mod_id, "block/" + blockName + "_outer");
+        ResourceLocation  rl           = RegistryHelper.rl(this.modId, "block/" + blockName);
+        ResourceLocation  rl_inner     = RegistryHelper.rl(this.modId, "block/" + blockName + "_inner");
+        ResourceLocation  rl_outer     = RegistryHelper.rl(this.modId, "block/" + blockName + "_outer");
         BlockStateBuilder stateBuilder = new BlockStateBuilder();
 
         stateBuilder.addVariants("facing=east,half=bottom,shape=inner_left", 0, 270, true, rl_inner);
@@ -206,9 +208,9 @@ public abstract class DioBlockStateProvider implements DataProvider {
     }
 
     protected void slab(String slabBlockName, String fullBlockName) {
-        ResourceLocation  rl            = Utils.rl(this.mod_id, "block/" + slabBlockName);
-        ResourceLocation  rl_top        = Utils.rl(this.mod_id, "block/" + slabBlockName + "_top");
-        ResourceLocation  rl_full_block = Utils.rl(this.mod_id, "block/" + fullBlockName);
+        ResourceLocation  rl            = RegistryHelper.rl(this.modId, "block/" + slabBlockName);
+        ResourceLocation  rl_top        = RegistryHelper.rl(this.modId, "block/" + slabBlockName + "_top");
+        ResourceLocation  rl_full_block = RegistryHelper.rl(this.modId, "block/" + fullBlockName);
         BlockStateBuilder stateBuilder  = new BlockStateBuilder();
         stateBuilder.addVariants("type=bottom", rl);
         stateBuilder.addVariants("type=top", rl_top);
@@ -217,8 +219,8 @@ public abstract class DioBlockStateProvider implements DataProvider {
     }
 
     protected void pressurePlate(String blockName) {
-        ResourceLocation  rl           = Utils.rl(this.mod_id, "block/" + blockName);
-        ResourceLocation  rl_down      = Utils.rl(this.mod_id, "block/" + blockName + "_down");
+        ResourceLocation  rl           = RegistryHelper.rl(this.modId, "block/" + blockName);
+        ResourceLocation  rl_down      = RegistryHelper.rl(this.modId, "block/" + blockName + "_down");
         BlockStateBuilder stateBuilder = new BlockStateBuilder();
         stateBuilder.addVariants("powered=false", rl);
         stateBuilder.addVariants("powered=true", rl_down);
@@ -226,10 +228,10 @@ public abstract class DioBlockStateProvider implements DataProvider {
     }
 
     protected void woodenFenceGate(String blockName) {
-        ResourceLocation  rl           = Utils.rl(this.mod_id, "block/" + blockName);
-        ResourceLocation  rl_open      = Utils.rl(this.mod_id, "block/" + blockName + "_open");
-        ResourceLocation  rl_wall      = Utils.rl(this.mod_id, "block/" + blockName + "_wall");
-        ResourceLocation  rl_wall_open = Utils.rl(this.mod_id, "block/" + blockName + "_wall_open");
+        ResourceLocation  rl           = RegistryHelper.rl(this.modId, "block/" + blockName);
+        ResourceLocation  rl_open      = RegistryHelper.rl(this.modId, "block/" + blockName + "_open");
+        ResourceLocation  rl_wall      = RegistryHelper.rl(this.modId, "block/" + blockName + "_wall");
+        ResourceLocation  rl_wall_open = RegistryHelper.rl(this.modId, "block/" + blockName + "_wall_open");
         BlockStateBuilder stateBuilder = new BlockStateBuilder();
         stateBuilder.addVariants("facing=east,in_wall=false,open=false", 0, 270, true, rl);
         stateBuilder.addVariants("facing=east,in_wall=false,open=true", 0, 270, true, rl_open);
@@ -255,8 +257,8 @@ public abstract class DioBlockStateProvider implements DataProvider {
     }
 
     protected void woodenFence(String blockName) {
-        ResourceLocation           rl_post      = Utils.rl(this.mod_id, "block/" + blockName + "_post");
-        ResourceLocation           rl_side      = Utils.rl(this.mod_id, "block/" + blockName + "_side");
+        ResourceLocation           rl_post      = RegistryHelper.rl(this.modId, "block/" + blockName + "_post");
+        ResourceLocation           rl_side      = RegistryHelper.rl(this.modId, "block/" + blockName + "_side");
         MultipartBlockStateBuilder stateBuilder = new MultipartBlockStateBuilder();
         stateBuilder.addMultipart(rl_post);
         stateBuilder.addMultipart(rl_side, true, 0, 0, true, false, false, false);
@@ -267,8 +269,8 @@ public abstract class DioBlockStateProvider implements DataProvider {
     }
 
     protected void pillar(String blockName) {
-        ResourceLocation  rl            = Utils.rl(this.mod_id, "block/" + blockName);
-        ResourceLocation  rl_horizontal = Utils.rl(this.mod_id, "block/" + blockName + "_horizontal");
+        ResourceLocation  rl            = RegistryHelper.rl(this.modId, "block/" + blockName);
+        ResourceLocation  rl_horizontal = RegistryHelper.rl(this.modId, "block/" + blockName + "_horizontal");
         BlockStateBuilder stateBuilder  = new BlockStateBuilder();
         stateBuilder.addVariants("axis=x", 90, 90, rl_horizontal);
         stateBuilder.addVariants("axis=y", 0, 0, rl);
@@ -281,7 +283,7 @@ public abstract class DioBlockStateProvider implements DataProvider {
     }
 
     protected void cubeAll(String blockName) {
-        ResourceLocation  rl           = Utils.rl(this.mod_id, "block/" + blockName);
+        ResourceLocation  rl           = RegistryHelper.rl(this.modId, "block/" + blockName);
         BlockStateBuilder stateBuilder = new BlockStateBuilder();
         stateBuilder.addVariants("", rl);
         this.addBlockState(blockName, stateBuilder);
@@ -297,18 +299,18 @@ public abstract class DioBlockStateProvider implements DataProvider {
     }
 
     private void saveBlockState(HashCache cache, JsonObject stateJson, String blockName) {
-        Path   mainOutput = generator.getOutputFolder();
-        String pathSuffix = "assets/" + mod_id + "/blockstates/" + blockName + ".json";
+        Path   mainOutput = this.generator.getOutputFolder();
+        String pathSuffix = "assets/" + this.modId + "/blockstates/" + blockName + ".json";
         Path   outputPath = mainOutput.resolve(pathSuffix);
         try {
             DataProvider.save(GSON, cache, stateJson, outputPath);
         } catch (IOException e) {
-            DiaboloLib.logger.error("Couldn't save blockstate to {}", outputPath, e);
+            DiaboloLib.LOGGER.error("Couldn't save blockstate to {}", outputPath, e);
         }
     }
 
     @Override
     public String getName() {
-        return "Block States: " + this.mod_id;
+        return "Block States: " + this.modId;
     }
 }

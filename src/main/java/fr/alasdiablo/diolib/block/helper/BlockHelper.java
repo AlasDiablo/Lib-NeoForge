@@ -1,5 +1,6 @@
-package fr.alasdiablo.diolib.util;
+package fr.alasdiablo.diolib.block.helper;
 
+import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
 import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.level.block.Block;
@@ -39,7 +40,9 @@ public class BlockHelper {
     }
 
     public static void createStrippablesBlock(Block source, Block target) {
-        AxeItem.STRIPPABLES = Maps.newHashMap(AxeItem.STRIPPABLES);
+        if (AxeItem.STRIPPABLES instanceof ImmutableMap) {
+            AxeItem.STRIPPABLES = Maps.newHashMap(AxeItem.STRIPPABLES);
+        }
         AxeItem.STRIPPABLES.put(source, target);
     }
 }
