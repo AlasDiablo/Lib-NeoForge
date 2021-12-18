@@ -1,3 +1,8 @@
+### 3.0.19
+
++ Update to 1.18.1
++ Refactor a lot a source (breaking change for mod using DiaboloLib)
+
 ### 2.0.18
 
 #### Add
