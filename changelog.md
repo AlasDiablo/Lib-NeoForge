@@ -1,3 +1,7 @@
+### 3.0.20
+
++ Fix issues with book loot table
+
 ### 3.0.19
 
 + Update to 1.18.1
