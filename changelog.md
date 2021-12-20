@@ -1,5 +1,9 @@
 ### 3.0.20
 
++ Add more element into SimpleUnicode
+
+### 3.0.20
+
 + Fix issues with book loot table
 
 ### 3.0.19

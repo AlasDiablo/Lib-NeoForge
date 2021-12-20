@@ -20,8 +20,11 @@ public record SimpleUnicode(String text) {
         builder.put("é", "\u00e9");
         builder.put("ê", "\u00ea");
         builder.put("ë", "\u00eb");
+        builder.put("í", "\u00ed");
         builder.put("î", "\u00ee");
         builder.put("ï", "\u00ef");
+        builder.put("ñ", "\u00f1");
+        builder.put("ó", "\u00f3");
         builder.put("ô", "\u00f4");
         builder.put("ö", "\u00f6");
         builder.put("ù", "\u00f9");
