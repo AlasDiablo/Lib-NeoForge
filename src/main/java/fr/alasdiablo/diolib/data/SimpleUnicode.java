@@ -12,7 +12,9 @@ public record SimpleUnicode(String text) {
     static {
         ImmutableMap.Builder<String, String> builder = new ImmutableMap.Builder<>();
 
+        builder.put("É", "\u00c9");
         builder.put("à", "\u00e0");
+        builder.put("á", "\u00e1");
         builder.put("â", "\u00e2");
         builder.put("ä", "\u00e4");
         builder.put("ç", "\u00e7");
@@ -28,6 +30,7 @@ public record SimpleUnicode(String text) {
         builder.put("ô", "\u00f4");
         builder.put("ö", "\u00f6");
         builder.put("ù", "\u00f9");
+        builder.put("ú", "\u00fa");
         builder.put("û", "\u00fb");
         builder.put("ü", "\u00fc");
 

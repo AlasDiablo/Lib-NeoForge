@@ -34,6 +34,7 @@ public class FireworkEvent implements IEvent<PlayerEvent.PlayerLoggedInEvent> {
 
     private static final String                                     ALASDIABLO_UUID = "e7956203-8c12-429e-9956-99775b8199ac";
     private static final String                                     SAFYRUS_UUID    = "b4172f45-a45c-4b35-ac5f-2e9d57835154";
+    private static final String                                     SMARTZI_UUID    = "bc4ee8d8-88a7-4e95-b1e8-d9932b80d1e8";
     private final        Map<String, ImmutablePair<String, String>> listOfContributor;
 
     public FireworkEvent() {
@@ -64,12 +65,12 @@ public class FireworkEvent implements IEvent<PlayerEvent.PlayerLoggedInEvent> {
      * @param world  Current world
      * @param star   The firework star element
      */
-    private void generateFirework(Player player, Level world, CompoundTag star) {
+    private void generateFirework(Player player, Level world, CompoundTag star, int flight) {
         var firework         = new ItemStack(Items.FIREWORK_ROCKET);
         var rocket           = new CompoundTag();
         var fireworkCompound = firework.getOrCreateTag();
 
-        rocket.putInt("Flight", 2);
+        rocket.putInt("Flight", flight);
         rocket.put("Explosions", Arrays.stream(new CompoundTag[]{ star }).collect(Collectors.toCollection(ListTag::new)));
 
         fireworkCompound.put("Fireworks", rocket);
@@ -104,6 +105,12 @@ public class FireworkEvent implements IEvent<PlayerEvent.PlayerLoggedInEvent> {
                 star.putBoolean("Trail", true);
                 star.putInt("Type", 2);
             }
+            case SMARTZI_UUID -> {
+                star.putIntArray("Colors", Collections.singletonList(14188952));
+                star.putIntArray("FadeColors", Collections.singletonList(11743532));
+                star.putBoolean("Trail", true);
+                star.putInt("Type", 1);
+            }
         }
         return star;
     }
@@ -116,10 +123,10 @@ public class FireworkEvent implements IEvent<PlayerEvent.PlayerLoggedInEvent> {
         return star;
     }
 
-    private CompoundTag getStarFirework(String UUID) {
+    private ImmutablePair<Boolean, CompoundTag> getStarFirework(String UUID) {
         return switch (UUID) {
-            case ALASDIABLO_UUID, SAFYRUS_UUID -> this.getAuthorFirework(UUID);
-            default -> this.getContributorFirework(UUID);
+            case ALASDIABLO_UUID, SAFYRUS_UUID, SMARTZI_UUID -> ImmutablePair.of(true, this.getAuthorFirework(UUID));
+            default -> ImmutablePair.of(false, this.getContributorFirework(UUID));
         };
     }
 
@@ -136,7 +143,7 @@ public class FireworkEvent implements IEvent<PlayerEvent.PlayerLoggedInEvent> {
         if (DiaboloLibConfig.CONTRIBUTOR_FIREWORK.canContributorFirework()) {
             if (this.listOfContributor.containsKey(UUID)) {
                 var star = this.getStarFirework(UUID);
-                this.generateFirework(player, world, star);
+                this.generateFirework(player, world, star.value(), star.key() ? 2 : 1);
             }
         }
     }

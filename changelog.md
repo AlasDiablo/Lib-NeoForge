@@ -1,4 +1,9 @@
-### 3.0.21
+### 3.2.22
+
++ Add missing element into SimpleUnicode
++ Add a new firework for Smartzi (Translator/Reviewer/Corrector)
+
+### 3.1.21
 
 + Add more element into SimpleUnicode
 

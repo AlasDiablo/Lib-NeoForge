@@ -17,8 +17,8 @@ apply plugin: 'maven-publish'
 //                                           //
 // ***************************************** //
 def majorVersion = 3
-def minorVersion = 1
-def buildVersion = 21
+def minorVersion = 2
+def buildVersion = 22
 def isExperimental = false
 version = "${majorVersion}.${minorVersion}.${buildVersion}"
 if (isExperimental) {
