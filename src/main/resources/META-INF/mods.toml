@@ -2,25 +2,27 @@ modLoader = "javafml"
 loaderVersion = "[39,)"
 license = "LGPL-3.0 License"
 issueTrackerURL = "https://github.com/Janoeo/DiaboloLib/issues"
+
 [[mods]]
 modId = "diolib"
 version = "${file.jarVersion}"
 displayName = "DiaboloLib"
-displayURL = "https://github.com/Janoeo/Template"
+displayURL = "https://github.com/Janoeo/DiaboloLib"
 logoFile = "diabolo-lib.png"
 authors = "AlasDiablo & Safyrus"
 description = '''
 Libray Mod for Janoeo Project and more !
 '''
+
 [[dependencies.diolib]]
 modId = "forge"
 mandatory = true
 versionRange = "[39,)"
 ordering = "NONE"
-    side="BOTH"
+side = "BOTH"
 [[dependencies.diolib]]
-    modId="minecraft"
-    mandatory=true
-    versionRange="[1.18,1.19)"
-    ordering="NONE"
-    side="BOTH"
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.18,1.19)"
+ordering = "NONE"
+side = "BOTH"
