@@ -1,3 +1,7 @@
+### 3.3.23
+
++ Add mixin processor to add more element into `PowderSnowBlock.canEntityWalkOnPowderSnow`
+
 ### 3.2.22
 
 + Add missing element into SimpleUnicode
