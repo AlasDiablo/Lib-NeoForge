@@ -6,7 +6,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Objects;
 
 /**
- * Difine a tuple of 2 value
+ * Define a tuple of 2 value
  *
  * @param <K> Type of the first value
  * @param <V> Type of the seconds value

@@ -23,7 +23,7 @@ apply plugin: 'org.spongepowered.mixin'
 //        Standard versioning system         //
 //                                           //
 // ***************************************** //
-def majorVersion = 3
+def majorVersion = 4
 def minorVersion = 3
 def buildVersion = 24
 def isExperimental = false
@@ -53,7 +53,7 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 def deobfSourceClassifier
 
 minecraft {
-    mappings channel: 'parchment', version: '2021.12.19-1.18.1'
+    mappings channel: 'parchment', version: '2022.01.23-1.18.1'
     deobfSourceClassifier = getMappings().get()
     accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
     runs {
@@ -111,7 +111,7 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.18.1-39.0.40'
+    minecraft 'net.minecraftforge:forge:1.18.1-39.0.75'
 
     annotationProcessor 'org.spongepowered:mixin:0.8.4:processor'
 }

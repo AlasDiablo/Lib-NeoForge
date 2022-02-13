@@ -1,3 +1,10 @@
+### 4.3.24
++ Add ArmorItemSet (add another way to create armor set)
+
++ Remove IDropExperience interface
++ Remove ExtenedFillerBlockType
++ Remove IWorldGenerator
+
 ### 3.3.23
 
 + Add mixin processor to add more element into `PowderSnowBlock.canEntityWalkOnPowderSnow`

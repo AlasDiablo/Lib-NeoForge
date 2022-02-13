@@ -14,6 +14,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import org.apache.logging.log4j.message.FormattedMessage;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -65,7 +66,7 @@ public class FireworkEvent implements IEvent<PlayerEvent.PlayerLoggedInEvent> {
      * @param world  Current world
      * @param star   The firework star element
      */
-    private void generateFirework(Player player, Level world, CompoundTag star, int flight) {
+    private void generateFirework(@NotNull Player player, @NotNull Level world, CompoundTag star, int flight) {
         var firework         = new ItemStack(Items.FIREWORK_ROCKET);
         var rocket           = new CompoundTag();
         var fireworkCompound = firework.getOrCreateTag();
@@ -88,7 +89,7 @@ public class FireworkEvent implements IEvent<PlayerEvent.PlayerLoggedInEvent> {
         };
     }
 
-    private CompoundTag getAuthorFirework(String UUID) {
+    private @NotNull CompoundTag getAuthorFirework(@NotNull String UUID) {
         var star = new CompoundTag();
         switch (UUID) {
             case ALASDIABLO_UUID -> {
@@ -115,7 +116,7 @@ public class FireworkEvent implements IEvent<PlayerEvent.PlayerLoggedInEvent> {
         return star;
     }
 
-    private CompoundTag getContributorFirework(String UUID) {
+    private @NotNull CompoundTag getContributorFirework(String UUID) {
         var contributionType = this.listOfContributor.get(UUID).value();
         var star             = new CompoundTag();
         star.putIntArray("Colors", Collections.singletonList(this.getColor(contributionType)));
@@ -136,7 +137,7 @@ public class FireworkEvent implements IEvent<PlayerEvent.PlayerLoggedInEvent> {
      * @param event Instance of the event
      */
     @Override
-    public void onEvent(PlayerEvent.PlayerLoggedInEvent event) {
+    public void onEvent(PlayerEvent.@NotNull PlayerLoggedInEvent event) {
         var player = event.getPlayer();
         var world  = player.level;
         var UUID   = player.getStringUUID();
