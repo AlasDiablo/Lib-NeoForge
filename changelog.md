@@ -1,3 +1,6 @@
+### 3.4.24
++ Update to 1.18.2
+
 ### 3.3.23
 
 + Add mixin processor to add more element into `PowderSnowBlock.canEntityWalkOnPowderSnow`
