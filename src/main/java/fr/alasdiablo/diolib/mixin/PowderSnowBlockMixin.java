@@ -4,6 +4,7 @@ import fr.alasdiablo.diolib.tag.DioTags;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.PowderSnowBlock;
 import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.Mixin;
@@ -19,7 +20,7 @@ public class PowderSnowBlockMixin {
         if (!callback.getReturnValue()) {
             if (entity instanceof LivingEntity livingEntity) {
                 var boots = livingEntity.getItemBySlot(EquipmentSlot.FEET);
-                if (DioTags.BOOTS_WALK_ON_POWDER_SNOW.contains(boots.getItem())) {
+                if (boots.is(DioTags.BOOTS_WALK_ON_POWDER_SNOW)) {
                     callback.setReturnValue(true);
                 }
             }
