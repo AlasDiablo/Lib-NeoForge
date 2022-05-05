@@ -1,3 +1,8 @@
+### 4.4.25
++ Remove unused api
++ Move all api stuff into an api package
++ Add ArmorSet builder
+
 ### 3.4.24
 + Update to 1.18.2
 
