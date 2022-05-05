@@ -1,7 +1,7 @@
 package fr.alasdiablo.diolib.config;
 
 import fr.alasdiablo.diolib.DiaboloLib;
-import fr.alasdiablo.diolib.config.json.JsonConfigBuilder;
+import fr.alasdiablo.diolib.api.config.JsonConfigBuilder;
 
 import java.io.IOException;
 

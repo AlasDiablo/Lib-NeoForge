@@ -2,7 +2,8 @@ package fr.alasdiablo.diolib.config;
 
 import com.google.gson.JsonObject;
 import fr.alasdiablo.diolib.DiaboloLib;
-import fr.alasdiablo.diolib.config.json.JsonConfig;
+import fr.alasdiablo.diolib.api.config.JsonConfig;
+import org.jetbrains.annotations.NotNull;
 
 public class AngerConfig extends JsonConfig {
 
@@ -26,7 +27,7 @@ public class AngerConfig extends JsonConfig {
     }
 
     @Override
-    protected void read(JsonObject json) {
+    protected void read(@NotNull JsonObject json) {
         this.angerRange = json.get("anger_range").getAsInt();
         this.canAnger   = json.get("can_anger").getAsBoolean();
         DiaboloLib.LOGGER.debug("Data change for " + this.elementName + ", canAnger : " + this.canAnger + ", angerRange : " + this.angerRange);

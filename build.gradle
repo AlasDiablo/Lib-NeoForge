@@ -53,7 +53,7 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 def deobfSourceClassifier
 
 minecraft {
-    mappings channel: 'parchment', version: '2022.03.13-1.18.2'
+    mappings channel: 'parchment', version: '2022.05.02-1.18.2'
     deobfSourceClassifier = getMappings().get()
     accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
     runs {
@@ -111,8 +111,7 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.18.2-40.0.36'
-
+    minecraft 'net.minecraftforge:forge:1.18.2-40.1.0'
     annotationProcessor 'org.spongepowered:mixin:0.8.4:processor'
 }
 

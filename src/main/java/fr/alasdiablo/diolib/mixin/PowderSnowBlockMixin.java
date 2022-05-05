@@ -1,6 +1,6 @@
 package fr.alasdiablo.diolib.mixin;
 
-import fr.alasdiablo.diolib.tag.DioTags;
+import fr.alasdiablo.diolib.api.tag.DioTags;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;

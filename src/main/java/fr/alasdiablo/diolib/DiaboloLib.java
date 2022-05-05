@@ -2,7 +2,7 @@ package fr.alasdiablo.diolib;
 
 import fr.alasdiablo.diolib.config.DiaboloLibConfig;
 import fr.alasdiablo.diolib.event.FireworkEvent;
-import fr.alasdiablo.diolib.tag.DioTags;
+import fr.alasdiablo.diolib.api.tag.DioTags;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;

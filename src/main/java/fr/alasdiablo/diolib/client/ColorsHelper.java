@@ -19,6 +19,7 @@ import java.awt.*;
 /**
  * Helper use for register block and item color quickly
  */
+@Deprecated(since = "4.4.25", forRemoval = true)
 @SuppressWarnings("unused")
 @OnlyIn(Dist.CLIENT)
 public class ColorsHelper {
@@ -33,7 +34,7 @@ public class ColorsHelper {
     }
 
     /**
-     * Register color for an block
+     * Register color for a block
      *
      * @param blockColor color of the block
      * @param block      item who get the blockColor
