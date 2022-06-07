@@ -18,9 +18,10 @@ public class DeferredArmorItemSet extends AbstractArmorItemSet {
 
     /**
      * Default constructor to create simple armor set
+     *
      * @param registryName Registry name of each armor piece
-     * @param material Material use by this armor set
-     * @param properties Properties of the armor set items
+     * @param material     Material use by this armor set
+     * @param properties   Properties of the armor set items
      */
     public DeferredArmorItemSet(
             @NotNull ArmorItemRegistryName registryName,
@@ -32,13 +33,14 @@ public class DeferredArmorItemSet extends AbstractArmorItemSet {
 
     /**
      * Customisable constructor used to create advanced armor set
+     *
      * @param registryName Registry name of each armor piece
-     * @param material Material use by this armor set
-     * @param properties Properties of the armor set items
-     * @param helmet Item provider use to create the helmet item
-     * @param chestplate Item provider use to create the chestplate item
-     * @param leggings Item provider use to create the leggings item
-     * @param boots Item provider use to create the boots item
+     * @param material     Material use by this armor set
+     * @param properties   Properties of the armor set items
+     * @param helmet       Item provider use to create the helmet item
+     * @param chestplate   Item provider use to create the chestplate item
+     * @param leggings     Item provider use to create the leggings item
+     * @param boots        Item provider use to create the boots item
      */
     public DeferredArmorItemSet(
             @NotNull ArmorItemRegistryName registryName,
@@ -53,10 +55,10 @@ public class DeferredArmorItemSet extends AbstractArmorItemSet {
     }
 
     public DeferredArmorItemSet register(@NotNull DeferredRegister<Item> register) {
-        this.helmetRegistryObject = register.register(registryName.getHelmetName(), () -> this.helmet);
+        this.helmetRegistryObject     = register.register(registryName.getHelmetName(), () -> this.helmet);
         this.chestplateRegistryObject = register.register(registryName.getChestplateName(), () -> this.chestplate);
-        this.leggingsRegistryObject = register.register(registryName.getLeggingsName(), () -> this.leggings);
-        this.bootsRegistryObject = register.register(registryName.getBootsName(), () -> this.boots);
+        this.leggingsRegistryObject   = register.register(registryName.getLeggingsName(), () -> this.leggings);
+        this.bootsRegistryObject      = register.register(registryName.getBootsName(), () -> this.boots);
         return this;
     }
 

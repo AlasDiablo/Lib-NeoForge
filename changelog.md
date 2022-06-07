@@ -1,3 +1,7 @@
+### 4.5.26
++ Update anger block api
++ Add documentation on some class
+
 ### 4.4.25
 + Remove unused api
 + Move all api stuff into an api package

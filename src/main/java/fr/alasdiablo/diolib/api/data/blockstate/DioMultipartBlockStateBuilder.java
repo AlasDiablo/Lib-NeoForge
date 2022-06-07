@@ -10,6 +10,9 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class used to create multiple part block-state
+ */
 @SuppressWarnings("unused")
 public class DioMultipartBlockStateBuilder implements IGeneratedBlockstate {
 
@@ -19,12 +22,19 @@ public class DioMultipartBlockStateBuilder implements IGeneratedBlockstate {
         this.multipart = new ArrayList<>();
     }
 
+    /**
+     * @param modelPathIn Resource location of the model
+     */
     public void addMultipart(@NotNull ResourceLocation modelPathIn) {
         JsonObject apply = new JsonObject();
         apply.addProperty("model", modelPathIn.toString());
         this.multipart.add(new ImmutablePair<>(null, apply));
     }
 
+    /**
+     * @param modelPathIn Resource location of the model
+     * @param uvLockIn    Model is uv lock
+     */
     public void addMultipart(@NotNull ResourceLocation modelPathIn, boolean uvLockIn) {
         JsonObject apply = new JsonObject();
         apply.addProperty("model", modelPathIn.toString());

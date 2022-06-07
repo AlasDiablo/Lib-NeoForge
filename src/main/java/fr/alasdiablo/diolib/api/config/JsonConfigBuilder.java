@@ -2,6 +2,7 @@ package fr.alasdiablo.diolib.api.config;
 
 import fr.alasdiablo.diolib.DiaboloLib;
 import net.minecraftforge.fml.loading.FMLPaths;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.nio.file.FileAlreadyExistsException;
@@ -44,7 +45,7 @@ public class JsonConfigBuilder {
     }
 
 
-    public JsonConfigBuilder add(JsonConfig jsonConfig) throws DuplicatedJsonConfigException {
+    public JsonConfigBuilder add(@NotNull JsonConfig jsonConfig) throws DuplicatedJsonConfigException {
         if (!this.jsonConfigs.containsKey(jsonConfig.getName()))
             this.jsonConfigs.put(jsonConfig.getName(), jsonConfig);
         else

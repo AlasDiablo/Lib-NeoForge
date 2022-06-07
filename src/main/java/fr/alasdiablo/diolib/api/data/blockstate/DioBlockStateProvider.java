@@ -34,16 +34,30 @@ public abstract class DioBlockStateProvider implements DataProvider {
         this.modId     = modId;
     }
 
+    /**
+     * Function use to register all block states
+     */
     protected abstract void registerStates();
 
+    /**
+     * Register a block state
+     *
+     * @param blockName  Name of the block
+     * @param blockstate Block-state associated to the block
+     */
     protected void addBlockState(String blockName, IGeneratedBlockstate blockstate) {
         this.registeredBlocks.put(blockName, blockstate);
     }
 
+    /**
+     * Block-state builder use to create a door block-state
+     *
+     * @param blockName Name of the door block
+     */
     protected void door(String blockName) {
-        ResourceLocation  rl_top          = ResourceLocations.of(this.modId, "block/" + blockName + "_top");
-        ResourceLocation  rl_top_hinge    = ResourceLocations.of(this.modId, "block/" + blockName + "_top_hinge");
-        ResourceLocation  rl_bottom       = ResourceLocations.of(this.modId, "block/" + blockName + "_bottom");
+        ResourceLocation     rl_top          = ResourceLocations.of(this.modId, "block/" + blockName + "_top");
+        ResourceLocation     rl_top_hinge    = ResourceLocations.of(this.modId, "block/" + blockName + "_top_hinge");
+        ResourceLocation     rl_bottom       = ResourceLocations.of(this.modId, "block/" + blockName + "_bottom");
         ResourceLocation     rl_bottom_hinge = ResourceLocations.of(this.modId, "block/" + blockName + "_bottom_hinge");
         DioBlockStateBuilder stateBuilder    = new DioBlockStateBuilder();
 
@@ -86,8 +100,13 @@ public abstract class DioBlockStateProvider implements DataProvider {
         this.addBlockState(blockName, stateBuilder);
     }
 
+    /**
+     * Block-state builder use to create a button block-state
+     *
+     * @param blockName Name of the button block
+     */
     protected void button(String blockName) {
-        ResourceLocation  rl           = ResourceLocations.of(this.modId, "block/" + blockName);
+        ResourceLocation     rl           = ResourceLocations.of(this.modId, "block/" + blockName);
         ResourceLocation     rl_pressed   = ResourceLocations.of(this.modId, "block/" + blockName + "_pressed");
         DioBlockStateBuilder stateBuilder = new DioBlockStateBuilder();
 
@@ -123,9 +142,14 @@ public abstract class DioBlockStateProvider implements DataProvider {
         this.addBlockState(blockName, stateBuilder);
     }
 
+    /**
+     * Block-state builder use to create a trapdoor block-state
+     *
+     * @param blockName Name of the trapdoor block
+     */
     protected void trapdoor(String blockName) {
-        ResourceLocation  rl_bottom    = ResourceLocations.of(this.modId, "block/" + blockName + "_bottom");
-        ResourceLocation  rl_top       = ResourceLocations.of(this.modId, "block/" + blockName + "_top");
+        ResourceLocation     rl_bottom    = ResourceLocations.of(this.modId, "block/" + blockName + "_bottom");
+        ResourceLocation     rl_top       = ResourceLocations.of(this.modId, "block/" + blockName + "_top");
         ResourceLocation     rl_open      = ResourceLocations.of(this.modId, "block/" + blockName + "_open");
         DioBlockStateBuilder stateBuilder = new DioBlockStateBuilder();
 
@@ -152,9 +176,14 @@ public abstract class DioBlockStateProvider implements DataProvider {
         this.addBlockState(blockName, stateBuilder);
     }
 
+    /**
+     * Block-state builder use to create a stairs block-state
+     *
+     * @param blockName Name of the stairs block
+     */
     protected void stairs(String blockName) {
-        ResourceLocation  rl           = ResourceLocations.of(this.modId, "block/" + blockName);
-        ResourceLocation  rl_inner     = ResourceLocations.of(this.modId, "block/" + blockName + "_inner");
+        ResourceLocation     rl           = ResourceLocations.of(this.modId, "block/" + blockName);
+        ResourceLocation     rl_inner     = ResourceLocations.of(this.modId, "block/" + blockName + "_inner");
         ResourceLocation     rl_outer     = ResourceLocations.of(this.modId, "block/" + blockName + "_outer");
         DioBlockStateBuilder stateBuilder = new DioBlockStateBuilder();
 
@@ -205,9 +234,15 @@ public abstract class DioBlockStateProvider implements DataProvider {
         this.addBlockState(blockName, stateBuilder);
     }
 
+    /**
+     * Block-state builder use to create a door block-state
+     *
+     * @param slabBlockName Name of the slab block
+     * @param fullBlockName Name of the full block
+     */
     protected void slab(String slabBlockName, String fullBlockName) {
-        ResourceLocation  rl            = ResourceLocations.of(this.modId, "block/" + slabBlockName);
-        ResourceLocation  rl_top        = ResourceLocations.of(this.modId, "block/" + slabBlockName + "_top");
+        ResourceLocation     rl            = ResourceLocations.of(this.modId, "block/" + slabBlockName);
+        ResourceLocation     rl_top        = ResourceLocations.of(this.modId, "block/" + slabBlockName + "_top");
         ResourceLocation     rl_full_block = ResourceLocations.of(this.modId, "block/" + fullBlockName);
         DioBlockStateBuilder stateBuilder  = new DioBlockStateBuilder();
         stateBuilder.addVariants("type=bottom", rl);
@@ -216,8 +251,13 @@ public abstract class DioBlockStateProvider implements DataProvider {
         this.addBlockState(slabBlockName, stateBuilder);
     }
 
+    /**
+     * Block-state builder use to create a pressure plate block-state
+     *
+     * @param blockName Name of the pressure plate block
+     */
     protected void pressurePlate(String blockName) {
-        ResourceLocation  rl           = ResourceLocations.of(this.modId, "block/" + blockName);
+        ResourceLocation     rl           = ResourceLocations.of(this.modId, "block/" + blockName);
         ResourceLocation     rl_down      = ResourceLocations.of(this.modId, "block/" + blockName + "_down");
         DioBlockStateBuilder stateBuilder = new DioBlockStateBuilder();
         stateBuilder.addVariants("powered=false", rl);
@@ -225,10 +265,15 @@ public abstract class DioBlockStateProvider implements DataProvider {
         this.addBlockState(blockName, stateBuilder);
     }
 
+    /**
+     * Block-state builder use to create a wooden fence gate block-state
+     *
+     * @param blockName Name of the wooden face gate block
+     */
     protected void woodenFenceGate(String blockName) {
-        ResourceLocation  rl           = ResourceLocations.of(this.modId, "block/" + blockName);
-        ResourceLocation  rl_open      = ResourceLocations.of(this.modId, "block/" + blockName + "_open");
-        ResourceLocation  rl_wall      = ResourceLocations.of(this.modId, "block/" + blockName + "_wall");
+        ResourceLocation     rl           = ResourceLocations.of(this.modId, "block/" + blockName);
+        ResourceLocation     rl_open      = ResourceLocations.of(this.modId, "block/" + blockName + "_open");
+        ResourceLocation     rl_wall      = ResourceLocations.of(this.modId, "block/" + blockName + "_wall");
         ResourceLocation     rl_wall_open = ResourceLocations.of(this.modId, "block/" + blockName + "_wall_open");
         DioBlockStateBuilder stateBuilder = new DioBlockStateBuilder();
         stateBuilder.addVariants("facing=east,in_wall=false,open=false", 0, 270, true, rl);
@@ -254,8 +299,13 @@ public abstract class DioBlockStateProvider implements DataProvider {
         this.addBlockState(blockName, stateBuilder);
     }
 
+    /**
+     * Block-state builder use to create a wooden fence block-state
+     *
+     * @param blockName Name of the wooden fence block
+     */
     protected void woodenFence(String blockName) {
-        ResourceLocation           rl_post      = ResourceLocations.of(this.modId, "block/" + blockName + "_post");
+        ResourceLocation              rl_post      = ResourceLocations.of(this.modId, "block/" + blockName + "_post");
         ResourceLocation              rl_side      = ResourceLocations.of(this.modId, "block/" + blockName + "_side");
         DioMultipartBlockStateBuilder stateBuilder = new DioMultipartBlockStateBuilder();
         stateBuilder.addMultipart(rl_post);
@@ -266,8 +316,13 @@ public abstract class DioBlockStateProvider implements DataProvider {
         this.addBlockState(blockName, stateBuilder);
     }
 
+    /**
+     * Block-state builder use to create a pillar block-state
+     *
+     * @param blockName Name of the pillar block
+     */
     protected void pillar(String blockName) {
-        ResourceLocation  rl            = ResourceLocations.of(this.modId, "block/" + blockName);
+        ResourceLocation     rl            = ResourceLocations.of(this.modId, "block/" + blockName);
         ResourceLocation     rl_horizontal = ResourceLocations.of(this.modId, "block/" + blockName + "_horizontal");
         DioBlockStateBuilder stateBuilder  = new DioBlockStateBuilder();
         stateBuilder.addVariants("axis=x", 90, 90, rl_horizontal);
@@ -276,10 +331,20 @@ public abstract class DioBlockStateProvider implements DataProvider {
         this.addBlockState(blockName, stateBuilder);
     }
 
+    /**
+     * Block-state builder use to create a sapling block-state
+     *
+     * @param blockName Name of the sapling block
+     */
     protected void sapling(String blockName) {
         this.cubeAll(blockName);
     }
 
+    /**
+     * Block-state builder use to create a default block-state
+     *
+     * @param blockName Name of the block
+     */
     protected void cubeAll(String blockName) {
         ResourceLocation     rl           = ResourceLocations.of(this.modId, "block/" + blockName);
         DioBlockStateBuilder stateBuilder = new DioBlockStateBuilder();

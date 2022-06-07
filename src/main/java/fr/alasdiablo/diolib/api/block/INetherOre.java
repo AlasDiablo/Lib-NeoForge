@@ -15,7 +15,8 @@ import java.util.List;
  * Interface use by all Nether Ore Block
  */
 @SuppressWarnings("unused")
-public interface INetherOre {
+@Deprecated(since = "4.5.26", forRemoval = true)
+public interface INetherOre extends AngerZombifiedPiglin {
 
     /**
      * Default implementation of angerZombifiedPiglin (function use of make <i>ZombifiedPiglinEntity</i> attack <i>PlayerEntity</i>)
@@ -29,21 +30,6 @@ public interface INetherOre {
     default void angerZombifiedPiglin(Player player, Level world, BlockPos pos, @Nullable Integer aggroRange, @Nullable Boolean isAggro) {
         isAggro    = (isAggro == null) ? DiaboloLibConfig.ZOMBIFIED_PIGLIN_ANGER.canAnger() : isAggro;
         aggroRange = (aggroRange == null) ? DiaboloLibConfig.ZOMBIFIED_PIGLIN_ANGER.getAngerRange() : aggroRange;
-        if (isAggro) {
-            final int x = pos.getX(), y = pos.getY(), z = pos.getZ();
-            List<ZombifiedPiglin> list = world.getEntitiesOfClass(
-                    ZombifiedPiglin.class,
-                    AABB.of(new BoundingBox(
-                            x - aggroRange,
-                            y - aggroRange,
-                            z - aggroRange,
-                            x + aggroRange + 1,
-                            y + aggroRange + 1,
-                                    z + aggroRange + 1
-                            )
-                    )
-            );
-            list.forEach(e -> e.setTarget(player));
-        }
+        this.anger(player, world, pos, aggroRange, isAggro);
     }
 }

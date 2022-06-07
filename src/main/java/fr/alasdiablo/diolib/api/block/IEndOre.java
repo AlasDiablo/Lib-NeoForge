@@ -15,7 +15,8 @@ import java.util.List;
  * Interface use by all The End Ore Block
  */
 @SuppressWarnings("unused")
-public interface IEndOre {
+@Deprecated(since = "4.5.26", forRemoval = true)
+public interface IEndOre extends AngerEnderman {
 
     /**
      * Default implementation of angerEnderman (function use of make <i>EndermanEntity</i> attack <i>PlayerEntity</i>)
@@ -29,21 +30,6 @@ public interface IEndOre {
     default void angerEnderman(Player player, Level world, BlockPos pos, @Nullable Integer aggroRange, @Nullable Boolean isAggro) {
         isAggro    = (isAggro == null) ? DiaboloLibConfig.ENDERMAN_ANGER.canAnger() : isAggro;
         aggroRange = (aggroRange == null) ? DiaboloLibConfig.ENDERMAN_ANGER.getAngerRange() : aggroRange;
-        if (isAggro) {
-            final int x = pos.getX(), y = pos.getY(), z = pos.getZ();
-            List<EnderMan> list = world.getEntitiesOfClass(
-                    EnderMan.class,
-                    AABB.of(new BoundingBox(
-                            x - aggroRange,
-                            y - aggroRange,
-                            z - aggroRange,
-                            x + aggroRange + 1,
-                            y + aggroRange + 1,
-                                    z + aggroRange + 1
-                            )
-                    )
-            );
-            list.forEach(e -> e.setTarget(player));
-        }
+        this.anger(player, world, pos, aggroRange, isAggro);
     }
 }

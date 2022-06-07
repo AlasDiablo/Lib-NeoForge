@@ -12,9 +12,10 @@ public class ArmorItemSet extends AbstractArmorItemSet {
 
     /**
      * Default constructor to create simple armor set
+     *
      * @param registryName Registry name of each armor piece
-     * @param material Material use by this armor set
-     * @param properties Properties of the armor set items
+     * @param material     Material use by this armor set
+     * @param properties   Properties of the armor set items
      */
     public ArmorItemSet(
             @NotNull ArmorItemRegistryName registryName,
@@ -30,13 +31,14 @@ public class ArmorItemSet extends AbstractArmorItemSet {
 
     /**
      * Customisable constructor used to create advanced armor set
+     *
      * @param registryName Registry name of each armor piece
-     * @param material Material use by this armor set
-     * @param properties Properties of the armor set items
-     * @param helmet Item provider use to create the helmet item
-     * @param chestplate Item provider use to create the chestplate item
-     * @param leggings Item provider use to create the leggings item
-     * @param boots Item provider use to create the boots item
+     * @param material     Material use by this armor set
+     * @param properties   Properties of the armor set items
+     * @param helmet       Item provider use to create the helmet item
+     * @param chestplate   Item provider use to create the chestplate item
+     * @param leggings     Item provider use to create the leggings item
+     * @param boots        Item provider use to create the boots item
      */
     public ArmorItemSet(
             @NotNull ArmorItemRegistryName registryName,

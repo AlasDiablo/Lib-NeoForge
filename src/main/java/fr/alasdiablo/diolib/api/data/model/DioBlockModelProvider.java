@@ -60,7 +60,8 @@ public abstract class DioBlockModelProvider extends BlockModelProvider {
     }
 
     protected void leaves(String blockNameIn) {
-        withExistingParent(blockNameIn, ResourceLocations.of("minecraft", "block/leaves")).texture("all", ResourceLocations.of(this.modid, "block/" + blockNameIn));
+        withExistingParent(blockNameIn, ResourceLocations.of("minecraft", "block/leaves")).texture(
+                "all", ResourceLocations.of(this.modid, "block/" + blockNameIn));
     }
 
     protected void pillar(String blockNameIn) {

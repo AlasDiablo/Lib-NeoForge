@@ -8,6 +8,7 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * Abstract class use by ArmorItemSet and DeferredArmorItemSet
+ *
  * @see fr.alasdiablo.diolib.api.item.armor.ArmorItemSet
  * @see fr.alasdiablo.diolib.api.item.armor.DeferredArmorItemSet
  */
@@ -15,21 +16,25 @@ import org.jetbrains.annotations.NotNull;
 public abstract class AbstractArmorItemSet {
     /**
      * Default helmet provider
+     *
      * @see ArmorItemProvider
      */
     public static final ArmorItemProvider DEFAULT_HELMET;
     /**
      * Default chestplate provider
+     *
      * @see ArmorItemProvider
      */
     public static final ArmorItemProvider DEFAULT_CHESTPLATE;
     /**
      * Default leggings provider
+     *
      * @see ArmorItemProvider
      */
     public static final ArmorItemProvider DEFAULT_LEGGINGS;
     /**
      * Default boots provider
+     *
      * @see ArmorItemProvider
      */
     public static final ArmorItemProvider DEFAULT_BOOTS;
@@ -42,16 +47,17 @@ public abstract class AbstractArmorItemSet {
     }
 
     protected final ArmorItemRegistryName registryName;
-    protected final Item helmet;
-    protected final Item chestplate;
-    protected final Item leggings;
-    protected final Item boots;
+    protected final Item                  helmet;
+    protected final Item                  chestplate;
+    protected final Item                  leggings;
+    protected final Item                  boots;
 
     /**
      * Default constructor to create simple armor set
+     *
      * @param registryName Registry name of each armor piece
-     * @param material Material use by this armor set
-     * @param properties Properties of the armor set items
+     * @param material     Material use by this armor set
+     * @param properties   Properties of the armor set items
      */
     public AbstractArmorItemSet(@NotNull ArmorItemRegistryName registryName, @NotNull ArmorMaterial material, @NotNull Item.Properties properties) {
         this(registryName, material, properties, DEFAULT_HELMET, DEFAULT_CHESTPLATE, DEFAULT_LEGGINGS, DEFAULT_BOOTS);
@@ -59,13 +65,14 @@ public abstract class AbstractArmorItemSet {
 
     /**
      * Customisable constructor used to create advanced armor set
+     *
      * @param registryName Registry name of each armor piece
-     * @param material Material use by this armor set
-     * @param properties Properties of the armor set items
-     * @param helmet Item provider use to create the helmet item
-     * @param chestplate Item provider use to create the chestplate item
-     * @param leggings Item provider use to create the leggings item
-     * @param boots Item provider use to create the boots item
+     * @param material     Material use by this armor set
+     * @param properties   Properties of the armor set items
+     * @param helmet       Item provider use to create the helmet item
+     * @param chestplate   Item provider use to create the chestplate item
+     * @param leggings     Item provider use to create the leggings item
+     * @param boots        Item provider use to create the boots item
      */
     public AbstractArmorItemSet(
             @NotNull ArmorItemRegistryName registryName, @NotNull ArmorMaterial material, @NotNull Item.Properties properties,

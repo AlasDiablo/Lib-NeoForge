@@ -5,7 +5,7 @@ import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Class used to create single blockstate variant
+ * Class used to create single block-state variant
  */
 public record DioBlockStateVariant(String key, String model, int x, int y, boolean uvlock) {
 

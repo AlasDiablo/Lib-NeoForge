@@ -7,13 +7,15 @@ import org.jetbrains.annotations.NotNull;
 
 /**
  * This record is use as a registry name provider use to create each registry name of an armor set
+ *
  * @param modId ID of the mod used to create the domaine of the ResourceLocation
- * @param name Actual armor name use to create the complete registry name
+ * @param name  Actual armor name use to create the complete registry name
  */
 public record ArmorItemRegistryName(String modId, String name) {
 
     /**
      * Create the registry name with the given arguments
+     *
      * @return The registry name of the helmet
      */
     @Contract(" -> new")
@@ -27,6 +29,7 @@ public record ArmorItemRegistryName(String modId, String name) {
 
     /**
      * Create the registry name with the given arguments
+     *
      * @return The registry name of the chestplate
      */
     @Contract(" -> new")
@@ -40,6 +43,7 @@ public record ArmorItemRegistryName(String modId, String name) {
 
     /**
      * Create the registry name with the given arguments
+     *
      * @return The registry name of the leggings
      */
     @Contract(" -> new")
@@ -53,6 +57,7 @@ public record ArmorItemRegistryName(String modId, String name) {
 
     /**
      * Create the registry name with the given arguments
+     *
      * @return The registry name of the boots
      */
     @Contract(" -> new")
