@@ -25,7 +25,7 @@ apply plugin: 'org.spongepowered.mixin'
 // ***************************************** //
 def majorVersion = 5
 def minorVersion = 5
-def buildVersion = 26
+def buildVersion = 27
 def isExperimental = false
 version = "${majorVersion}.${minorVersion}.${buildVersion}"
 if (isExperimental) {

@@ -1,3 +1,6 @@
+### 5.5.27
++ Update to mc 1.19
+
 ### 4.5.26
 + Update anger block api
 + Add documentation on some class
