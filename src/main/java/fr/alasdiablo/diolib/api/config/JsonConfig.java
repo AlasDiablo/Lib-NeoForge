@@ -26,8 +26,7 @@ public abstract class JsonConfig {
         } else {
             try {
                 FileReader fileReader = new FileReader(this.filePath.toString());
-                JsonParser jsonParser = new JsonParser();
-                JsonObject json       = jsonParser.parse(fileReader).getAsJsonObject();
+                JsonObject json       = JsonParser.parseReader(fileReader).getAsJsonObject();
                 this.read(json);
                 fileReader.close();
                 DiaboloLib.LOGGER.debug(String.format("Config %s have been loaded", this.getName()));

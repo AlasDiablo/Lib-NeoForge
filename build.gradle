@@ -8,7 +8,7 @@ buildscript {
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
         classpath 'org.parchmentmc:librarian:1.+'
-        classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
+        classpath 'org.spongepowered:mixingradle:0.7.32'
     }
 }
 
@@ -23,7 +23,7 @@ apply plugin: 'org.spongepowered.mixin'
 //        Standard versioning system         //
 //                                           //
 // ***************************************** //
-def majorVersion = 4
+def majorVersion = 5
 def minorVersion = 5
 def buildVersion = 26
 def isExperimental = false
@@ -53,7 +53,8 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 def deobfSourceClassifier
 
 minecraft {
-    mappings channel: 'parchment', version: '2022.06.05-1.18.2'
+    // mappings channel: 'parchment', version: '2022.06.05-1.18.2'
+    mappings channel: 'official', version: '1.19'
     deobfSourceClassifier = getMappings().get()
     accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
     runs {
@@ -61,7 +62,8 @@ minecraft {
             workingDirectory project.file('run')
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
-            arg "-mixin.config=diolib.mixins.json"
+            property 'forge.enabledGameTestNamespaces', 'diolib'
+            arg '-mixin.config=diolib.mixins.json'
             mods {
                 diolib {
                     source sourceSets.main
@@ -73,9 +75,23 @@ minecraft {
             workingDirectory project.file('run')
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
-            arg "-mixin.config=diolib.mixins.json"
+            property 'forge.enabledGameTestNamespaces', 'diolib'
+            arg '-mixin.config=diolib.mixins.json'
             mods {
                 diolib {
+                    source sourceSets.main
+                }
+            }
+        }
+
+        gameTestServer {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+            property 'forge.enabledGameTestNamespaces', 'diolib'
+            arg '-mixin.config=diolib.mixins.json'
+            mods {
+                examplemod {
                     source sourceSets.main
                 }
             }
@@ -111,8 +127,8 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.18.2-40.1.47'
-    annotationProcessor 'org.spongepowered:mixin:0.8.4:processor'
+    minecraft 'net.minecraftforge:forge:1.19-41.0.45'
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
 
 jar {
@@ -141,4 +157,8 @@ artifacts {
     archives jar
     archives sourcesJar
     archives deobfJar
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
 }

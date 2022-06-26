@@ -7,9 +7,8 @@ import net.minecraft.world.item.Item;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Abstract class use by ArmorItemSet and DeferredArmorItemSet
+ * Abstract class use by DeferredArmorItemSet
  *
- * @see fr.alasdiablo.diolib.api.item.armor.ArmorItemSet
  * @see fr.alasdiablo.diolib.api.item.armor.DeferredArmorItemSet
  */
 @SuppressWarnings("unused")

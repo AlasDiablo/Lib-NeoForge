@@ -1,14 +1,12 @@
 package fr.alasdiablo.diolib.api.data.blockstate;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import fr.alasdiablo.diolib.DiaboloLib;
 import fr.alasdiablo.diolib.api.util.ResourceLocations;
 import net.minecraft.MethodsReturnNonnullByDefault;
+import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
-import net.minecraft.data.HashCache;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.client.model.generators.IGeneratedBlockstate;
 
@@ -22,8 +20,6 @@ import java.util.Map;
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
 public abstract class DioBlockStateProvider implements DataProvider {
-    private static final Gson GSON = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
-
     protected final Map<String, IGeneratedBlockstate> registeredBlocks = new LinkedHashMap<>();
 
     private final DataGenerator generator;
@@ -353,7 +349,7 @@ public abstract class DioBlockStateProvider implements DataProvider {
     }
 
     @Override
-    public void run(HashCache cache) {
+    public void run(CachedOutput cache) {
         this.registeredBlocks.clear();
         this.registerStates();
         for (Map.Entry<String, IGeneratedBlockstate> entry: registeredBlocks.entrySet()) {
@@ -361,12 +357,12 @@ public abstract class DioBlockStateProvider implements DataProvider {
         }
     }
 
-    private void saveBlockState(HashCache cache, JsonObject stateJson, String blockName) {
+    private void saveBlockState(CachedOutput cache, JsonObject stateJson, String blockName) {
         Path   mainOutput = this.generator.getOutputFolder();
         String pathSuffix = "assets/" + this.modId + "/blockstates/" + blockName + ".json";
         Path   outputPath = mainOutput.resolve(pathSuffix);
         try {
-            DataProvider.save(GSON, cache, stateJson, outputPath);
+            DataProvider.saveStable(cache, stateJson, outputPath);
         } catch (IOException e) {
             DiaboloLib.LOGGER.error("Couldn't save blockstate to {}", outputPath, e);
         }
