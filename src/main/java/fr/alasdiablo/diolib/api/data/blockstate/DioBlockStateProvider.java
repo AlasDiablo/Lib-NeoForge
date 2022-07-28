@@ -8,7 +8,7 @@ import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.client.model.generators.IGeneratedBlockstate;
+import net.minecraftforge.client.model.generators.IGeneratedBlockState;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.io.IOException;
@@ -20,7 +20,7 @@ import java.util.Map;
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
 public abstract class DioBlockStateProvider implements DataProvider {
-    protected final Map<String, IGeneratedBlockstate> registeredBlocks = new LinkedHashMap<>();
+    protected final Map<String, IGeneratedBlockState> registeredBlocks = new LinkedHashMap<>();
 
     private final DataGenerator generator;
     private final String        modId;
@@ -41,7 +41,7 @@ public abstract class DioBlockStateProvider implements DataProvider {
      * @param blockName  Name of the block
      * @param blockstate Block-state associated to the block
      */
-    protected void addBlockState(String blockName, IGeneratedBlockstate blockstate) {
+    protected void addBlockState(String blockName, IGeneratedBlockState blockstate) {
         this.registeredBlocks.put(blockName, blockstate);
     }
 
@@ -352,7 +352,7 @@ public abstract class DioBlockStateProvider implements DataProvider {
     public void run(CachedOutput cache) {
         this.registeredBlocks.clear();
         this.registerStates();
-        for (Map.Entry<String, IGeneratedBlockstate> entry: registeredBlocks.entrySet()) {
+        for (Map.Entry<String, IGeneratedBlockState> entry: registeredBlocks.entrySet()) {
             this.saveBlockState(cache, entry.getValue().toJson(), entry.getKey());
         }
     }

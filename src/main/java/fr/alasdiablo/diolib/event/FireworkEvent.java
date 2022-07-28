@@ -138,7 +138,7 @@ public class FireworkEvent implements IEvent<PlayerEvent.PlayerLoggedInEvent> {
      */
     @Override
     public void onEvent(PlayerEvent.@NotNull PlayerLoggedInEvent event) {
-        var player = event.getPlayer();
+        var player = event.getEntity();
         var world  = player.level;
         var UUID   = player.getStringUUID();
         if (DiaboloLibConfig.CONTRIBUTOR_FIREWORK.canContributorFirework()) {

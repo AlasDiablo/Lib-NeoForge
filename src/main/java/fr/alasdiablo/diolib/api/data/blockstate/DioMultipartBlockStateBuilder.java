@@ -4,7 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import fr.alasdiablo.diolib.util.ImmutablePair;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.client.model.generators.IGeneratedBlockstate;
+import net.minecraftforge.client.model.generators.IGeneratedBlockState;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ import java.util.List;
  * Class used to create multiple part block-state
  */
 @SuppressWarnings("unused")
-public class DioMultipartBlockStateBuilder implements IGeneratedBlockstate {
+public class DioMultipartBlockStateBuilder implements IGeneratedBlockState {
 
     private final List<ImmutablePair<JsonObject, JsonObject>> multipart;
 

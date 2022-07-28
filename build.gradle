@@ -25,7 +25,7 @@ apply plugin: 'org.spongepowered.mixin'
 // ***************************************** //
 def majorVersion = 5
 def minorVersion = 5
-def buildVersion = 27
+def buildVersion = 28
 def isExperimental = false
 version = "${majorVersion}.${minorVersion}.${buildVersion}"
 if (isExperimental) {
@@ -127,7 +127,11 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.19-41.0.45'
+    minecraft 'net.minecraftforge:forge:1.19-41.1.0'
+
+    // implementation fg.deobf('curse.maven:zerocore-247921:3845464') // ZeroCore 2 (2.1.21)
+    // implementation fg.deobf('curse.maven:extreme-reactors-250277:3845482') // Extreme Reactors (2.0.50)
+
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
 

@@ -2,7 +2,7 @@ package fr.alasdiablo.diolib.api.data.blockstate;
 
 import com.google.gson.JsonObject;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.client.model.generators.IGeneratedBlockstate;
+import net.minecraftforge.client.model.generators.IGeneratedBlockState;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
@@ -12,7 +12,7 @@ import java.util.Map;
  * Class used to create simple blockstate
  */
 @SuppressWarnings("unused")
-public class DioBlockStateBuilder implements IGeneratedBlockstate {
+public class DioBlockStateBuilder implements IGeneratedBlockState {
 
     /**
      * Map used to store the block state
