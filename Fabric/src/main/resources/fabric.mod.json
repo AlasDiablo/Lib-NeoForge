@@ -1,0 +1,40 @@
+{
+    "schemaVersion": 1,
+    "id": "diolib",
+    "version": "${version}",
+  
+    "name": "Diabolo Lib",
+    "description": "Library Mod for Janoeo Project and more !",
+    "authors": [
+      "AlasDiablo",
+      "Safyrus"
+    ],
+    "contact": {
+      "homepage": "https://www.curseforge.com/minecraft/mc-mods/diabololib",
+      "sources": "https://github.com/Janoeo/DiaboloLib"
+    },
+  
+    "license": "LGPL-3.0-or-later",
+    "icon": "dio-icon.png",
+  
+    "environment": "*",
+    "entrypoints": {
+      "main": [
+        "fr.alasdiablo.diolib.DiaboloLibFabric"
+      ]
+    },
+    "mixins": [
+      "diolib.mixins.json"
+    ],
+  
+    "depends": {
+      "fabricloader": ">=0.14",
+      "fabric": "*",
+      "minecraft": "1.19.x",
+      "java": ">=17"
+    },
+    "suggests": {
+      "another-mod": "*"
+    }
+  }
+  
