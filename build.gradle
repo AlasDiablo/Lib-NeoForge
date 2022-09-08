@@ -25,7 +25,7 @@ apply plugin: 'org.spongepowered.mixin'
 // ***************************************** //
 def majorVersion = 5
 def minorVersion = 5
-def buildVersion = 28
+def buildVersion = 29
 def isExperimental = false
 version = "${majorVersion}.${minorVersion}.${buildVersion}"
 if (isExperimental) {
@@ -53,8 +53,7 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 def deobfSourceClassifier
 
 minecraft {
-    // mappings channel: 'parchment', version: '2022.06.05-1.18.2'
-    mappings channel: 'official', version: '1.19'
+    mappings channel: 'parchment', version: '2022.09.04-1.19.2'
     deobfSourceClassifier = getMappings().get()
     accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
     runs {
@@ -127,11 +126,7 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.19-41.1.0'
-
-    // implementation fg.deobf('curse.maven:zerocore-247921:3845464') // ZeroCore 2 (2.1.21)
-    // implementation fg.deobf('curse.maven:extreme-reactors-250277:3845482') // Extreme Reactors (2.0.50)
-
+    minecraft 'net.minecraftforge:forge:1.19.2-43.1.3'
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
 
