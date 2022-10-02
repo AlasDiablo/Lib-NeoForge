@@ -1,11 +1,3 @@
-### 6.5.30
-+ Update Diabolo Lib to MultiLoader
-+ Use Forge 43.1.3
-+ Use Fabric API 0.60.0+1.19.2
-+ Use Fabric Loader 0.14.9
-
-Note: This version is highly experimental beware of bug
-
 ### 5.5.29
 + Update to forge 43.1.3
 
