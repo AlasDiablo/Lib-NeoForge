@@ -2,37 +2,37 @@ package fr.alasdiablo.diolib.api.item;
 
 import fr.alasdiablo.diolib.DiaboloLib;
 import fr.alasdiablo.diolib.api.util.DateRange;
-import net.minecraft.MethodsReturnNonnullByDefault;
-import net.minecraft.resources.ResourceLocation;
+import fr.alasdiablo.diolib.api.util.ResourceLocations;
 import net.minecraft.world.item.CreativeModeTab;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 
-import javax.annotation.ParametersAreNonnullByDefault;
 import java.awt.*;
 
 @SuppressWarnings("unused")
-@MethodsReturnNonnullByDefault
-@ParametersAreNonnullByDefault
-public abstract class GroundCreativeModeTab extends CreativeModeTab {
+public class GroundCreativeModeTab {
 
-    public GroundCreativeModeTab(String label) {
-        super(label);
+    @Contract("_ -> param1")
+    public static CreativeModeTab.@NotNull Builder createBaseBuilder(CreativeModeTab.@NotNull Builder builder) {
+        builder.withLabelColor(Color.BLACK.getRGB());
+
         if (DateRange.IS_WINTER) {
-            super.setBackgroundImage(new ResourceLocation(DiaboloLib.MOD_ID, "textures/gui/container/creative_inventory/ground_winter.png"));
-        } else {
-            super.setBackgroundImage(new ResourceLocation(DiaboloLib.MOD_ID, "textures/gui/container/creative_inventory/ground.png"));
+            builder.withBackgroundLocation(
+                    ResourceLocations.of(DiaboloLib.MOD_ID, "textures/gui/container/creative_inventory/ground_winter.png")
+            );
+            return builder;
         }
-        if (DateRange.IS_APRIL_FIRST)
-            super.setBackgroundImage(new ResourceLocation(DiaboloLib.MOD_ID, "textures/gui/container/creative_inventory/ground_april.png"));
-    }
 
-    @Override
-    public CreativeModeTab setBackgroundImage(ResourceLocation texture) {
-        DiaboloLib.LOGGER.warn("setBackgroundImageName in OreItemGroup do nothing, please don't user it.");
-        return this;
-    }
+        if (DateRange.IS_APRIL_FIRST) {
+            builder.withBackgroundLocation(
+                    ResourceLocations.of(DiaboloLib.MOD_ID, "textures/gui/container/creative_inventory/ground_april.png")
+            );
+            return builder;
+        }
 
-    @Override
-    public int getLabelColor() {
-        return Color.BLACK.getRGB();
+        builder.withBackgroundLocation(
+                ResourceLocations.of(DiaboloLib.MOD_ID, "textures/gui/container/creative_inventory/ground.png")
+        );
+        return builder;
     }
 }
