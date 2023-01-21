@@ -1,20 +1,19 @@
 package fr.alasdiablo.diolib.api.data.blockstate;
 
 import com.google.gson.JsonObject;
-import fr.alasdiablo.diolib.DiaboloLib;
 import fr.alasdiablo.diolib.api.util.ResourceLocations;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.data.CachedOutput;
-import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
+import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.client.model.generators.IGeneratedBlockState;
 
 import javax.annotation.ParametersAreNonnullByDefault;
-import java.io.IOException;
 import java.nio.file.Path;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.concurrent.CompletableFuture;
 
 @SuppressWarnings("unused")
 @ParametersAreNonnullByDefault
@@ -22,12 +21,12 @@ import java.util.Map;
 public abstract class DioBlockStateProvider implements DataProvider {
     protected final Map<String, IGeneratedBlockState> registeredBlocks = new LinkedHashMap<>();
 
-    private final DataGenerator generator;
-    private final String        modId;
+    private final PackOutput output;
+    private final String     modId;
 
-    public DioBlockStateProvider(DataGenerator generator, String modId) {
-        this.generator = generator;
-        this.modId     = modId;
+    public DioBlockStateProvider(PackOutput output, String modId) {
+        this.output = output;
+        this.modId  = modId;
     }
 
     /**
@@ -349,23 +348,21 @@ public abstract class DioBlockStateProvider implements DataProvider {
     }
 
     @Override
-    public void run(CachedOutput cache) {
+    public CompletableFuture<?> run(CachedOutput cache) {
         this.registeredBlocks.clear();
         this.registerStates();
-        for (Map.Entry<String, IGeneratedBlockState> entry: registeredBlocks.entrySet()) {
-            this.saveBlockState(cache, entry.getValue().toJson(), entry.getKey());
-        }
+        return CompletableFuture.allOf(
+                registeredBlocks.entrySet().stream().map(
+                        entry -> this.saveBlockState(cache, entry.getValue().toJson(), entry.getKey())
+                ).toArray(CompletableFuture[]::new)
+        );
     }
 
-    private void saveBlockState(CachedOutput cache, JsonObject stateJson, String blockName) {
-        Path   mainOutput = this.generator.getOutputFolder();
+    private CompletableFuture<?> saveBlockState(CachedOutput cache, JsonObject stateJson, String blockName) {
+        Path   mainOutput = this.output.getOutputFolder();
         String pathSuffix = "assets/" + this.modId + "/blockstates/" + blockName + ".json";
         Path   outputPath = mainOutput.resolve(pathSuffix);
-        try {
-            DataProvider.saveStable(cache, stateJson, outputPath);
-        } catch (IOException e) {
-            DiaboloLib.LOGGER.error("Couldn't save blockstate to {}", outputPath, e);
-        }
+        return DataProvider.saveStable(cache, stateJson, outputPath);
     }
 
     @Override
