@@ -43,6 +43,7 @@
 ### Download | Mirror
 
 - [Curseforge](https://www.curseforge.com/minecraft/mc-mods/diabololib)
+- [Modrinth](https://modrinth.com/mod/diabololib)
 - [Github](https://github.com/Janoeo/DiaboloLib/releases)
 
 ### Dependencies
