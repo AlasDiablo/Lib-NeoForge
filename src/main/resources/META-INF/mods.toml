@@ -8,7 +8,6 @@ issueTrackerURL = "https://github.com/Janoeo/DiaboloLib/issues"
     version = "${file.jarVersion}"
     displayName = "DiaboloLib"
     displayURL = "https://github.com/Janoeo/DiaboloLib"
-    logoFile = "diabolo-lib.png"
     authors = "AlasDiablo & Safyrus"
     description = '''
     Libray Mod for Janoeo Project and more !
