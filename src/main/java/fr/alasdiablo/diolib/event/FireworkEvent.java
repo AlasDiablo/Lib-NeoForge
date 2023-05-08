@@ -14,6 +14,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import org.apache.logging.log4j.message.FormattedMessage;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.BufferedReader;
@@ -42,7 +43,7 @@ public class FireworkEvent implements IEvent<PlayerEvent.PlayerLoggedInEvent> {
         this.listOfContributor = new HashMap<>();
 
         try {
-            var jsonUrl        = new URL("https://raw.githubusercontent.com/Janoeo/DiaboloLib/1.18-v3/contributors.json");
+            var jsonUrl        = new URL("https://raw.githubusercontent.com/Janoeo/DiaboloLib/master/contributors.json");
             var bufferedReader = new BufferedReader(new InputStreamReader(jsonUrl.openStream()));
 
             var contributors = JsonParser.parseReader(bufferedReader).getAsJsonArray();
@@ -81,7 +82,8 @@ public class FireworkEvent implements IEvent<PlayerEvent.PlayerLoggedInEvent> {
         world.addFreshEntity(new FireworkRocketEntity(world, player.xOld, player.yOld, player.zOld, firework));
     }
 
-    private int getColor(String contributionType) {
+    @Contract(pure = true)
+    private int getColor(@NotNull String contributionType) {
         return switch (contributionType) {
             case "code" -> 6719955; // light blue
             case "test" -> 4312372; // lime
@@ -124,7 +126,7 @@ public class FireworkEvent implements IEvent<PlayerEvent.PlayerLoggedInEvent> {
         return star;
     }
 
-    private ImmutablePair<Boolean, CompoundTag> getStarFirework(String UUID) {
+    private ImmutablePair<Boolean, CompoundTag> getStarFirework(@NotNull String UUID) {
         return switch (UUID) {
             case ALASDIABLO_UUID, SAFYRUS_UUID, SMARTZI_UUID -> ImmutablePair.of(true, this.getAuthorFirework(UUID));
             default -> ImmutablePair.of(false, this.getContributorFirework(UUID));
@@ -132,7 +134,7 @@ public class FireworkEvent implements IEvent<PlayerEvent.PlayerLoggedInEvent> {
     }
 
     /**
-     * Function use for handle the event
+     * Function use to handle the event
      *
      * @param event Instance of the event
      */

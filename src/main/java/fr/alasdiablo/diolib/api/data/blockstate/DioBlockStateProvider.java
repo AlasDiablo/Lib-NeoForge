@@ -45,7 +45,7 @@ public abstract class DioBlockStateProvider implements DataProvider {
     }
 
     /**
-     * Block-state builder use to create a door block-state
+     * Block-state builder uses to create a door block-state
      *
      * @param blockName Name of the door block
      */
@@ -96,7 +96,7 @@ public abstract class DioBlockStateProvider implements DataProvider {
     }
 
     /**
-     * Block-state builder use to create a button block-state
+     * Block-state builder uses to create a button block-state
      *
      * @param blockName Name of the button block
      */
@@ -138,7 +138,7 @@ public abstract class DioBlockStateProvider implements DataProvider {
     }
 
     /**
-     * Block-state builder use to create a trapdoor block-state
+     * Block-state builder uses to create a trapdoor block-state
      *
      * @param blockName Name of the trapdoor block
      */
@@ -172,7 +172,7 @@ public abstract class DioBlockStateProvider implements DataProvider {
     }
 
     /**
-     * Block-state builder use to create a stairs block-state
+     * Block-state builder uses to create a stairs block-state
      *
      * @param blockName Name of the stairs block
      */
@@ -230,7 +230,7 @@ public abstract class DioBlockStateProvider implements DataProvider {
     }
 
     /**
-     * Block-state builder use to create a door block-state
+     * Block-state builder uses to create a door block-state
      *
      * @param slabBlockName Name of the slab block
      * @param fullBlockName Name of the full block
@@ -247,7 +247,7 @@ public abstract class DioBlockStateProvider implements DataProvider {
     }
 
     /**
-     * Block-state builder use to create a pressure plate block-state
+     * Block-state builder uses to create a pressure plate block-state
      *
      * @param blockName Name of the pressure plate block
      */
@@ -261,7 +261,7 @@ public abstract class DioBlockStateProvider implements DataProvider {
     }
 
     /**
-     * Block-state builder use to create a wooden fence gate block-state
+     * Block-state builder uses to create a wooden fence gate block-state
      *
      * @param blockName Name of the wooden face gate block
      */
@@ -295,7 +295,7 @@ public abstract class DioBlockStateProvider implements DataProvider {
     }
 
     /**
-     * Block-state builder use to create a wooden fence block-state
+     * Block-state builder uses to create a wooden fence block-state
      *
      * @param blockName Name of the wooden fence block
      */
@@ -312,7 +312,7 @@ public abstract class DioBlockStateProvider implements DataProvider {
     }
 
     /**
-     * Block-state builder use to create a pillar block-state
+     * Block-state builder uses to create a pillar block-state
      *
      * @param blockName Name of the pillar block
      */
@@ -327,7 +327,7 @@ public abstract class DioBlockStateProvider implements DataProvider {
     }
 
     /**
-     * Block-state builder use to create a sapling block-state
+     * Block-state builder uses to create a sapling block-state
      *
      * @param blockName Name of the sapling block
      */
@@ -336,7 +336,7 @@ public abstract class DioBlockStateProvider implements DataProvider {
     }
 
     /**
-     * Block-state builder use to create a default block-state
+     * Block-state builder uses to create a default block-state
      *
      * @param blockName Name of the block
      */

@@ -2,6 +2,7 @@ package fr.alasdiablo.diolib.api.block;
 
 import fr.alasdiablo.diolib.config.DiaboloLibConfig;
 import net.minecraft.core.Position;
+import net.minecraft.core.PositionImpl;
 import net.minecraft.core.Vec3i;
 import net.minecraft.world.entity.monster.EnderMan;
 import net.minecraft.world.entity.player.Player;
@@ -13,7 +14,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 /**
- * Interface use by all The End Ore Block
+ * Interface used by all The End Ore Block
  */
 @SuppressWarnings("unused")
 @ParametersAreNonnullByDefault
@@ -24,24 +25,24 @@ public interface AngerEnderman extends Anger {
      * <p>
      * Use given position
      *
-     * @param player     Player who break the block
+     * @param player     Player, who break the block
      * @param world      The current world
      * @param position   Block position
      * @param aggroRange if null use value set by MobAngerConfig, aggro range with block as origine
      * @param isAggro    if null use value set by MobAngerConfig, enable or disable mob aggro
      */
-    default void anger(Player player, Level world, Vec3i position, int aggroRange, boolean isAggro) {
+    default void anger(Player player, Level world, Position position, int aggroRange, boolean isAggro) {
         if (!isAggro) return;
-        final int x = position.getX(), y = position.getY(), z = position.getZ();
+        final float x = (float) position.x(), y = (float) position.y(), z = (float) position.z();
         List<EnderMan> list = world.getEntitiesOfClass(
                 EnderMan.class,
                 AABB.of(new BoundingBox(
-                                x - aggroRange,
-                                y - aggroRange,
-                                z - aggroRange,
-                                x + aggroRange + 1,
-                                y + aggroRange + 1,
-                                z + aggroRange + 1
+                                Math.round(x - aggroRange),
+                                Math.round(y - aggroRange),
+                                Math.round(z - aggroRange),
+                                Math.round(x + aggroRange + 1),
+                                Math.round(y + aggroRange + 1),
+                                Math.round(z + aggroRange + 1)
                         )
                 )
         );
@@ -51,24 +52,9 @@ public interface AngerEnderman extends Anger {
     /**
      * Default implementation of anger (function use of make <i>EndermanEntity</i> attack <i>PlayerEntity</i>)
      * <p>
-     * Use given position
-     *
-     * @param player     Player who break the block
-     * @param world      The current world
-     * @param position   Entity position
-     * @param aggroRange if null use value set by MobAngerConfig, aggro range with block as origine
-     * @param isAggro    if null use value set by MobAngerConfig, enable or disable mob aggro
-     */
-    default void anger(Player player, Level world, Position position, int aggroRange, boolean isAggro) {
-        this.anger(player, world, new Vec3i(position.x(), position.y(), position.z()), aggroRange, isAggro);
-    }
-
-    /**
-     * Default implementation of anger (function use of make <i>EndermanEntity</i> attack <i>PlayerEntity</i>)
-     * <p>
      * Use player position
      *
-     * @param player     Player who break the block
+     * @param player     Player, who break the block
      * @param world      The current world
      * @param aggroRange if null use value set by MobAngerConfig, aggro range with block as origine
      * @param isAggro    if null use value set by MobAngerConfig, enable or disable mob aggro
@@ -82,12 +68,15 @@ public interface AngerEnderman extends Anger {
      * <p>
      * Use given position
      *
-     * @param player   Player who break the block
+     * @param player   Player, who break the block
      * @param world    The current world
      * @param position Block position
      */
     default void anger(Player player, Level world, Vec3i position) {
-        this.anger(player, world, position, DiaboloLibConfig.ENDERMAN_ANGER.getAngerRange(), DiaboloLibConfig.ENDERMAN_ANGER.canAnger());
+        this.anger(
+                player, world, new PositionImpl(position.getX(), position.getY(), position.getZ()), DiaboloLibConfig.ENDERMAN_ANGER.getAngerRange(),
+                DiaboloLibConfig.ENDERMAN_ANGER.canAnger()
+        );
     }
 
     /**
@@ -95,7 +84,7 @@ public interface AngerEnderman extends Anger {
      * <p>
      * Use given position
      *
-     * @param player   Player who break the block
+     * @param player   Player, who break the block
      * @param world    The current world
      * @param position Entity position
      */
@@ -108,7 +97,7 @@ public interface AngerEnderman extends Anger {
      * <p>
      * Use player position
      *
-     * @param player Player who break the block
+     * @param player Player, who break the block
      * @param world  The current world
      */
     default void anger(Player player, Level world) {

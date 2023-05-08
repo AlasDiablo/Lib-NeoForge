@@ -25,7 +25,7 @@ public class ResourceLocations {
     /**
      * Utils use to add a prefix to a registryName
      *
-     * @param registryName The RegistryName which receives the prefix
+     * @param registryName The RegistryName, which receives the prefix
      * @param prefix       The prefix that is added to the RegistryName
      *
      * @return Return the addition of the <i>registryName</i> and the <i>prefix</i>

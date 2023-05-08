@@ -9,7 +9,7 @@ import java.util.Objects;
  * Define a tuple of 2 value
  *
  * @param <K> Type of the first value
- * @param <V> Type of the seconds value
+ * @param <V> Type of the second value
  */
 public record ImmutablePair<K, V>(K key, V value) {
 
@@ -19,7 +19,7 @@ public record ImmutablePair<K, V>(K key, V value) {
      * @param key   first value
      * @param value seconde value
      * @param <K>   Type of the first value
-     * @param <V>   Type of the seconds value
+     * @param <V>   Type of the second value
      *
      * @return Create a pair containing two value
      */
@@ -29,11 +29,11 @@ public record ImmutablePair<K, V>(K key, V value) {
     }
 
     /**
-     * Check if two pair are equals
+     * Check if two pairs are equals
      *
      * @param o Pair to compare with the current one
      *
-     * @return true if it is the same, false in other case
+     * @return true if it is the same, false in another case
      */
     @Override
     public boolean equals(Object o) {

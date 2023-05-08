@@ -1,3 +1,9 @@
+### 5.7.31
++ Update to mc 1.19.4
++ Update to forge 45.0.57
++ Refactor ArmorSet builder
++ Remove `PowderSnowBlock.canEntityWalkOnPowderSnow` mixin
+
 ### 5.6.30
 + Update to mc 1.19.3
 + Update to forge 44.1.5
@@ -29,7 +35,7 @@
 
 ### 3.2.22
 
-+ Add missing element into SimpleUnicode
++ Add a missing element into SimpleUnicode
 + Add a new firework for Smartzi (Translator/Reviewer/Corrector)
 
 ### 3.1.21

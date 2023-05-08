@@ -53,9 +53,9 @@ public class BlockHelper {
     }
 
     /**
-     * Halper use to add a block to the strippables block create via a axe
+     * Helper use to add a block to the strippables block create via an axe
      *
-     * @param source Source block (block who get the strip action)
+     * @param source Source block (block who gets the strip action)
      * @param target Result block
      */
     public static void createStrippablesBlock(@NotNull Block source, @NotNull Block target) {

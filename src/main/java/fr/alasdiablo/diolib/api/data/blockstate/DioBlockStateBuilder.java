@@ -96,7 +96,7 @@ public class DioBlockStateBuilder implements IGeneratedBlockState {
         // Create blockstate variants object and add all variants
         var blockStateVariants = new JsonObject();
         this.variants.forEach(blockStateVariants::add);
-        // Create blockstate object and add variants in it
+        // Create a blockstate object and add variants in it
         var blockState = new JsonObject();
         blockState.add("variants", blockStateVariants);
         // Return the blockstate
