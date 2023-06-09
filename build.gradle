@@ -33,7 +33,7 @@ if (isExperimental) {
 }
 
 group = 'fr.alasdiablo.diolib'
-archivesBaseName = 'DiaboloLib'
+archivesBaseName = 'diabololib'
 
 def manifestAttributes = [
         "Specification-Title"     : "DiaboloLib",
