@@ -1,3 +1,7 @@
+### 6.6.33
++ Update to mc 1.20.1
++ Update to forge 47.1.0
+
 ### 6.6.32
 + Update to mc 1.20
 + Update to forge 46.0.2

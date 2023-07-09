@@ -13,6 +13,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.function.BiConsumer;
 
+@SuppressWarnings("unused")
 public abstract class DioBlockLootSubProvider extends BlockLootSubProvider {
     protected DioBlockLootSubProvider(Set<Item> pExplosionResistant, FeatureFlagSet pEnabledFeatures) {
         super(pExplosionResistant, pEnabledFeatures);
