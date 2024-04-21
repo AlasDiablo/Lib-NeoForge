@@ -1,4 +1,4 @@
-### 7.6.34
+### 7.7.34
 + Update to mc 1.20.4
 + Now using NeoForge
 
