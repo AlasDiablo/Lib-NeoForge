@@ -2,13 +2,13 @@ package fr.alasdiablo.diolib.api.block;
 
 import fr.alasdiablo.diolib.config.DiaboloLibConfig;
 import net.minecraft.core.Position;
-import net.minecraft.core.PositionImpl;
 import net.minecraft.core.Vec3i;
 import net.minecraft.world.entity.monster.EnderMan;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
@@ -74,7 +74,7 @@ public interface AngerEnderman extends Anger {
      */
     default void anger(Player player, Level world, Vec3i position) {
         this.anger(
-                player, world, new PositionImpl(position.getX(), position.getY(), position.getZ()), DiaboloLibConfig.ENDERMAN_ANGER.getAngerRange(),
+                player, world, new Vec3(position.getX(), position.getY(), position.getZ()), DiaboloLibConfig.ENDERMAN_ANGER.getAngerRange(),
                 DiaboloLibConfig.ENDERMAN_ANGER.canAnger()
         );
     }

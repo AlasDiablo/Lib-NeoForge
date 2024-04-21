@@ -1,3 +1,7 @@
+### 7.6.34
++ Update to mc 1.20.4
++ Now using NeoForge
+
 ### 6.6.33
 + Update to mc 1.20.1
 + Update to forge 47.1.0

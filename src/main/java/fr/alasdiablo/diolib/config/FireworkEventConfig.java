@@ -20,7 +20,7 @@ public class FireworkEventConfig extends JsonConfig {
     @Override
     protected void read(@NotNull JsonObject json) {
         this.firework = json.get("contributor_firework").getAsBoolean();
-        DiaboloLib.LOGGER.debug("Data change for contributor firework : " + this.firework);
+        DiaboloLib.LOGGER.debug("Data change for contributor firework : {}", this.firework);
     }
 
     @Override

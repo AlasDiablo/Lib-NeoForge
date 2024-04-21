@@ -3,8 +3,8 @@ package fr.alasdiablo.diolib.api.item.armor;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.Item;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
 import org.apache.commons.lang3.function.TriFunction;
 import org.jetbrains.annotations.NotNull;
 
@@ -12,11 +12,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@SuppressWarnings("unused")
 public class ArmorSetItem {
-    private final RegistryObject<Item> helmetRegistryObject;
-    private final RegistryObject<Item> chestplateRegistryObject;
-    private final RegistryObject<Item> leggingsRegistryObject;
-    private final RegistryObject<Item> bootsRegistryObject;
+    private final DeferredHolder<Item, ArmorItem> helmetRegistryObject;
+    private final DeferredHolder<Item, ArmorItem> chestplateRegistryObject;
+    private final DeferredHolder<Item, ArmorItem> leggingsRegistryObject;
+    private final DeferredHolder<Item, ArmorItem> bootsRegistryObject;
 
     public ArmorSetItem(
             @NotNull ArmorItemRegistryName registryName, @NotNull ArmorMaterial material, Item.@NotNull Properties properties,

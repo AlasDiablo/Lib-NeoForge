@@ -11,6 +11,7 @@ import org.jetbrains.annotations.NotNull;
  * @param modId ID of the mod used to create the domaine of the ResourceLocation
  * @param name  Actual armor name use to create the complete registry name
  */
+@SuppressWarnings("unused")
 public record ArmorItemRegistryName(String modId, String name) {
 
     /**

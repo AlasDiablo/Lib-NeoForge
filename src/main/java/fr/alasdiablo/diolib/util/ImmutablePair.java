@@ -6,7 +6,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Objects;
 
 /**
- * Define a tuple of 2 value
+ * Define a tuple of two values
  *
  * @param <K> Type of the first value
  * @param <V> Type of the second value
@@ -21,7 +21,7 @@ public record ImmutablePair<K, V>(K key, V value) {
      * @param <K>   Type of the first value
      * @param <V>   Type of the second value
      *
-     * @return Create a pair containing two value
+     * @return Create a pair containing two values
      */
     @Contract("_, _ -> new")
     public static <K, V> @NotNull ImmutablePair<K, V> of(K key, V value) {
@@ -45,7 +45,7 @@ public record ImmutablePair<K, V>(K key, V value) {
     /**
      * Create a hash of the current pair
      *
-     * @return A hash build from the two value
+     * @return A hash build from the two values
      */
     @Override
     public int hashCode() {

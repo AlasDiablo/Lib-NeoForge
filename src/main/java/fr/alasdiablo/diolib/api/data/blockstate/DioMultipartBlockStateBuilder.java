@@ -4,7 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import fr.alasdiablo.diolib.util.ImmutablePair;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.client.model.generators.IGeneratedBlockState;
+import net.neoforged.neoforge.client.model.generators.IGeneratedBlockState;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -89,7 +89,7 @@ public class DioMultipartBlockStateBuilder implements IGeneratedBlockState {
     }
 
     @Override
-    public JsonObject toJson() {
+    public @NotNull JsonObject toJson() {
         final JsonArray multipartObj = new JsonArray();
         this.multipart.forEach(multipart -> {
             JsonObject object = new JsonObject();

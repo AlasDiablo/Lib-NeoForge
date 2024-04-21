@@ -1,7 +1,7 @@
 package fr.alasdiablo.diolib.api.config;
 
 import fr.alasdiablo.diolib.DiaboloLib;
-import net.minecraftforge.fml.loading.FMLPaths;
+import net.neoforged.fml.loading.FMLPaths;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
@@ -66,12 +66,15 @@ public class JsonConfigBuilder {
             } catch (FileAlreadyExistsException exception) {
                 path = tmpPath;
             }
-            DiaboloLib.LOGGER.debug("Create folder: " + path);
+            DiaboloLib.LOGGER.debug("Create folder: {}", path);
         }
         modIDList.add(modID);
 
         final Path finalPath = path;
-        this.jsonConfigs.values().forEach(e -> e.filePath(Paths.get(finalPath.toString(), e.getName() + ".json")));
+        this.jsonConfigs.values().forEach(e -> {
+            assert finalPath != null;
+            e.filePath(Paths.get(finalPath.toString(), e.getName() + ".json"));
+        });
 
         for (JsonConfig e: this.jsonConfigs.values()) {
             e.initOrLoad();

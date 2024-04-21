@@ -2,7 +2,7 @@ package fr.alasdiablo.diolib.api.data.blockstate;
 
 import com.google.gson.JsonObject;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.client.model.generators.IGeneratedBlockState;
+import net.neoforged.neoforge.client.model.generators.IGeneratedBlockState;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
@@ -92,7 +92,7 @@ public class DioBlockStateBuilder implements IGeneratedBlockState {
      * @return Json representation of the blockstate
      */
     @Override
-    public JsonObject toJson() {
+    public @NotNull JsonObject toJson() {
         // Create blockstate variants object and add all variants
         var blockStateVariants = new JsonObject();
         this.variants.forEach(blockStateVariants::add);

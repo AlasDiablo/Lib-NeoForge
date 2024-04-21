@@ -1,27 +1,27 @@
 modLoader = "javafml"
-loaderVersion = "[47,)"
-license = "LGPL-3.0 License"
+loaderVersion="${loader_version_range}"
+license="${mod_license}"
 issueTrackerURL = "https://github.com/Janoeo/DiaboloLib/issues"
 
 [[mods]]
-    modId = "diolib"
-    version = "${file.jarVersion}"
-    displayName = "DiaboloLib"
-    displayURL = "https://github.com/Janoeo/DiaboloLib"
-    authors = "AlasDiablo & Safyrus"
-    description = '''
-    Libray Mod for Janoeo Project and more !
-    '''
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
+authors="${mod_authors}"
+description='''${mod_description}'''
 
-[[dependencies.diolib]]
-    modId = "forge"
-    mandatory = true
-    versionRange = "[47,)"
-    ordering = "NONE"
-    side = "BOTH"
-[[dependencies.diolib]]
-    modId = "minecraft"
-    mandatory = true
-    versionRange = "[1.20.1,1.21)"
-    ordering = "NONE"
-    side = "BOTH"
+[[dependencies.${mod_id}]]
+    modId="neoforge"
+    type="required"
+    versionRange="${neo_version_range}"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.${mod_id}]]
+    modId="minecraft"
+    type="required"
+    versionRange="${minecraft_version_range}"
+    ordering="NONE"
+    side="BOTH"
+
+[[accessTransformers]]
+file="META-INF/accesstransformer.cfg"

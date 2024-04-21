@@ -65,7 +65,7 @@ public abstract class JsonConfig {
     protected abstract void read(JsonObject json);
 
     /**
-     * Create the json object need to be write in the config directory
+     * Create the json object need to be written in the config directory
      *
      * @return JsonObject need to be written
      */

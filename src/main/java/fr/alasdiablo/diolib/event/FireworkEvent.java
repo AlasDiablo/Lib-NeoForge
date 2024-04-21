@@ -12,7 +12,7 @@ import net.minecraft.world.entity.projectile.FireworkRocketEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import org.apache.logging.log4j.message.FormattedMessage;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
@@ -28,7 +28,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
- * Event Handler use of spawn a firework when an author of Janoeo Project join a world
+ * Event Handler use of spawn a firework when an author of Janoeo Project joins a world
  */
 public class FireworkEvent implements IEvent<PlayerEvent.PlayerLoggedInEvent> {
 
@@ -126,7 +126,7 @@ public class FireworkEvent implements IEvent<PlayerEvent.PlayerLoggedInEvent> {
         return star;
     }
 
-    private ImmutablePair<Boolean, CompoundTag> getStarFirework(@NotNull String UUID) {
+    private @NotNull ImmutablePair<Boolean, CompoundTag> getStarFirework(@NotNull String UUID) {
         return switch (UUID) {
             case ALASDIABLO_UUID, SAFYRUS_UUID, SMARTZI_UUID -> ImmutablePair.of(true, this.getAuthorFirework(UUID));
             default -> ImmutablePair.of(false, this.getContributorFirework(UUID));
@@ -139,7 +139,7 @@ public class FireworkEvent implements IEvent<PlayerEvent.PlayerLoggedInEvent> {
      * @param event Instance of the event
      */
     @Override
-    public void onEvent(PlayerEvent.@NotNull PlayerLoggedInEvent event) {
+    public void onEvent(@NotNull PlayerEvent.PlayerLoggedInEvent event) {
         var player = event.getEntity();
         var world  = player.level();
         var UUID   = player.getStringUUID();

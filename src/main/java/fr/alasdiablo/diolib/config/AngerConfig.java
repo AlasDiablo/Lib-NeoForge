@@ -30,7 +30,7 @@ public class AngerConfig extends JsonConfig {
     protected void read(@NotNull JsonObject json) {
         this.angerRange = json.get("anger_range").getAsInt();
         this.canAnger   = json.get("can_anger").getAsBoolean();
-        DiaboloLib.LOGGER.debug("Data change for " + this.elementName + ", canAnger : " + this.canAnger + ", angerRange : " + this.angerRange);
+        DiaboloLib.LOGGER.debug("Data change for {}, canAnger : {}, angerRange : {}", this.elementName, this.canAnger, this.angerRange);
     }
 
     @Override

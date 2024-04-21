@@ -7,7 +7,7 @@ import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.client.model.generators.IGeneratedBlockState;
+import net.neoforged.neoforge.client.model.generators.IGeneratedBlockState;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.nio.file.Path;
