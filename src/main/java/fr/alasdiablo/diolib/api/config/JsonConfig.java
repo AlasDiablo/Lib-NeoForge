@@ -3,13 +3,12 @@ package fr.alasdiablo.diolib.api.config;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import com.google.gson.JsonParser;
+import com.google.gson.internal.Streams;
+import com.google.gson.stream.JsonWriter;
 import fr.alasdiablo.diolib.DiaboloLib;
 import org.jetbrains.annotations.NotNull;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Path;
 
 public abstract class JsonConfig {
@@ -43,7 +42,14 @@ public abstract class JsonConfig {
 
     private void postWrite(@NotNull JsonObject json) throws IOException {
         FileWriter fileWriter = new FileWriter(this.filePath.toString());
-        fileWriter.write(json.toString());
+
+        StringWriter stringWriter = new StringWriter();
+        JsonWriter   jsonWriter   = new JsonWriter(stringWriter);
+        jsonWriter.setLenient(true);
+        jsonWriter.setIndent("  ");
+        Streams.write(json, jsonWriter);
+
+        fileWriter.write(stringWriter.toString());
         fileWriter.flush();
         fileWriter.close();
     }

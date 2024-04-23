@@ -1,3 +1,6 @@
+### 7.7.35
++ Update json write to indent the json config files
+
 ### 7.7.34
 + Update to mc 1.20.4
 + Now using NeoForge
