@@ -1,8 +1,8 @@
 [![Downloads CurseForge](https://img.shields.io/curseforge/dt/422014?style=for-the-badge&logo=curseforge&labelColor=2D2D2D&color=f16436)](https://www.curseforge.com/minecraft/mc-mods/diabololib)
-[![Downloads Modrinth](https://img.shields.io/modrinth/dt/7eBc8VDu?style=for-the-badge&logo=modrinth&labelColor=2D2D2D&color=00AF5C)](https://www.curseforge.com/minecraft/mc-mods/diabololib)
+[![Downloads Modrinth](https://img.shields.io/modrinth/dt/7eBc8VDu?style=for-the-badge&logo=modrinth&labelColor=2D2D2D&color=00AF5C)](https://modrinth.com/mod/diabololib)
 [![Versions](http://cf.way2muchnoise.eu/versions/diabololib.svg?badge_style=for_the_badge)](https://www.curseforge.com/minecraft/mc-mods/diabololib/files)
-[![size](https://img.shields.io/github/repo-size/Janoeo/DiaboloLib?style=for-the-badge&labelColor=2D2D2D)](https://github.com/AlasDiablo/Diabolo-Lib)
-[![license](https://img.shields.io/github/license/Janoeo/DiaboloLib?style=for-the-badge&labelColor=2D2D2D)](https://github.com/AlasDiablo/Diabolo-Lib/blob/master/LICENSE)
+[![size](https://img.shields.io/github/repo-size/Janoeo/DiaboloLib?style=for-the-badge&labelColor=2D2D2D)](https://github.com/Janoeo/DiaboloLib)
+[![license](https://img.shields.io/github/license/Janoeo/DiaboloLib?style=for-the-badge&labelColor=2D2D2D)](https://github.com/Janoeo/DiaboloLib/blob/master/LICENSE)
 
 <div align="center">
   <a href="https://github.com/Janoeo/DiaboloLib">
