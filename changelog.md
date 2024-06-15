@@ -1,3 +1,6 @@
+### 8.7.36
++ Now using multi mod loader
+
 ### 7.7.35
 + Update json write to indent the json config files
 
