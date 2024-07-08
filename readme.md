@@ -1,57 +1,38 @@
-[![Downloads CurseForge](https://img.shields.io/curseforge/dt/422014?style=for-the-badge&logo=curseforge&labelColor=2D2D2D&color=f16436)](https://www.curseforge.com/minecraft/mc-mods/diabololib)
-[![Downloads Modrinth](https://img.shields.io/modrinth/dt/7eBc8VDu?style=for-the-badge&logo=modrinth&labelColor=2D2D2D&color=00AF5C)](https://modrinth.com/mod/diabololib)
-[![Versions](http://cf.way2muchnoise.eu/versions/diabololib.svg?badge_style=for_the_badge)](https://www.curseforge.com/minecraft/mc-mods/diabololib/files)
-[![size](https://img.shields.io/github/repo-size/Janoeo/DiaboloLib?style=for-the-badge&labelColor=2D2D2D)](https://github.com/Janoeo/DiaboloLib)
-[![license](https://img.shields.io/github/license/Janoeo/DiaboloLib?style=for-the-badge&labelColor=2D2D2D)](https://github.com/Janoeo/DiaboloLib/blob/master/LICENSE)
+[![license](https://img.shields.io/github/license/AlasDiablo/Diabolo-Lib?style=for-the-badge)](https://github.com/Janoeo/DiaboloLib/blob/master/LICENSE)
 
-<div align="center">
-  <a href="https://github.com/Janoeo/DiaboloLib">
-    <img src="https://raw.githubusercontent.com/Janoeo/Texture/master/logo/Diabolo%20Lib%20-%20V6%20-%20Banner.png" alt="Logo" style="border-radius: 54px 6px">
-  </a>
-  <p align="center">
-    A mod who add ore and more!
-    <br />
-    <a href="#download">Download</a>
-    ·
-    <a href="https://github.com/Janoeo/DiaboloLib/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/Janoeo/DiaboloLib/issues">Request Feature</a>
-  </p>
-</div>
+## About Dio's Lib
 
-<details open="open">
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#download--mirror">Download | Mirror</a></li>
-        <li><a href="#dependencies">Dependencies</a></li>
-      </ul>
-    </li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgements">Acknowledgements</a></li>
-  </ol>
-</details>
+***Dio's Lib*** is a lib mod who add a lot a utility thing for the mod of ***Janoeo Project***.
 
-## About The Project
+### Content added
 
-***DiaboloLib*** is a lib mod who add a lot a utility thing for the mod of ***Janoeo Project***.
++ General use data generator
++ Block helper like:
+  + Mobs anger
+  + Access to specific block function
+  + New functionality to snow powder
++ Custom config file system utilising json
++ And another utility function like `RessourceLocation` helper and more.
 
 ### Download | Mirror
 
-- [Curseforge](https://www.curseforge.com/minecraft/mc-mods/diabololib)
+- [Curseforge](https://www.curseforge.com/minecraft/mc-mods/diabololib/files)
 - [Modrinth](https://modrinth.com/mod/diabololib)
 - [Github](https://github.com/Janoeo/DiaboloLib/releases)
 
 ### Dependencies
 
-+ Dependents
-    + [Janoeo Foundation](https://www.curseforge.com/minecraft/mc-mods/janoeo)
-    + [Janoeo Arsenal](https://www.curseforge.com/minecraft/mc-mods/janoeo-arsenal)
-    + [Janoeo World](https://www.curseforge.com/minecraft/mc-mods/janoeo-world)
+**Dependents**
+
+- Dio's Wool Armor
+  - [CurseForge](https://www.curseforge.com/minecraft/mc-mods/wool-armor)
+  - [Modrinth](https://modrinth.com/mod/alasdiablo-wool-armor)
+- Janoeo Foundation
+  - [CurseForge](https://www.curseforge.com/minecraft/mc-mods/janoeo)
+  - [Modrinth](https://modrinth.com/mod/janoeo)
+- Recycling Factory
+  - [CurseForge](https://www.curseforge.com/minecraft/mc-mods/recycling-factory)
+  - [Modrinth](https://modrinth.com/mod/recycling-factory)
 
 ## Contributing
 
@@ -61,8 +42,7 @@ If you want to contribute you can to it via:
 - [Feature request](https://github.com/Janoeo/DiaboloLib/issues)
 - [Bug fix](https://github.com/Janoeo/DiaboloLib/pulls)
 - [Any useful code change](https://github.com/Janoeo/DiaboloLib/pulls)
-- If you want to give a donation you can't because we don't have a Patreon(or anything like this), for now you just need
-  to download the mod on CurseForge!
+- If you want to give a donation you can't because we don't have a Patreon(or anything like this), for now you just need to download the mod on CurseForge or Modrinth!
 
 ## License
 
