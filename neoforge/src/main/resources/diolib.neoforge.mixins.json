@@ -4,9 +4,7 @@
   "package": "fr.alasdiablo.diolib.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [],
-  "client": [
-    "MixinTitleScreen"
-  ],
+  "client": [],
   "server": [],
   "injectors": {
     "defaultRequire": 1

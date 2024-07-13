@@ -1,3 +1,8 @@
+### 8.7.37
++ Cleanup code
++ Remove useless console log
++ Rename mod
+
 ### 8.7.36
 + Now using multi mod loader
 
