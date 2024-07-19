@@ -16,7 +16,7 @@
     "environment": "*",
     "entrypoints": {
         "main": [
-            "fr.alasdiablo.diolib.DiaboloLibFabric"
+          "fr.alasdiablo.mods.lib.DiaboloLibFabric"
         ]
     },
     "mixins": [
