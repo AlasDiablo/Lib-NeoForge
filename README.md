@@ -63,10 +63,6 @@ To support us, download the mod via CurseForge or Modrinth!
 - Textures and artistic resources are licensed
   under [CC BY-SA 3.0 FR](https://creativecommons.org/licenses/by-sa/3.0/fr/deed.en)
 
-## Contact
-
-- Join us on [Discord](https://discord.gg/KkzqnzA)
-
 ## Acknowledgements
 
 - [AlasDiablo](https://github.com/AlasDiablo) - Original author, main contributor
