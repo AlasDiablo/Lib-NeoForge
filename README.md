@@ -21,7 +21,6 @@ simplifies development and enhances consistency across various project mods.
 
 - [CurseForge](https://www.curseforge.com/minecraft/mc-mods/diabololib/files)
 - [Modrinth](https://modrinth.com/mod/diabololib)
-- [GitHub](https://github.com/AlasDiablo/Lib-NeoForge/releases)
 
 ## Dependent Mods
 
