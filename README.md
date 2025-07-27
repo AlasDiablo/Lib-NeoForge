@@ -69,8 +69,7 @@ To support us, download the mod via CurseForge or Modrinth!
 
 ## Acknowledgements
 
-- [AlasDiablo](https://github.com/AlasDiablo) / [lIotaMiu](https://github.com/liotamiu) - Original author, main
-  contributor
+- [AlasDiablo](https://github.com/AlasDiablo) - Original author, main contributor
 - [Safyrus](https://github.com/Safyrus) - Lead artist
 - [Dadadodu](https://github.com/Dadadodu) - Testing, suggestions
 - [All Contributors](https://github.com/AlasDiablo/Lib-NeoForge/graphs/contributors) - Bug reports, bug fixes
