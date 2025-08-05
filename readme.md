@@ -1,67 +1,71 @@
-[![Downloads CurseForge](https://img.shields.io/curseforge/dt/422014?style=for-the-badge&logo=curseforge&labelColor=2D2D2D&color=f16436)](https://www.curseforge.com/minecraft/mc-mods/recycling-factory)
-[![Downloads Modrinth](https://img.shields.io/modrinth/dt/7eBc8VDu?style=for-the-badge&logo=modrinth&labelColor=2D2D2D&color=00AF5C)](https://modrinth.com/mod/recycling-factory)
-![Versions](http://cf.way2muchnoise.eu/versions/422014.svg?badge_style=for_the_badge)
+# Dio's Lib
 
-**Projet move to https://github.com/AlasDiablo/Lib-NeoForge**
+[![Downloads CurseForge](https://img.shields.io/curseforge/dt/422014?style=for-the-badge&logo=curseforge&labelColor=2D2D2D&color=f16436)](https://www.curseforge.com/minecraft/mc-mods/diabololib)
+[![Downloads Modrinth](https://img.shields.io/modrinth/dt/7eBc8VDu?style=for-the-badge&logo=modrinth&labelColor=2D2D2D&color=00AF5C)](https://modrinth.com/mod/diabololib)
+[![Versions](http://cf.way2muchnoise.eu/versions/422014.svg?badge_style=for_the_badge)](https://www.curseforge.com/minecraft/mc-mods/diabololib)
 
 ## About Dio's Lib
 
-***Dio's Lib*** is a lib mod who add a lot a utility thing for the mod of ***Janoeo Project***.
+**Dio's Lib** is a library mod that provides many utility features for mods created by **AlasDiablo**. This library
+simplifies development and enhances consistency across various project mods.
 
-### Content added
+## Features
 
-+ General use data generator
-+ Block helper like:
-  + Mobs anger
-  + Access to specific block function
-  + New functionality to snow powder
-+ Custom config file system utilising json
-+ And another utility function like `RessourceLocation` helper and more.
+- **General-purpose data generators**
+- **Block helpers** including:
+    - Access to specific block functions
+- **UI and model helpers**
+- **Various utilities** such as `DateRange` helpers and more
 
-### Download | Mirror
+## Download
 
-- [Curseforge](https://www.curseforge.com/minecraft/mc-mods/diabololib/files)
+- [CurseForge](https://www.curseforge.com/minecraft/mc-mods/diabololib/files)
 - [Modrinth](https://modrinth.com/mod/diabololib)
-- [Github](https://github.com/Janoeo/DiaboloLib/releases)
 
-### Dependencies
+## Dependent Mods
 
-**Dependents**
+The following mods use Dio's Lib:
 
-- Dio's Wool Armor
-  - [CurseForge](https://www.curseforge.com/minecraft/mc-mods/wool-armor)
-  - [Modrinth](https://modrinth.com/mod/alasdiablo-wool-armor)
-- Janoeo Foundation
-  - [CurseForge](https://www.curseforge.com/minecraft/mc-mods/janoeo)
-  - [Modrinth](https://modrinth.com/mod/janoeo)
-- Recycling Factory
-  - [CurseForge](https://www.curseforge.com/minecraft/mc-mods/recycling-factory)
-  - [Modrinth](https://modrinth.com/mod/recycling-factory)
+- **Dio's Extended Resources**
+    - [CurseForge](https://www.curseforge.com/minecraft/mc-mods/dios-extended-resources)
+    - [Modrinth](https://modrinth.com/mod/dios-extended-resources)
+- **Dio's Nether Ore**
+    - [CurseForge](https://www.curseforge.com/minecraft/mc-mods/dios-nether-ore)
+    - [Modrinth](https://modrinth.com/mod/dios-nether-ore)
+- **Dio's Pressure Plates**
+    - [CurseForge](https://www.curseforge.com/minecraft/mc-mods/dios-pressure-plates)
+    - [Modrinth](https://modrinth.com/mod/dios-pressure-plates)
+- **Dio's Recycling Factory**
+    - [CurseForge](https://www.curseforge.com/minecraft/mc-mods/recycling-factory)
+    - [Modrinth](https://modrinth.com/mod/recycling-factory)
+- **Dio's Tiny Ore**
+    - [CurseForge](https://www.curseforge.com/minecraft/mc-mods/dios-tiny-ore)
+    - [Modrinth](https://modrinth.com/mod/dios-tiny-ore)
+- **Dio's Wool Armor**
+    - [CurseForge](https://www.curseforge.com/minecraft/mc-mods/wool-armor)
+    - [Modrinth](https://modrinth.com/mod/alasdiablo-wool-armor)
 
 ## Contributing
 
-If you want to contribute you can to it via:
+You can contribute to the project in several ways:
 
-- [Bug report](https://github.com/Janoeo/DiaboloLib/issues)
-- [Feature request](https://github.com/Janoeo/DiaboloLib/issues)
-- [Bug fix](https://github.com/Janoeo/DiaboloLib/pulls)
-- [Any useful code change](https://github.com/Janoeo/DiaboloLib/pulls)
-- If you want to give a donation you can't because we don't have a Patreon(or anything like this), for now you just need to download the mod on CurseForge or Modrinth!
+- [Report bugs](https://github.com/AlasDiablo/Lib-NeoForge/issues)
+- [Request features](https://github.com/AlasDiablo/Lib-NeoForge/issues)
+- [Fix bugs](https://github.com/AlasDiablo/Lib-NeoForge/pulls)
+- [Submit code improvements](https://github.com/AlasDiablo/Lib-NeoForge/pulls)
 
-## License
+To support us, download the mod via CurseForge or Modrinth!
 
-- The source code is under [LGPL-3.0](https://www.gnu.org/licenses/lgpl-3.0.en.html)
-- The texture (and everything related to art) is
+## Licence
+
+- The source code is licensed under [LGPL-3.0](https://www.gnu.org/licenses/lgpl-3.0.en.html)
+- Textures and artistic resources are licensed
   under [CC BY-SA 3.0 FR](https://creativecommons.org/licenses/by-sa/3.0/fr/deed.en)
-
-## Contact
-
-- Contact us via [Discord](https://discord.gg/KkzqnzA)
 
 ## Acknowledgements
 
-- [AlasDiablo](https://github.com/AlasDiablo) / [lIotaMiu](https://github.com/liotamiu) - Original author, main contributor
+- [AlasDiablo](https://github.com/AlasDiablo) - Original author, main contributor
 - [Safyrus](https://github.com/Safyrus) - Lead artist
-- [Dadadodu](https://github.com/Dadadodu) - Testing, proposition
-- [Any Contributor](https://github.com/Janoeo/DiaboloLib/graphs/contributors) - Bug report, bug fix
-- And people who download my mod!
+- [Dadadodu](https://github.com/Dadadodu) - Testing, suggestions
+- [All Contributors](https://github.com/AlasDiablo/Lib-NeoForge/graphs/contributors) - Bug reports, bug fixes
+- And everyone who downloads our mods!
