@@ -2,6 +2,8 @@
 [![Downloads Modrinth](https://img.shields.io/modrinth/dt/7eBc8VDu?style=for-the-badge&logo=modrinth&labelColor=2D2D2D&color=00AF5C)](https://modrinth.com/mod/recycling-factory)
 ![Versions](http://cf.way2muchnoise.eu/versions/422014.svg?badge_style=for_the_badge)
 
+**Projet move to https://github.com/AlasDiablo/Lib-NeoForge**
+
 ## About Dio's Lib
 
 ***Dio's Lib*** is a lib mod who add a lot a utility thing for the mod of ***Janoeo Project***.
