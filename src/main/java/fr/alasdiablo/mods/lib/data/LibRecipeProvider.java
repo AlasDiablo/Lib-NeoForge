@@ -2,11 +2,13 @@
 package fr.alasdiablo.mods.lib.data;
 
 import fr.alasdiablo.mods.lib.item.ArmorItemSet;
+import net.minecraft.advancements.Advancement;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.Identifier;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
@@ -43,17 +45,11 @@ import org.jetbrains.annotations.NotNull;
 public abstract class LibRecipeProvider extends RecipeProvider {
     private final String modId;
 
-    /**
-     * Constructs a new DioRecipieProvider with the specified mod ID, registries, and recipe output.
-     *
-     * @param modId      The mod ID used for generating resource locations for recipes
-     * @param registries The holder lookup provider for accessing game registries
-     * @param output     The recipe output where generated recipes will be saved
-     */
-    protected LibRecipeProvider(String modId, HolderLookup.Provider registries, RecipeOutput output) {
-        super(registries, output);
+    protected LibRecipeProvider(String modId, BootstrapContext<Recipe<?>> recipeOutput, BootstrapContext<Advancement> advancementOutput) {
+        super(recipeOutput, advancementOutput);
         this.modId = modId;
     }
+
 
     /**
      * Generates both smelting and blasting recipes for ore processing.

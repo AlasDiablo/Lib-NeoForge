@@ -43,7 +43,7 @@ public class MuteablePressurePlateBlock extends PressurePlateBlock {
         }
 
         if (isPressed) {
-            level.scheduleTick(new BlockPos(pos), this, this.getPressedTime());
+            level.scheduleTick(new BlockPos(pos.getX(), pos.getY(), pos.getZ()), this, this.getPressedTime());
         }
     }
 }
